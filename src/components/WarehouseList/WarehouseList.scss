@@ -4,21 +4,40 @@
 
 .warehouses {
   background-color: $white;
+  margin: 16px;
 
   &__header {
     display: flex;
     flex-direction: column;
+    padding: 16px;
   }
-  
+
   &__title {
     color: $instock-black;
+    padding-top: 24px;
+    padding-bottom: 16px;
   }
 
   &__search {
     // Spacing between text link and chevron will default to 4px
-    background: url(../../assets/icons/search-24px.svg) no-repeat scroll 4px 4px;
+    background: url(../../assets/icons/search-24px.svg) no-repeat scroll 215px
+      4px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
+    height: 36px;
+    width: 100%;
+    border-radius: 20px;
+    margin-bottom: 16px;
+
+    &::placeholder {
+      padding-left: 16px;
+    }
+
+    @include tablet {
+      height: 38px;
+      width: auto;
+      padding: 0 16px 0 16px;
+    }
   }
 
   &__add {
@@ -27,6 +46,7 @@
     height: 36px;
     width: 100%;
     border-radius: 20px;
+    font-weight: 700;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,5 +56,46 @@
       width: auto;
       padding: 0 16px 0 16px;
     }
+  }
+
+  &__details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 16px;
+    border-top: 1px solid $cloud;
+  }
+
+  &__warehouse {
+    background: url(../../assets/icons/chevron_right-24px.svg) no-repeat scroll
+      65px 2px;
+    &-container {
+      width: 50%;
+    }
+  }
+
+  &__address {
+    &-container {
+      width: 50%;
+    }
+  }
+
+  &__name {
+    &-container {
+      width: 50%;
+    }
+  }
+
+  &__information {
+    &-container {
+      width: 50%;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
   }
 }
