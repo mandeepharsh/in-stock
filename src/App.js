@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.scss";
 // import Header from "../src/components/Header/Header";
-import Footer from "../components/Footer/Footer";
+import Footer from "./components/Footer/Footer";
 // import WarehousesPage from "../src/pages/WarehousesPage/WharehousesPage";
 // import WarehouseAddPage from "../src/pages/WarehouseAddPage/WharehouseAddPage";
 // import WarehouseEditPage from "../src/pages/WarehouseEditPage/WharehouseEditPage";
