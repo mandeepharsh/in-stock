@@ -22,11 +22,10 @@
     color: $slate;
 
     @include tablet {
-      margin-top: 16.375rem;
+      font-size: 1.125rem;
     }
 
     @include desktop {
-      margin-top: 5.9375rem;
       margin-bottom: 3rem;
     }
   }
