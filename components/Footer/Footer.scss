@@ -1,0 +1,19 @@
+@use "../../src/styles/partials/fonts";
+@use "../../src/styles/partials/mixins";
+@use "../../src/styles/partials/variables";
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Titillium Web";
+  box-sizing: border-box;
+}
+
+.footer {
+  background-color: $light-grey;
+  color: $cloud;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
