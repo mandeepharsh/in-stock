@@ -1,9 +1,12 @@
-import logo from './logo.svg';
-import './App.scss';
+import "./App.scss";
+
+//import Component temporarily to view styling
+import WarehouseList from "./components/WarehouseList/WarehouseList";
 
 function App() {
   return (
     <div className="App">
+      <WarehouseList />
     </div>
   );
 }

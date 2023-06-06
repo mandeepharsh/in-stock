@@ -1,0 +1,40 @@
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.warehouses {
+  background-color: $white;
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  &__title {
+    color: $instock-black;
+  }
+
+  &__search {
+    // Spacing between text link and chevron will default to 4px
+    background: url(../../assets/icons/search-24px.svg) no-repeat scroll 4px 4px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__add {
+    background-color: $instock-indigo;
+    color: $white;
+    height: 36px;
+    width: 100%;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include tablet {
+      height: 38px;
+      width: auto;
+      padding: 0 16px 0 16px;
+    }
+  }
+}
