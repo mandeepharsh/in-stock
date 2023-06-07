@@ -6,16 +6,40 @@
   background-color: $white;
   margin: 16px;
 
+  @include desktop {
+    width: 1020px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   &__header {
     display: flex;
     flex-direction: column;
     padding: 16px;
+
+    @include tablet {
+      padding: 32px 24px 24px 24px;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
   }
 
   &__title {
     color: $instock-black;
-    padding-top: 24px;
-    padding-bottom: 16px;
+    padding: 24px 0 16px 0;
+
+    @include tablet {
+      padding: 0;
+    }
+  }
+
+  &__cta {
+    @include tablet {
+      width: auto;
+      display: flex;
+      flex-direction: row;
+    }
   }
 
   &__search {
@@ -26,18 +50,21 @@
     position: relative;
 
     @include tablet {
-      height: 38px;
-      width: auto;
-      padding: 0 16px 0 16px;
+      width: 185px;
+      margin: 0 16px 0 0;
     }
 
     &-input {
       flex: 1;
       padding-right: 40px;
       border-radius: 20px;
+      border: 1px solid $cloud;
 
       &::placeholder {
         padding-left: 16px;
+      }
+      @include tablet {
+        height: 38px;
       }
     }
 
@@ -49,6 +76,10 @@
       width: 24px;
       height: 24px;
       right: 8px;
+
+      @include tablet {
+        right: -5px;
+      }
     }
   }
 
@@ -58,6 +89,8 @@
     height: 36px;
     width: 100%;
     border-radius: 20px;
+    border: 1px solid $cloud;
+
     font-weight: 600;
     display: flex;
     justify-content: center;
@@ -69,8 +102,29 @@
 
     @include tablet {
       height: 38px;
-      width: auto;
+      width: 206.5px;
       padding: 0 16px 0 16px;
+      margin-left: 16px;
+    }
+  }
+
+  &__table {
+    &-fields {
+      display: none;
+      padding: 10px 0;
+
+      @include tablet {
+        background-color: $light-grey;
+        display: flex;
+        justify-content: space-around;
+      }
+    }
+
+    &-header {
+      @include tablet {
+        display: flex;
+        align-items: center;
+      }
     }
   }
 
@@ -81,48 +135,90 @@
     align-items: center;
     padding: 16px;
     border-top: 1px solid $cloud;
+
+    @include tablet {
+      flex-wrap: nowrap;
+      justify-content: space-around;
+      border-top: 1px solid red;
+      padding: 0;
+    }
+
+    &-container {
+      width: 50%;
+      padding-bottom: 16px;
+
+      @include tablet {
+        width: auto;
+        padding: 0;
+      }
+    }
+
+    &-title {
+      color: $slate;
+      @include tablet {
+        display: none;
+      }
+    }
   }
 
   &__warehouse {
-    background: url(../../assets/icons/chevron_right-24px.svg) no-repeat scroll
-      65px 2px;
+    // background: url(../../assets/icons/chevron_right-24px.svg) no-repeat scroll
+    //   65px 2px;
     color: $instock-indigo;
     font-weight: 600;
     font-size: 13px;
+    display: flex;
+    align-items: center;
 
     &-container {
       width: 50%;
       padding-bottom: 16px;
-    }
 
-    &-title {
-      color: $slate;
-    }
-  }
-
-  &__address {
-    font-size: 13px;
-
-    &-container {
-      width: 50%;
-      padding-bottom: 16px;
-    }
-
-    &-title {
-      color: $slate;
+      @include tablet {
+        width: auto;
+        padding: 0;
+        order: -2;
+      }
     }
   }
 
   &__name {
     font-size: 13px;
 
+    @include tablet {
+      //   width: 107px;
+      display: flex;
+      justify-content: flex-start;
+    }
+
     &-container {
       width: 50%;
       padding-bottom: 16px;
+
+      @include tablet {
+        width: auto;
+        padding: 0;
+        order: 0;
+      }
+    }
+  }
+
+  &__address {
+    font-size: 13px;
+
+    @include tablet {
+      width: 110px;
     }
 
-    &-title {
-      color: $slate;
+    &-container {
+      width: 50%;
+      padding-bottom: 16px;
+
+      @include tablet {
+        width: auto;
+        padding: 0;
+        order: -1;
+      }
     }
   }
 
@@ -130,10 +226,12 @@
     &-container {
       width: 50%;
       padding-bottom: 16px;
-    }
 
-    &-title {
-      color: $slate;
+      @include tablet {
+        width: auto;
+        padding: 0;
+        order: 1;
+      }
     }
 
     &-number {
@@ -149,5 +247,15 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
+
+    @include tablet {
+      width: auto;
+      order: 2;
+    }
+    &-del {
+      @include tablet {
+        padding-right: 16px;
+      }
+    }
   }
 }
