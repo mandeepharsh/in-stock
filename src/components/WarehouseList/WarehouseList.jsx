@@ -39,7 +39,9 @@ export default function WarehouseList() {
           CONTACT INFORMATION
           <img src={sortIcon} alt="sort-icon-up-and-down-arrow" />
         </h4>
-        <h4 className="warehouses__table-header">ACTIONS</h4>
+        <h4 className="warehouses__table-header warehouses__table-header--position">
+          ACTIONS
+        </h4>
       </div>
 
       <div className="warehouses__details">

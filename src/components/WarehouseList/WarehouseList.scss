@@ -5,11 +5,11 @@
 .warehouses {
   background-color: $white;
   margin: 16px;
+  border-radius: 4px;
 
   @include desktop {
     width: 1020px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
   }
 
   &__header {
@@ -18,7 +18,7 @@
     padding: 16px;
 
     @include tablet {
-      padding: 32px 24px 24px 24px;
+      padding: 32px 32px 24px 32px;
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
@@ -117,14 +117,23 @@
         background-color: $light-grey;
         display: flex;
         justify-content: space-around;
+        padding: 11px 32px;
       }
     }
 
     &-header {
       @include tablet {
+        color: $slate;
         display: flex;
+        justify-content: flex-start;
         align-items: center;
         width: 20%;
+      }
+
+      &--position {
+        @include tablet {
+          justify-content: flex-end;
+        }
       }
     }
   }
@@ -134,7 +143,7 @@
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: center;
-    padding: 16px;
+    padding: 16px 24px;
     border-top: 1px solid $cloud;
     // padding: 16px 0;
 
@@ -142,7 +151,7 @@
       flex-wrap: nowrap;
       justify-content: space-around;
       border-top: 1px solid $cloud;
-      padding: 0;
+      padding: 16px 32px;
     }
 
     &-title {
@@ -167,7 +176,7 @@
       padding-bottom: 16px;
 
       @include tablet {
-        width: auto;
+        width: 20%;
         padding: 0;
         order: -2;
       }
@@ -188,7 +197,7 @@
       padding-bottom: 16px;
 
       @include tablet {
-        width: auto;
+        width: 20%;
         padding: 0;
         order: 0;
       }
@@ -197,9 +206,11 @@
 
   &__address {
     font-size: 13px;
+    line-height: 20px;
 
     @include tablet {
       width: 110px;
+      line-height: 22px;
     }
 
     &-container {
@@ -207,7 +218,7 @@
       padding-bottom: 16px;
 
       @include tablet {
-        width: auto;
+        width: 20%;
         padding: 0;
         order: -1;
       }
@@ -220,7 +231,7 @@
       padding-bottom: 16px;
 
       @include tablet {
-        width: auto;
+        width: 20%;
         padding: 0;
         order: 1;
       }
@@ -228,10 +239,18 @@
 
     &-number {
       font-size: 13px;
+      line-height: 20px;
+      @include tablet {
+        line-height: 22px;
+      }
     }
 
     &-email {
       font-size: 13px;
+      line-height: 20px;
+      @include tablet {
+        line-height: 22px;
+      }
     }
   }
 
@@ -241,7 +260,8 @@
     width: 100%;
 
     @include tablet {
-      width: auto;
+      width: 20%;
+      justify-content: flex-end;
       order: 2;
     }
     &-del {
