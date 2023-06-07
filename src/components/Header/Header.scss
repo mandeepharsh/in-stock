@@ -8,10 +8,12 @@
   flex-direction: column;
   padding-top: 2rem;
   padding-bottom: 2rem;
+  height: 12.5rem;
 
   @include tablet {
     display: flex;
     padding-top: 0;
+    height: 13rem;
   }
 
   &__logo {
@@ -31,12 +33,15 @@
       justify-content: space-between;
       align-items: center;
       padding: 0 2rem;
-      width: 63.75rem;
-      margin: 0 auto;
+     
     }
 
     @include desktop {
       padding: 0 8.125rem;
+      width:63.75rem;
+      margin:0 auto;
+      width: 63.75rem;
+      margin: 0 auto;
     }
   }
 
