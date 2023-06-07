@@ -6,13 +6,13 @@
   color:$white;
   display: flex;
   flex-direction: column;
-  height: 13rem;
+  height: 12rem;
   padding-top: 2rem;
   padding-bottom: 1rem;
 
   @include tablet {
     display: flex;
-    height: 11.625rem;
+    height: 13rem;
     padding-top: 0;
   }
 
