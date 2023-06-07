@@ -121,13 +121,12 @@
       }
     }
 
-    &-header {
+    &-field {
       @include tablet {
-        color: $slate;
+        width: 20%;
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        width: 20%;
       }
 
       &--position {
@@ -135,6 +134,10 @@
           justify-content: flex-end;
         }
       }
+    }
+
+    &-header {
+      color: $slate;
     }
   }
 
@@ -152,6 +155,10 @@
       justify-content: space-around;
       border-top: 1px solid $cloud;
       padding: 16px 32px;
+    }
+
+    &:hover {
+      background-color: rgba(46, 102, 229, 0.07);
     }
 
     &-title {
@@ -209,7 +216,7 @@
     line-height: 20px;
 
     @include tablet {
-      width: 110px;
+      width: 80%;
       line-height: 22px;
     }
 

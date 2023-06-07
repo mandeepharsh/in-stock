@@ -26,22 +26,29 @@ export default function WarehouseList() {
       </div>
 
       <div className="warehouses__table-fields">
-        <h4 className="warehouses__table-header">
-          WAREHOUSE <img src={sortIcon} alt="sort-icon-up-and-down-arrow" />
-        </h4>
-        <h4 className="warehouses__table-header">
-          ADDRESS <img src={sortIcon} alt="sort-icon-up-and-down-arrow" />
-        </h4>
-        <h4 className="warehouses__table-header">
-          CONTACT NAME <img src={sortIcon} alt="sort-icon-up-and-down-arrow" />
-        </h4>
-        <h4 className="warehouses__table-header">
-          CONTACT INFORMATION
+        <div className="warehouses__table-field">
+          <h4 className="warehouses__table-header">WAREHOUSE</h4>
           <img src={sortIcon} alt="sort-icon-up-and-down-arrow" />
-        </h4>
-        <h4 className="warehouses__table-header warehouses__table-header--position">
-          ACTIONS
-        </h4>
+        </div>
+
+        <div className="warehouses__table-field">
+          <h4 className="warehouses__table-header">ADDRESS</h4>
+          <img src={sortIcon} alt="sort-icon-up-and-down-arrow" />
+        </div>
+
+        <div className="warehouses__table-field">
+          <h4 className="warehouses__table-header">CONTACT NAME </h4>
+          <img src={sortIcon} alt="sort-icon-up-and-down-arrow" />
+        </div>
+
+        <div className="warehouses__table-field">
+          <h4 className="warehouses__table-header">CONTACT INFORMATION</h4>
+          <img src={sortIcon} alt="sort-icon-up-and-down-arrow" />
+        </div>
+
+        <div className="warehouses__table-field warehouses__table-field--position">
+          <h4 className="warehouses__table-header">ACTIONS</h4>
+        </div>
       </div>
 
       <div className="warehouses__details">
