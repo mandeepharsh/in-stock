@@ -1,27 +1,21 @@
-import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import "./App.scss";
-import Header from "./components/Header/Header"
-import WarehouseAddPage from "./pages/WarehouseAddPage/WarehouseAddpage"
-// import Footer from "../src/components/Footer/Footer";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 // import WarehousesPage from "../src/pages/WarehousesPage/WharehousesPage";
 // import WarehouseAddPage from "../src/pages/WarehouseAddPage/WharehouseAddPage";
 // import WarehouseEditPage from "../src/pages/WarehouseEditPage/WharehouseEditPage";
 // import WarehouseDetailsPage from "../src/pages/WarehouseDetailsPage/WharehouseDetailsPage";
-// import InventoryPage from "../src/pages/InventoryPage/InventoryPage";
-// import InventoryAddPage from "../src/pages/InventoryAddPage/InventoryAddPage";
-// import InventoryEditPage from "../src/pages/InventoryEditPage/InventoryEditPage";
-// import InventoryDetailsPage from "../src/pages/InventoryDetailsPage/InventoryDetailsPage";
-
-
+// import InventoriesPage from "../src/pages/InventoriesPage/InventoriesPage";
+// import InventoriesAddPage from "../src/pages/InventoriesAddPage/InventoriesAddPage";
+// import InventoriesEditPage from "../src/pages/InventoriesEditPage/InventoriesEditPage";
+// import InventoriesDetailsPage from "../src/pages/InventoriesDetailsPage/InventoriesDetailsPage";
 
 function App() {
   return (
     
     <Router>
       <Header/>
-      <main className="mainContent">
-        <WarehouseAddPage/>
-      </main>
         {/* <Routes>
           <Route path="/" element={<WarehousesPage/>}/>
           <Route path="/warehouses/" element={<WarehousesPage/>}/>
@@ -35,7 +29,6 @@ function App() {
         </Routes>
       <Footer/> */}
     </Router>
-
   );
 }
 
