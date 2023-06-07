@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import "./App.scss";
 import Header from "./components/Header/Header"
+import WarehouseAddPage from "./pages/WarehouseAddPage/WarehouseAddpage"
 // import Footer from "../src/components/Footer/Footer";
 // import WarehousesPage from "../src/pages/WarehousesPage/WharehousesPage";
 // import WarehouseAddPage from "../src/pages/WarehouseAddPage/WharehouseAddPage";
@@ -18,6 +19,9 @@ function App() {
     
     <Router>
       <Header/>
+      <main className="mainContent">
+        <WarehouseAddPage/>
+      </main>
         {/* <Routes>
           <Route path="/" element={<WarehousesPage/>}/>
           <Route path="/warehouses/" element={<WarehousesPage/>}/>

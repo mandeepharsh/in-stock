@@ -12,8 +12,7 @@
   @include tablet {
     display: flex;
     padding-top: 0;
-    width:63.75rem;
-    margin:0 auto;
+   
   }
 
  
@@ -39,6 +38,8 @@
 
     @include desktop{
       padding: 0 8.125rem;
+      width:63.75rem;
+      margin:0 auto;
     }
   }
 
