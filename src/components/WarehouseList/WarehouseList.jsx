@@ -53,10 +53,12 @@ export default function WarehouseList() {
       <div className="warehouses__details">
         <div className="warehouses__warehouse-container">
           <h4 className="warehouses__details-title">WAREHOUSE</h4>
-          <p className="warehouses__warehouse">
-            Manhattan
-            <img src={rightIcon} alt="chevron-pointing-right" />
-          </p>
+          {/* <Link to={`/warehouses/${warehouse.id}`} className="warehouses__link"> */}
+            <p className="warehouses__warehouse">
+              Manhattan
+              <img src={rightIcon} alt="chevron-pointing-right" />
+            </p>
+          {/* </Link> */}
         </div>
 
         <div className="warehouses__name-container">
