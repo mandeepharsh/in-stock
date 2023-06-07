@@ -18,7 +18,6 @@ export default function WarehouseList() {
               className="warehouses__search-input"
               placeholder="Search..."
             />
-            <span className="warehouses__search-icon"></span>
           </div>
 
           <button className="warehouses__add">+ Add New Warehouse</button>
