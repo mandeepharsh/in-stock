@@ -6,6 +6,20 @@ import pencil from "../../assets/icons/edit-24px.svg";
 // export default function WarehouseDetails({id}) {
   export default function WarehouseDetails() {
 
+    const warehouse = {
+      name: "Washington",
+      address: "300 Pearl Stret SW",
+      city:"Washington",
+      country: "USA",
+      contact: "Graeme Lyon",
+      title: "Warehouse Manager",
+      phone: "+1 (647) 504 -0911",
+      email: "glyon@instock.com",
+      id:"123"
+    }
+  
+    const {name, address, city, country, contact, title, phone, email, id} = warehouse;
+
   
 
   return (
