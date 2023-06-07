@@ -19,24 +19,36 @@
   }
 
   &__search {
-    // Spacing between text link and chevron will default to 4px
-    background: url(../../assets/icons/search-24px.svg) no-repeat scroll 215px
-      4px;
     display: flex;
-    justify-content: flex-end;
     height: 36px;
     width: 100%;
-    border-radius: 20px;
     margin-bottom: 16px;
-
-    &::placeholder {
-      padding-left: 16px;
-    }
+    position: relative;
 
     @include tablet {
       height: 38px;
       width: auto;
       padding: 0 16px 0 16px;
+    }
+
+    &-input {
+      flex: 1;
+      padding-right: 40px;
+      border-radius: 20px;
+
+      &::placeholder {
+        padding-left: 16px;
+      }
+    }
+
+    &-icon {
+      // Spacing between text link and chevron will default to 4px?
+      background: url(../../assets/icons/search-24px.svg) no-repeat scroll 0px
+        5px;
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      right: 8px;
     }
   }
 
@@ -46,10 +58,14 @@
     height: 36px;
     width: 100%;
     border-radius: 20px;
-    font-weight: 700;
+    font-weight: 600;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    &:hover {
+      background-color: $graphite;
+    }
 
     @include tablet {
       height: 38px;
@@ -70,26 +86,62 @@
   &__warehouse {
     background: url(../../assets/icons/chevron_right-24px.svg) no-repeat scroll
       65px 2px;
+    color: $instock-indigo;
+    font-weight: 600;
+    font-size: 13px;
+
     &-container {
       width: 50%;
+      padding-bottom: 16px;
+    }
+
+    &-title {
+      color: $slate;
     }
   }
 
   &__address {
+    font-size: 13px;
+
     &-container {
       width: 50%;
+      padding-bottom: 16px;
+    }
+
+    &-title {
+      color: $slate;
     }
   }
 
   &__name {
+    font-size: 13px;
+
     &-container {
       width: 50%;
+      padding-bottom: 16px;
+    }
+
+    &-title {
+      color: $slate;
     }
   }
 
   &__information {
     &-container {
       width: 50%;
+      padding-bottom: 16px;
+    }
+
+    &-title {
+      color: $slate;
+    }
+
+    &-number {
+      font-size: 13px;
+    }
+
+    &-email {
+      font-size: 13px;
     }
   }
 
