@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import "./App.scss";
+import WarehouseAddpage from "./pages/WarehouseAddPage/WarehouseAddpage";
 // import Header from "../src/components/Header/Header";
 // import Footer from "../src/components/Footer/Footer";
 // import WarehousesPage from "../src/pages/WarehousesPage/WharehousesPage";
@@ -15,7 +16,9 @@ import "./App.scss";
 
 function App() {
   return (
+    
     <Router>
+    <WarehouseAddpage/>
       {/* <Header/>
       <Routes>
         <Route path="/" element={<WarehousesPage/>}/>
