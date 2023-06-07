@@ -1,3 +1,3 @@
-function WarehouseDetailsPage() {
+export default function WarehouseDetailsPage() {
   return <></>;
 }

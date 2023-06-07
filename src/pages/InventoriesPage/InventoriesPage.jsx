@@ -1,3 +1,3 @@
-function InventoriesPage() {
+export default function InventoriesPage() {
   return <></>;
 }

@@ -1,3 +1,3 @@
-function WarehouseAddPage() {
+export default function WarehouseAddPage() {
   return <></>;
 }
