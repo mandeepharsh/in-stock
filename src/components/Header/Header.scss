@@ -2,8 +2,8 @@
 @use "../../styles/partials/mixins" as *;
 
 .header {
-  background-color:$graphite;
-  color:$white;
+  background-color: $graphite;
+  color: $white;
   display: flex;
   flex-direction: column;
   padding-top: 2rem;
@@ -12,76 +12,70 @@
   @include tablet {
     display: flex;
     padding-top: 0;
-    width:63.75rem;
-    margin:0 auto;
   }
 
- 
   &__logo {
     display: flex;
     justify-content: center;
 
-    @include tablet{
-        margin-top: 2.4rem;
+    @include tablet {
+      margin-top: 2.4rem;
     }
   }
 
- 
   &__wrapper {
     padding: 0 1rem;
-    
+
     @include tablet {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 0 2rem;
+      width: 63.75rem;
+      margin: 0 auto;
     }
 
-    @include desktop{
+    @include desktop {
       padding: 0 8.125rem;
     }
   }
 
- 
   &__links {
-    display:flex;
+    display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin-top: 1.5rem;
 
-    
-    
     @include tablet {
-        margin-top: 2.4rem;
-        width: 14rem;
+      margin-top: 2.4rem;
+      width: 14rem;
     }
-}
-    
- 
-&__link {
-    color:$cloud;
+  }
+
+  &__link {
+    color: $cloud;
     text-decoration: none;
     width: 40%;
-    margin:0 auto;
-    padding: 0.5rem 1rem ;
+    margin: 0 auto;
+    padding: 0.5rem 1rem;
     border-radius: 1.25rem;
     font-weight: 600;
     text-align: center;
 
     &:hover {
-      text-decoration:underline;
-      color:$white;
+      text-decoration: underline;
+      color: $white;
     }
-    
+
     @include tablet {
-      width:100%;
+      width: 100%;
     }
 
     &--active {
-      color:$white;
+      color: $white;
       background-color: $instock-black;
-      border-radius:1.25rem;
-      text-decoration:none;
+      border-radius: 1.25rem;
+      text-decoration: none;
     }
   }
 }
