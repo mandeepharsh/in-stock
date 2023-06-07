@@ -124,6 +124,7 @@
       @include tablet {
         display: flex;
         align-items: center;
+        width: 20%;
       }
     }
   }
@@ -135,22 +136,13 @@
     align-items: center;
     padding: 16px;
     border-top: 1px solid $cloud;
+    // padding: 16px 0;
 
     @include tablet {
       flex-wrap: nowrap;
       justify-content: space-around;
-      border-top: 1px solid red;
+      border-top: 1px solid $cloud;
       padding: 0;
-    }
-
-    &-container {
-      width: 50%;
-      padding-bottom: 16px;
-
-      @include tablet {
-        width: auto;
-        padding: 0;
-      }
     }
 
     &-title {
