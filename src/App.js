@@ -18,7 +18,6 @@ function App() {
   return (
     
     <Router>
-    <WarehouseAddpage/>
       {/* <Header/>
       <Routes>
         <Route path="/" element={<WarehousesPage/>}/>

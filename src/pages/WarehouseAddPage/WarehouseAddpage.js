@@ -11,14 +11,14 @@ import "./WarehouseAddPage.scss";
 
 const WarehouseAddpage = () => {
 const initialValues = {
-    warehouseName :"",
-    streetAddress : "",
+    warehouse_name :"",
+    address : "",
     city: "",
     country :"",
-    contactName : "",
-    position : "",
-    phoneNumber : "",
-    email: ""      
+    contact_name : "",
+    contact_position: "",
+    contact_phone : "",
+    contact_email: ""      
 }
 
 const [values,setValues] = useState(initialValues);
@@ -31,11 +31,15 @@ const onChangeHandler = (event) =>{
     });
 };
 
+
+
 const addWarehouseHandler = () =>{
-    axios.post(URL,values)
+    axios.post(URL + "/add",values)
     .then((response) => console.log(response))
+    .catch((error) =>{
+      console.log(error)
+    })
 }
-console.log(values)
   return (
     <div className="warehouse-add-page">
       <div className="warehouse-add-page__title">
@@ -50,18 +54,18 @@ console.log(values)
           <label className="warehouse-add__label">
             Warehouse Name
             <input className="warehouse-add__input" 
-                   name = "warehouseName"
+                   name = "warehouse_name"
                    placeholder="Warehouse Name"
-                   value ={values.warehouseName}
+                   value ={values.warehouse_name }
                    onChange={onChangeHandler}
                     />
           </label>
           <label className="warehouse-add__label">
             Street Address
             <input className="warehouse-add__input" 
-                   name = "streetAddress"
+                   name = "address"
                    placeholder="Street Address" 
-                   value = {values.streetAddress}
+                   value = {values.address}
                    onChange={onChangeHandler}
                    />
           </label>
@@ -90,44 +94,44 @@ console.log(values)
           <label className="warehouse-add__label" >
             Contact Name
             <input className="warehouse-add__input"
-                   name="contactName" 
+                   name="contact_name" 
                    placeholder="Contact Name" 
-                   value={values.contactName}
+                   value={values.contact_name}
                    onChange={onChangeHandler}
                    />
           </label>
           <label className="warehouse-add__label">
             Position
             <input className="warehouse-add__input" 
-                   name="position"
+                   name="contact_position"
                    placeholder="Position" 
-                   value={values.position}
+                   value={values.contact_position}
                    onChange={onChangeHandler} 
                    />
           </label>
           <label className="warehouse-add__label">
             Phone Number
             <input className="warehouse-add__input" 
-                   name="phoneNumber"
+                   name="contact_phone"
                    placeholder="Phone Number"
-                   value={values.phoneNumber}
+                   value={values.contact_phone}
                    onChange={onChangeHandler}
                     />
           </label>
           <label className="warehouse-add__label">
             Email
             <input className="warehouse-add__input" 
-                   name="email"
+                   name="contact_email"
                    placeholder="Email" 
-                   value={values.email}
+                   value={values.contact_email}
                    onChange={onChangeHandler} 
                    />
           </label>
         </div>
 
         <div className="warehouse-add-page__button-group">
-          <button type="button" className="warehouse-add-page__button warehouse-add-page__button--cancel">Cancel</button>
-          <button type="sumbit" className="warehouse-add-page__button warehouse-add-page__button--add">+ Add Warehouse</button>
+          <button type="button" className=" warehouse-add-page__button-cancel">Cancel</button>
+          <button type="sumbit" className=" warehouse-add-page__button-add">+ Add Warehouse</button>
         </div>
       </form>
     </div>
