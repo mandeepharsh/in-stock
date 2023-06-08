@@ -7,18 +7,26 @@ import { Link } from "react-router-dom";
 import {useParams} from "react-router-dom";
 import {axios} from "axios";
 
-//utils and assetds
+//utils and assets
 import URL from "../../utils/api";
 import arrow from "../../assets/icons/arrow_back-24px.svg";
 import pencil from "../../assets/icons/edit-24px.svg";
 
+
+
 export default function WarehouseDetails() {
 
-  const [warehouse, setWarehouse] = useState([]);
+  //setup state for warehouse
+  const [warehouse, setWarehouse] = useState({});
   const [hasError, setHasError] = useState(false);
 
+  
+  
+  //grab url and set id
   let {id} = useParams;
 
+
+  // get warehouse deets from database
   axios
     .get(`${URL}/${id}`)
     .then((response) => {
