@@ -11,7 +11,7 @@ export default function Header() {
         <Link to="/" className="header__logo"><img src={logo} alt="company logo"/></Link>
 
         <nav className="header__links">
-          <NavLink to="/warehouses" className={({ isActive, isPending }) =>
+          <NavLink to="/" className={({ isActive, isPending }) =>
             isPending ? "header__link" : isActive ? "header__link header__link--active" : "header__link"}>
             <h3>Warehouses</h3>
           </NavLink>
