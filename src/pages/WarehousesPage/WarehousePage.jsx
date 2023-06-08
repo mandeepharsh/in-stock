@@ -16,7 +16,6 @@ export default function WarehousePage() {
       .get(URL)
       .then((response) => {
         setWarehouses(response.data);
-        console.log(response.data);
       })
       .catch((error) => {
         console.log(error);

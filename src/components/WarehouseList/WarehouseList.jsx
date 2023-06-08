@@ -4,7 +4,6 @@ import editIcon from "../../assets/icons/edit-24px.svg";
 import rightIcon from "../../assets/icons/chevron_right-24px.svg";
 
 export default function WarehouseList({ warehouses }) {
-  // console.log(warehouses[0].id);
   return (
     <ul className="warehouses__list">
       {warehouses.map((warehouse) => {
