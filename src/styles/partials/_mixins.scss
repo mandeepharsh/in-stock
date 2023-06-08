@@ -12,3 +12,10 @@
     @content;
   }
 }
+
+@mixin button {
+  height: 2.35rem;
+  width :  40%;
+  border-radius: 2rem;
+  border: none;
+}
