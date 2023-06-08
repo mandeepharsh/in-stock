@@ -1,6 +1,7 @@
 // tools
 import { useState } from "react";
 import axios from "axios";
+import {useNavigate } from "react-router-dom"; 
 import validator from "validator";
 
 // assets
@@ -16,6 +17,7 @@ import { URL } from "../../utils/api";
 
 
 const WarehouseAddpage = () => {
+const navigate = useNavigate();  
 const initialValues = {
     warehouse_name :"",
     address : "",
@@ -40,7 +42,7 @@ const initialErrorState = {
 
 const [values,setValues] = useState(initialValues);
 const [errors, setErrors] = useState(initialErrorState);
-const [formSumbit,setFormSumbit] = useState(false);
+const [isFormSubmit, setIsFormSubmit] = useState(false);
 
 const onChangeHandler = (event) =>{
     const {name,value} = event.target;
@@ -55,6 +57,9 @@ const onChangeHandler = (event) =>{
     })
 };
 
+const phnNum = (num) => {
+ return  num.replace(/\D/g, '')
+}
 
 
 const addWarehouseHandler = (event) =>{
@@ -75,7 +80,7 @@ const addWarehouseHandler = (event) =>{
     setErrors(newErrors);
   } else  {
     axios.post(URL + "/add",values)
-      .then((res) =>console.log(res), setErrors(initialErrorState), setFormSumbit(true) )
+      .then((res) =>  navigate(`/warehouses/${res.data[0].id}`), setErrors(initialErrorState),setIsFormSubmit(true))
       .catch((error) => console.log(error));
   }
 }
@@ -100,7 +105,7 @@ const addWarehouseHandler = (event) =>{
                    onChange={onChangeHandler}
                     />
            {(errors.warehouse_name ) && <span className="warehouse-add__error-message">
-           <img alt="error icon" src={errorIcon}/>This field is required</span>}
+           <img alt="error icon" src={errorIcon}/>This field is required </span>}
           </label>
           <label className="warehouse-add__label">
             Street Address
@@ -132,7 +137,7 @@ const addWarehouseHandler = (event) =>{
                    value={values.country}
                    onChange={onChangeHandler}
                     />     
-           {(errors.country  ) &&
+           {(errors.country ) &&
            <span className="warehouse-add__error-message">
            <img alt="error icon" src={errorIcon}/>This field is required</span>}
           </label>
@@ -173,7 +178,8 @@ const addWarehouseHandler = (event) =>{
                     />
            {(errors.contact_phone ) && <span className="warehouse-add__error-message">
            <img alt="error icon" src={errorIcon}/>This field is required</span>}
-        
+           {(!validator.isMobilePhone(phnNum(values.contact_phone) ) && isFormSubmit)?   <span className="warehouse-add__error-message">
+          <img alt="error icon" src={errorIcon}/>This phone number is not valid</span> : ""} 
           </label>
           <label className="warehouse-add__label">
             Email
@@ -183,18 +189,22 @@ const addWarehouseHandler = (event) =>{
                    value={values.contact_email}
                    onChange={onChangeHandler} 
                    />
-          {(errors.contact_email  )&& 
+          {(errors.contact_email)&& (
           <span className="warehouse-add__error-message">
-          <img alt="error icon" src={errorIcon}/>This field is required</span>} 
-          {!(validator.isEmail(values.contact_email) )&& 
-          <span className="warehouse-add__error-message">
-          <img alt="error icon" src={errorIcon}/>Enter the right format</span>} 
+          <img alt="error icon" src={errorIcon}/>This field is required</span>)} 
+         {(!validator.isEmail(values.contact_email ) && isFormSubmit)?   <span className="warehouse-add__error-message">
+          <img alt="error icon" src={errorIcon}/>This email format is not valid</span> : ""} 
           </label>
         </div>
 
         <div className="warehouse-add-page__button-group">
-          <button type="button" className=" warehouse-add-page__button-cancel">Cancel</button>
-          <button type="sumbit" className=" warehouse-add-page__button-add">+ Add Warehouse</button>
+          <button type="button"
+                  className=" warehouse-add-page__button-cancel"
+                  onClick={()=> navigate("/")}
+                  >Cancel</button>
+          <button type="sumbit"
+                  className=" warehouse-add-page__button-add"
+                  >+ Add Warehouse</button>
         </div>
       </form>
     </div>
