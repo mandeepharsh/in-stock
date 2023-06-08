@@ -1,24 +1,44 @@
 import "./WarehouseDetails.scss"
+import {useState} from "react";
+import {useParams} from "react-router-dom";
+import {axios} from "axios";
+import URL from "../../utils/api";
 import { Link } from "react-router-dom";
 import arrow from "../../assets/icons/arrow_back-24px.svg";
 import pencil from "../../assets/icons/edit-24px.svg";
 
-// export default function WarehouseDetails({id}) {
   export default function WarehouseDetails() {
 
-    const warehouse = {
-      name: "Washington",
-      address: "300 Pearl Stret SW",
-      city:"Washington",
-      country: "USA",
-      contact: "Graeme Lyon",
-      title: "Warehouse Manager",
-      phone: "+1 (647) 504 -0911",
-      email: "glyon@instock.com",
-      id:"123"
+    const [warehouse, setwarehouse]
+
+    let {id} = useParams;
+
+    axios
+    .get(getVideoEndpoint()
+    .then((response) => {
+      setVideoToDisplay(response.data);
+    })
+    .catch(() => {
+      setHasError(true);
+    });
+
+    if (hasError) {
+      return <span>There was an unexpected error retrieving the data.</span>
     }
+
+    // const warehouse = {
+    //   name: "Washington",
+    //   address: "300 Pearl Stret SW",
+    //   city:"Washington",
+    //   country: "USA",
+    //   contact: "Graeme Lyon",
+    //   title: "Warehouse Manager",
+    //   phone: "+1 (647) 504 -0911",
+    //   email: "glyon@instock.com",
+    //   id:"123"
+    // }
   
-    const {name, address, city, country, contact, title, phone, email, id} = warehouse;
+    const {name, address, city, country, contact, title, phone, email} = warehouse;
 
   
 
