@@ -1,4 +1,4 @@
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import rightIcon from "../../assets/icons/chevron_right-24px.svg";
@@ -6,23 +6,27 @@ import sortIcon from "../../assets/icons/sort-24px.svg";
 import { URL } from "../../utils/api";
 import axios from "axios";
 import { useState } from "react";
+import { useEffect } from "react";
 
 export default function WarehouseList() {
-  //map it in an ul of li
-  //Create a new component to render the div: warehouses__details and pass it the props
+  const [warehouses, setWarehouses] = useState([]);
 
-  //state variables: warehouseList
-  const [warehouseList, setWarehouseList] = useState([]);
+  useEffect(() => {
+    axios
+      .get(URL)
+      .then((response) => {
+        setWarehouses(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
-  //axios call inside the useEffect
-  axios
-    .get(URL)
-    .then((response) => {
-      setWarehouseList(response.data);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  if (!warehouses) {
+    return <h1>LOADING</h1>;
+  }
+
   return (
     <section className="warehouses">
       <div className="warehouses__header">
@@ -68,286 +72,63 @@ export default function WarehouseList() {
         </div>
       </div>
 
-      <div className="warehouses__details">
-        <div className="warehouses__warehouse-container">
-          <h4 className="warehouses__details-title">WAREHOUSE</h4>
-          {/* <Link to={`/warehouses/${warehouse.id}`} className="warehouses__link"> */}
-          <p className="warehouses__warehouse">
-            Manhattan
-            <img src={rightIcon} alt="chevron-pointing-right" />
-          </p>
-          {/* </Link> */}
-        </div>
+      <ul className="warehouses__list">
+        {warehouses.map((warehouse) => {
+          return (
+            <div className="warehouses__details">
+              <div className="warehouses__warehouse-container">
+                <h4 className="warehouses__details-title">WAREHOUSE</h4>
+                <Link
+                  to={`/warehouses/${warehouse.id}`}
+                  className="warehouses__link"
+                >
+                  <p className="warehouses__warehouse">
+                    {warehouse.warehouse_name}
+                    <img src={rightIcon} alt="chevron-pointing-right" />
+                  </p>
+                </Link>
+              </div>
 
-        <div className="warehouses__name-container">
-          <h4 className="warehouses__details-title">CONTACT NAME</h4>
-          <p className="warehouses__name">Parmin Aujla</p>
-        </div>
+              <div className="warehouses__name-container">
+                <h4 className="warehouses__details-title">CONTACT NAME</h4>
+                <p className="warehouses__name">{warehouse.contact_name}</p>
+              </div>
 
-        <div className="warehouses__address-container">
-          <h4 className="warehouses__details-title">ADDRESS</h4>
-          <p className="warehouses__address">503 Broadway, New York, USA</p>
-        </div>
+              <div className="warehouses__address-container">
+                <h4 className="warehouses__details-title">ADDRESS</h4>
+                <p className="warehouses__address">
+                  {warehouse.address}, {warehouse.city}, {warehouse.country}
+                </p>
+              </div>
 
-        <div className="warehouses__information-container">
-          <h4 className="warehouses__details-title">CONTACT INFORMATION</h4>
-          <p className="warehouses__information-number">+1 (629) 555-0129</p>
-          <p className="warehouses__information-email">paujla@instock.com</p>
-        </div>
+              <div className="warehouses__information-container">
+                <h4 className="warehouses__details-title">
+                  CONTACT INFORMATION
+                </h4>
+                <p className="warehouses__information-number">
+                  {warehouse.contact_phone}
+                </p>
+                <p className="warehouses__information-email">
+                  {warehouse.contact_email}
+                </p>
+              </div>
 
-        <div className="warehouses__icons">
-          <img
-            src={deleteIcon}
-            alt="garbage-delete-icon"
-            className="warehouses__icons-del"
-          />
-          <img
-            src={editIcon}
-            alt="pencil-edit-icon"
-            className="warehouses__icons-edit"
-          />
-        </div>
-      </div>
-
-      <div className="warehouses__details">
-        <div className="warehouses__warehouse-container">
-          <h4 className="warehouses__details-title">WAREHOUSE</h4>
-          <p className="warehouses__warehouse">
-            Washington
-            <img src={rightIcon} alt="chevron-pointing-right" />
-          </p>
-        </div>
-
-        <div className="warehouses__name-container">
-          <h4 className="warehouses__details-title">CONTACT NAME</h4>
-          <p className="warehouses__name">Graeme Lyon</p>
-        </div>
-
-        <div className="warehouses__address-container">
-          <h4 className="warehouses__details-title">ADDRESS</h4>
-          <p className="warehouses__address">
-            33 Pearl Street SW, Washington, USA
-          </p>
-        </div>
-
-        <div className="warehouses__information-container">
-          <h4 className="warehouses__details-title">CONTACT INFORMATION</h4>
-          <p className="warehouses__information-number">+1 (647) 504-0911</p>
-          <p className="warehouses__information-email">glyon@instock.com</p>
-        </div>
-
-        <div className="warehouses__icons">
-          <img
-            src={deleteIcon}
-            alt="garbage-delete-icon"
-            className="warehouses__icons-del"
-          />
-          <img
-            src={editIcon}
-            alt="pencil-edit-icon"
-            className="warehouses__icons-edit"
-          />
-        </div>
-      </div>
-
-      <div className="warehouses__details">
-        <div className="warehouses__warehouse-container">
-          <h4 className="warehouses__details-title">WAREHOUSE</h4>
-          <p className="warehouses__warehouse">
-            Jersey
-            <img src={rightIcon} alt="chevron-pointing-right" />
-          </p>
-        </div>
-
-        <div className="warehouses__name-container">
-          <h4 className="warehouses__details-title">CONTACT NAME</h4>
-          <p className="warehouses__name">Brad MacDonald</p>
-        </div>
-
-        <div className="warehouses__address-container">
-          <h4 className="warehouses__details-title">ADDRESS</h4>
-          <p className="warehouses__address">
-            300 Main Street, New Jersey, USA
-          </p>
-        </div>
-
-        <div className="warehouses__information-container">
-          <h4 className="warehouses__details-title">CONTACT INFORMATION</h4>
-          <p className="warehouses__information-number">+1 (401) 377-2337</p>
-          <p className="warehouses__information-email">bmcdonald@instock.com</p>
-        </div>
-
-        <div className="warehouses__icons">
-          <img
-            src={deleteIcon}
-            alt="garbage-delete-icon"
-            className="warehouses__icons-del"
-          />
-          <img
-            src={editIcon}
-            alt="pencil-edit-icon"
-            className="warehouses__icons-edit"
-          />
-        </div>
-      </div>
-
-      <div className="warehouses__details">
-        <div className="warehouses__warehouse-container">
-          <h4 className="warehouses__details-title">WAREHOUSE</h4>
-          <p className="warehouses__warehouse">
-            San Francisco
-            <img src={rightIcon} alt="chevron-pointing-right" />
-          </p>
-        </div>
-
-        <div className="warehouses__name-container">
-          <h4 className="warehouses__details-title">CONTACT NAME</h4>
-          <p className="warehouses__name">Gary Wong</p>
-        </div>
-
-        <div className="warehouses__address-container">
-          <h4 className="warehouses__details-title">ADDRESS</h4>
-          <p className="warehouses__address">
-            890 Brannan Street, San Francisco, USA
-          </p>
-        </div>
-
-        <div className="warehouses__information-container">
-          <h4 className="warehouses__details-title">CONTACT INFORMATION</h4>
-          <p className="warehouses__information-number">+1 (239) 555-0108</p>
-          <p className="warehouses__information-email">gwong@instock.com</p>
-        </div>
-
-        <div className="warehouses__icons">
-          <img
-            src={deleteIcon}
-            alt="garbage-delete-icon"
-            className="warehouses__icons-del"
-          />
-          <img
-            src={editIcon}
-            alt="pencil-edit-icon"
-            className="warehouses__icons-edit"
-          />
-        </div>
-      </div>
-
-      <div className="warehouses__details">
-        <div className="warehouses__warehouse-container">
-          <h4 className="warehouses__details-title">WAREHOUSE</h4>
-          <p className="warehouses__warehouse">
-            Santa Monica
-            <img src={rightIcon} alt="chevron-pointing-right" />
-          </p>
-        </div>
-
-        <div className="warehouses__name-container">
-          <h4 className="warehouses__details-title">CONTACT NAME</h4>
-          <p className="warehouses__name">Sharon Ng</p>
-        </div>
-
-        <div className="warehouses__address-container">
-          <h4 className="warehouses__details-title">ADDRESS</h4>
-          <p className="warehouses__address">520 Broadway, Santa Monica, USA</p>
-        </div>
-
-        <div className="warehouses__information-container">
-          <h4 className="warehouses__details-title">CONTACT INFORMATION</h4>
-          <p className="warehouses__information-number">+1 (270) 555-0117</p>
-          <p className="warehouses__information-email">sng@instock.com</p>
-        </div>
-
-        <div className="warehouses__icons">
-          <img
-            src={deleteIcon}
-            alt="garbage-delete-icon"
-            className="warehouses__icons-del"
-          />
-          <img
-            src={editIcon}
-            alt="pencil-edit-icon"
-            className="warehouses__icons-edit"
-          />
-        </div>
-      </div>
-
-      <div className="warehouses__details">
-        <div className="warehouses__warehouse-container">
-          <h4 className="warehouses__details-title">WAREHOUSE</h4>
-          <p className="warehouses__warehouse">
-            Seattle
-            <img src={rightIcon} alt="chevron-pointing-right" />
-          </p>
-        </div>
-
-        <div className="warehouses__name-container">
-          <h4 className="warehouses__details-title">CONTACT NAME</h4>
-          <p className="warehouses__name">Daniel Bachu</p>
-        </div>
-
-        <div className="warehouses__address-container">
-          <h4 className="warehouses__details-title">ADDRESS</h4>
-          <p className="warehouses__address">1201 Third Avenue, Seattle, USA</p>
-        </div>
-
-        <div className="warehouses__information-container">
-          <h4 className="warehouses__details-title">CONTACT INFORMATION</h4>
-          <p className="warehouses__information-number">+1 (480) 555-0103</p>
-          <p className="warehouses__information-email">dbachu@instock.com</p>
-        </div>
-
-        <div className="warehouses__icons">
-          <img
-            src={deleteIcon}
-            alt="garbage-delete-icon"
-            className="warehouses__icons-del"
-          />
-          <img
-            src={editIcon}
-            alt="pencil-edit-icon"
-            className="warehouses__icons-edit"
-          />
-        </div>
-      </div>
-
-      <div className="warehouses__details">
-        <div className="warehouses__warehouse-container">
-          <h4 className="warehouses__details-title">WAREHOUSE</h4>
-          <p className="warehouses__warehouse">
-            Miami
-            <img src={rightIcon} alt="chevron-pointing-right" />
-          </p>
-        </div>
-
-        <div className="warehouses__name-container">
-          <h4 className="warehouses__details-title">CONTACT NAME</h4>
-          <p className="warehouses__name">Alana Thomas</p>
-        </div>
-
-        <div className="warehouses__address-container">
-          <h4 className="warehouses__details-title">ADDRESS</h4>
-          <p className="warehouses__address">2650 NW 5th Avenue, Miami, USA</p>
-        </div>
-
-        <div className="warehouses__information-container">
-          <h4 className="warehouses__details-title">CONTACT INFORMATION</h4>
-          <p className="warehouses__information-number">+1 (647) 832-2065</p>
-          <p className="warehouses__information-email">athomas@instock.com</p>
-        </div>
-
-        <div className="warehouses__icons">
-          <img
-            src={deleteIcon}
-            alt="garbage-delete-icon"
-            className="warehouses__icons-del"
-          />
-          <img
-            src={editIcon}
-            alt="pencil-edit-icon"
-            className="warehouses__icons-edit"
-          />
-        </div>
-      </div>
+              <div className="warehouses__icons">
+                <img
+                  src={deleteIcon}
+                  alt="garbage-delete-icon"
+                  className="warehouses__icons-del"
+                />
+                <img
+                  src={editIcon}
+                  alt="pencil-edit-icon"
+                  className="warehouses__icons-edit"
+                />
+              </div>
+            </div>
+          );
+        })}
+      </ul>
     </section>
   );
 }
