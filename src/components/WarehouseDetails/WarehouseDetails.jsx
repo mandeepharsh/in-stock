@@ -71,7 +71,7 @@ export default function WarehouseDetails() {
     </section>
     <section className="warehouse__info">
       <div className='warehouse__info-address'>
-        <h4 className="warehouse__info-headers">WAREHOUSE NAME:</h4>
+        <h4 className="warehouse__info-headers">WAREHOUSE ADDRESS:</h4>
         <p className="warehouse__info-text">{address}, {city}, {country}</p>
       </div>
       <div className="warehouse__info-contact">
