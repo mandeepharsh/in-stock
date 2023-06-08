@@ -2,13 +2,13 @@
 import "./WarehouseDetails.scss"
 
 //externals
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import {useParams} from "react-router-dom";
-import {axios} from "axios";
+import axios from "axios";
 
 //utils and assets
-import URL from "../../utils/api";
+import { URL } from "../../utils/api";
 import arrow from "../../assets/icons/arrow_back-24px.svg";
 import pencil from "../../assets/icons/edit-24px.svg";
 
@@ -23,21 +23,32 @@ export default function WarehouseDetails() {
   
   
   //grab url and set id
-  let {id} = useParams;
+  let {id} = useParams();
 
 
   // get warehouse deets from database
-  axios
-    .get(`${URL}/${id}`)
-    .then((response) => {
-      setWarehouse(response.data);
-  })
-    .catch(() => {
-    setHasError(true);
-  });
+  useEffect(() => {
+    axios
+      // .get(`${URL}/4`)
+      .get(`${URL}/${id}`)
+      .then((response) => {
+        setWarehouse(response.data);
+    })
+      .catch(() => {
+      setHasError(true);
+    });
+  }, []);
 
+  
+  //Loading state
+  if (!warehouse) {
+    return <span>Loading.....</span>
+  }
+  
+
+  //Error state  
   if (hasError) {
-    return <span>There was an unexpected error retrieving the data.</span>
+    return <span>Warehouse with ID: {id} not found </span>
   }
 
   const {warehouse_name, address, city, country, contact_name, contact_position, contact_phone, contact_email} = warehouse;
@@ -60,8 +71,8 @@ export default function WarehouseDetails() {
     </section>
     <section className="warehouse__info">
       <div className='warehouse__info-address'>
-        <h4 className="warehouse__info-headers">Warehouse Address:</h4>
-        <p className="warehouse__info-text">{address},{city}, {country}</p>
+        <h4 className="warehouse__info-headers">WAREHOUSE ADDRESS:</h4>
+        <p className="warehouse__info-text">{address}, {city}, {country}</p>
       </div>
       <div className="warehouse__info-contact">
         <div className='warehouse__info-column warehouse__info-column--left'>
