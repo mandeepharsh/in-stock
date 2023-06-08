@@ -1,6 +1,7 @@
 // tools
 import { useState } from "react";
 import axios from "axios";
+import validator from "validator";
 
 // assets
 import arrowback from "../../assets/icons/arrow_back-24px.svg";
@@ -39,6 +40,7 @@ const initialErrorState = {
 
 const [values,setValues] = useState(initialValues);
 const [errors, setErrors] = useState(initialErrorState);
+const [formSumbit,setFormSumbit] = useState(false);
 
 const onChangeHandler = (event) =>{
     const {name,value} = event.target;
@@ -46,10 +48,10 @@ const onChangeHandler = (event) =>{
         ...values,
         [name]: value
     });
-
+    
     setErrors({
       ...errors,
-      [name]: value
+      [name]:false   
     })
 };
 
@@ -61,7 +63,7 @@ const addWarehouseHandler = (event) =>{
   const newErrors = {};
   let hasError = false;
   for (let field in values) {
-    if (values[field] === "") {
+    if (values[field].trim() === "") {
       newErrors[field] = true;
       hasError = true;
     } else {
@@ -71,9 +73,9 @@ const addWarehouseHandler = (event) =>{
 
   if (hasError) {
     setErrors(newErrors);
-  } else {
+  } else  {
     axios.post(URL + "/add",values)
-      .then((response) => console.log(response))
+      .then((res) =>console.log(res), setErrors(initialErrorState), setFormSumbit(true) )
       .catch((error) => console.log(error));
   }
 }
@@ -91,46 +93,46 @@ const addWarehouseHandler = (event) =>{
           <h2 className="warehouse-add__fieldset-heading">Warehouse Details</h2>
           <label className="warehouse-add__label">
             Warehouse Name
-            <input className={`warehouse-add__input ${errors.warehouse_name ? "warehouse-add__input--invalid" : ""}`} 
+            <input className={`warehouse-add__input ${errors.warehouse_name  ? "warehouse-add__input--invalid" : ""}`} 
                    name = "warehouse_name"
                    placeholder="Warehouse Name"
                    value ={values.warehouse_name }
                    onChange={onChangeHandler}
                     />
-           {errors.warehouse_name && <span className="warehouse-add__error-message">
+           {(errors.warehouse_name ) && <span className="warehouse-add__error-message">
            <img alt="error icon" src={errorIcon}/>This field is required</span>}
           </label>
           <label className="warehouse-add__label">
             Street Address
-            <input className={`warehouse-add__input ${errors.address ? "warehouse-add__input--invalid" : ""}`}
+            <input className={`warehouse-add__input ${errors.address  ? "warehouse-add__input--invalid" : ""}`}
                    name = "address"
                    placeholder="Street Address" 
                    value = {values.address}
                    onChange={onChangeHandler}
                    />  
-           {errors.address && <span className="warehouse-add__error-message">
+           {(errors.address) && <span className="warehouse-add__error-message">
            <img alt="error icon" src={errorIcon}/>This field is required</span>} 
           </label>
           <label className="warehouse-add__label">
             City
-            <input className={`warehouse-add__input ${errors.city ? "warehouse-add__input--invalid" : ""}`}
+            <input className={`warehouse-add__input ${errors.city   ? "warehouse-add__input--invalid" : ""}`}
                    name="city"
                    placeholder="City"
                    value={values.city}
                    onChange={onChangeHandler}
                     />
-          {errors.city && <span className="warehouse-add__error-message">
+          {(errors.city ) && <span className="warehouse-add__error-message">
           <img alt="error icon" src={errorIcon}/>This field is required</span>}   
           </label>
           <label className="warehouse-add__label">
             Country
-            <input className={`warehouse-add__input ${errors.country ? "warehouse-add__input--invalid" : ""}`} 
+            <input className={`warehouse-add__input ${errors.country  ? "warehouse-add__input--invalid" : ""}`} 
                    name="country"
                    placeholder="Country"
                    value={values.country}
                    onChange={onChangeHandler}
                     />     
-           {errors.country &&
+           {(errors.country  ) &&
            <span className="warehouse-add__error-message">
            <img alt="error icon" src={errorIcon}/>This field is required</span>}
           </label>
@@ -140,50 +142,53 @@ const addWarehouseHandler = (event) =>{
           <h2 className="warehouse-add__fieldset-heading">Contact Details</h2>
           <label className="warehouse-add__label" >
             Contact Name
-            <input className={`warehouse-add__input ${errors.contact_name ? "warehouse-add__input--invalid" : ""}`}
+            <input className={`warehouse-add__input ${errors.contact_name  ? "warehouse-add__input--invalid" : ""}`}
                    name="contact_name" 
                    placeholder="Contact Name" 
                    value={values.contact_name}
                    onChange={onChangeHandler}
                    />
-        {errors.contact_name && <span className="warehouse-add__error-message">
+        {(errors.contact_name ) && <span className="warehouse-add__error-message">
         <img alt="error icon" src={errorIcon}/>This field is required</span>}
           </label>
           <label className="warehouse-add__label">
             Position
-            <input className={`warehouse-add__input ${errors.contact_name ? "warehouse-add__input--invalid" : ""}`} 
+            <input className={`warehouse-add__input ${errors.contact_position   ? "warehouse-add__input--invalid" : ""}`} 
                    name="contact_position"
                    placeholder="Position" 
                    value={values.contact_position}
                    onChange={onChangeHandler} 
                    /> 
-           {errors.contact_position && <span className="warehouse-add__error-message">
+           {(errors.contact_position  ) && <span className="warehouse-add__error-message">
            <img alt="error icon" src={errorIcon}/>This field is required</span>}
          
           </label>
           <label className="warehouse-add__label">
             Phone Number
-            <input className={`warehouse-add__input ${errors.contact_phone ? "warehouse-add__input--invalid" : ""}`} 
+            <input className={`warehouse-add__input ${errors.contact_phone  ? "warehouse-add__input--invalid" : ""}`} 
                    name="contact_phone"
                    placeholder="Phone Number"
                    value={values.contact_phone}
                    onChange={onChangeHandler}
                     />
-           {errors.contact_phone && <span className="warehouse-add__error-message">
+           {(errors.contact_phone ) && <span className="warehouse-add__error-message">
            <img alt="error icon" src={errorIcon}/>This field is required</span>}
         
           </label>
           <label className="warehouse-add__label">
             Email
-            <input className={`warehouse-add__input ${errors.contact_email ? "warehouse-add__input--invalid" : ""}`} 
+            <input className={`warehouse-add__input  ${errors.contact_email   ? "warehouse-add__input--invalid" : ""}`} 
                    name="contact_email"
                    placeholder="Email" 
                    value={values.contact_email}
                    onChange={onChangeHandler} 
                    />
-          {errors.contact_email && 
+          {(errors.contact_email  )&& 
           <span className="warehouse-add__error-message">
           <img alt="error icon" src={errorIcon}/>This field is required</span>} 
+          {!(validator.isEmail(values.contact_email) )&& 
+          <span className="warehouse-add__error-message">
+          <img alt="error icon" src={errorIcon}/>Enter the right format</span>} 
           </label>
         </div>
 
