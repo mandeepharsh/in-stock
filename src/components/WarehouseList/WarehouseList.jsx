@@ -3,8 +3,26 @@ import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import rightIcon from "../../assets/icons/chevron_right-24px.svg";
 import sortIcon from "../../assets/icons/sort-24px.svg";
+import { URL } from "../../utils/api";
+import axios from "axios";
+import { useState } from "react";
 
 export default function WarehouseList() {
+  //map it in an ul of li
+  //Create a new component to render the div: warehouses__details and pass it the props
+
+  //state variables: warehouseList
+  const [warehouseList, setWarehouseList] = useState([]);
+
+  //axios call inside the useEffect
+  axios
+    .get(URL)
+    .then((response) => {
+      setWarehouseList(response.data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
   return (
     <section className="warehouses">
       <div className="warehouses__header">
@@ -54,10 +72,10 @@ export default function WarehouseList() {
         <div className="warehouses__warehouse-container">
           <h4 className="warehouses__details-title">WAREHOUSE</h4>
           {/* <Link to={`/warehouses/${warehouse.id}`} className="warehouses__link"> */}
-            <p className="warehouses__warehouse">
-              Manhattan
-              <img src={rightIcon} alt="chevron-pointing-right" />
-            </p>
+          <p className="warehouses__warehouse">
+            Manhattan
+            <img src={rightIcon} alt="chevron-pointing-right" />
+          </p>
           {/* </Link> */}
         </div>
 
