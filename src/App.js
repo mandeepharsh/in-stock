@@ -2,6 +2,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import "./App.scss";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
+import DeleteModal from "./components/DeleteModal/DeleteModal";
 // import WarehousesPage from "../src/pages/WarehousesPage/WharehousesPage";
 // import WarehouseAddPage from "../src/pages/WarehouseAddPage/WharehouseAddPage";
 // import WarehouseEditPage from "../src/pages/WarehouseEditPage/WharehouseEditPage";
@@ -15,6 +16,7 @@ function App() {
   return (
     <Router>
       <Header />
+      <DeleteModal/>
       {/*<Routes>
         <Route path="/" element={<WarehousesPage/>}/>
         <Route path="/warehouses/" element={<WarehousesPage/>}/>
