@@ -15,8 +15,6 @@ import InventoriesEditPage from "./pages/InventoriesEditPage/InventoriesEditPage
 import InventoriesAddPage from "./pages/InventoriesAddPage/InventoriesAddPage";
 
 
-
-
 function App() {
   return (
     
@@ -27,10 +25,10 @@ function App() {
           <Route path="/warehouses/add" element={<WarehouseAddpage/>}/>
           <Route path="/warehouses/:id" element={<WarehouseDetailsPage/>} />
           <Route path="/warehouses/:id/edit" element={<WarehouseEditPage/>} />
-          <Route path="/inventory" element={<InventoriesPage/>}/>
-          <Route path="/inventory/add" element={<InventoriesAddPage/>}/>
-          <Route path="/inventory/:id" element={<InventoriesDetailsPage/>}/>
-          <Route path="/inventory/:id/edit" element={<InventoriesEditPage/>}/>
+          <Route path="/inventories" element={<InventoriesPage/>}/>
+          <Route path="/inventories/add" element={<InventoriesAddPage/>}/>
+          <Route path="/inventories/:id" element={<InventoriesDetailsPage/>}/>
+          <Route path="/inventories/:id/edit" element={<InventoriesEditPage/>}/>
         </Routes>
       <Footer/> 
     </Router>
