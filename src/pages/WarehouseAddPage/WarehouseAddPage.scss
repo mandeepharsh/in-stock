@@ -5,30 +5,38 @@
 
 
 .warehouse-add-page{
-  margin: -4rem 1rem 0;
+  margin: -4rem 1rem 1rem;
   border-radius: .5rem;
   background-color: $white;
   border: .0625rem solid $cloud;
-  box-shadow: 0px 2px 5px 0px #13182C1A;
+  box-shadow: 0px 2px 5px 0px $instock-black;
 
   @include tablet {
-   margin: -6.6rem 1rem 0 ;
+   margin: -6.8rem 1rem 16rem ;
   }
 
   @include desktop {
     width: 63.75rem;
-     margin: -6.6rem auto 0; 
+     margin: -6.8rem auto 16rem; 
      }
   &__title{
     display: flex;
     justify-content: center;
-    padding: 2rem 0;
+    padding: 2rem 1rem;
     gap: 1rem;
     @include tablet{
      justify-content: flex-start;
      padding: 2rem 2rem;
     }
   }  
+
+  &__icon{
+    margin-top: 0.5rem;
+    @include tablet{
+        height: 2rem;
+        margin-top: 0.3rem;
+    }
+  }
    
   &__heading{
     font-size: 1.75rem;
@@ -57,10 +65,13 @@
         padding: 1rem 1.5rem 1.5rem;
         @include tablet{
             width: 50%;
-            border-right: .0625rem solid $cloud;
             margin: 1rem 0;
             padding: 1rem 2rem 2rem;
         }
+
+      &--divider{
+        border-right: .0625rem solid $cloud;
+      }       
     }
    
     &__fieldset-heading{
@@ -87,12 +98,34 @@
             font-size: 0.9rem;
             color: $slate;
         }
+
+        &--invalid{
+            border: .0781rem solid $red;
+        }
+
+        &:focus{
+            border: .0781rem solid $instock-indigo;
+
+        }
     }
-
-
+    
+    &__error-message{
+        color: $red;
+        display: flex;
+        margin-top: .35rem;
+        gap: 5px;
+        font-size: .8125rem;
+        }
+  
     &__divider{
         border: none;
         border-bottom: .0625rem solid $cloud;
+
+        &--remove{
+            @include tablet {
+                display: none;
+            }
+        }
     }
 
     &-page__button-group{
@@ -114,6 +147,10 @@
         background-color: $white;
         border: .0625rem solid $cloud;
         color: $slate;
+        &:hover{
+            border : .0625rem solid $instock-indigo;
+            color: $instock-indigo;
+        }
         @include tablet{
             width: 4.5rem;
         }
@@ -123,9 +160,12 @@
         background-color : $instock-indigo;
         color: $white;
         
+        &:hover{
+            background-color: $graphite;
+        }
         
         @include tablet{
           width: 8.625rem;
         }
-    }
+    }  
 }
