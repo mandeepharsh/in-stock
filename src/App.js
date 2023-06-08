@@ -14,15 +14,12 @@ import InventoriesDetailsPage from "./pages/InventoriesDetailsPage/InventoriesDe
 import InventoriesEditPage from "./pages/InventoriesEditPage/InventoriesEditPage";
 import InventoriesAddPage from "./pages/InventoriesAddPage/InventoriesAddPage";
 
-import WarehouseDetails from "./components/WarehouseDetails/WarehouseDetails";
-
 
 function App() {
   return (
     
     <Router>
       <Header/>
-      <WarehouseDetails />
           <Routes>
           <Route path="/" element={<WarehousePage/>}/>
           <Route path="/warehouses/add" element={<WarehouseAddpage/>}/>
