@@ -1,0 +1,135 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.warehouse {
+  &__wrapper {
+    background-color:$white;
+    margin:-4rem 1rem 0;
+    border-radius: .5rem;
+    @include desktop {
+      width:63.75rem;
+      margin: -4rem auto 0;
+    }
+  }
+  
+  &__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem;
+      border-bottom: 1px solid $cloud;
+
+      @include tablet {
+        padding: 2rem;
+      }
+
+      &-text {
+          padding-left: 0.5rem;
+          padding-right: 4.5rem;
+      }
+
+      &-bgrnd {
+          border-radius: 50%;
+          background-color: $instock-indigo;
+          height: 2rem;
+          width: 2rem;
+          text-align: center;
+          text-decoration:none;
+          
+          @include tablet {
+            height: auto;
+            width: auto;
+            border-radius: 1.5rem;
+            padding: 0.25rem 1rem;
+            display: flex;
+        }
+      
+      }
+  }
+
+  &__header-edit-image {
+      filter: brightness(0 ) invert(1);
+      margin-top: 0.25rem;
+
+      @include tablet {
+          margin-top: 0;
+          margin-right: 0.25rem;
+      }
+  }
+
+  &__header-container {
+      display: flex;
+      align-items: center;
+  }
+
+  &__info {
+      padding: 1rem;
+      font-size: 0.75rem;
+      border-bottom: 1px solid cloud;
+
+      @include tablet {
+        padding: 2rem;
+        font-size: 0.875rem;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        border-bottom: none;
+      }
+
+      &-headers {
+          color: $slate;
+          margin-bottom: 0;
+          text-transform: uppercase;
+      }
+
+      &-contact {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+          padding-top: 2rem;
+          flex-basis: 60%;
+
+          @include tablet {
+            padding-top: 0;
+          }
+
+      }
+      
+      &-address{
+          flex: 1;
+      }
+  }
+
+  &__header-edit-text {
+    display: none;
+    color: $white;
+
+    @include tablet {
+      display: inline;
+    }
+
+  &__info-column {
+    @include tablet {
+        padding: 0 2rem;
+    }
+
+      &--left {
+          @include tablet {
+              padding-left: 2rem;
+              border-left: 1px solid $cloud;
+          }
+          @include desktop {
+              padding-left: 4rem;
+          }
+      }
+
+      &--right {
+          @include desktop {
+              margin-right: 2rem;
+          }
+      }
+  }
+
+}
+}
