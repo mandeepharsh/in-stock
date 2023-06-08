@@ -1,3 +1,124 @@
 @use "../../styles/partials/fonts" as *;
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
+
+.warehouses {
+  &__header {
+    display: flex;
+    flex-direction: column;
+    padding: 0 1rem 1rem 1rem;
+
+    @include tablet {
+      padding: 2rem 2rem 1.5rem 2rem;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__title {
+    color: $instock-black;
+    padding: 2rem 0 1rem 0;
+
+    @include tablet {
+      padding: 0;
+    }
+  }
+
+  &__cta {
+    @include tablet {
+      width: auto;
+      display: flex;
+      flex-direction: row;
+    }
+  }
+
+  &__search {
+    display: flex;
+    height: 2.25rem;
+    width: 100%;
+    margin-bottom: 1rem;
+    position: relative;
+
+    @include tablet {
+      width: 11.5625rem;
+      margin: 0 1rem 0 0;
+    }
+
+    &-input {
+      flex: 1;
+      border-radius: 1.25rem;
+      border: 0.0625rem solid $cloud;
+      background-image: url(../../assets/icons/search-24px.svg);
+      background-repeat: no-repeat;
+      background-position: right 0.75rem center;
+      padding-left: 1rem;
+
+      @include tablet {
+        height: 2.375rem;
+      }
+    }
+  }
+
+  &__add {
+    background-color: $instock-indigo;
+    color: $white;
+    height: 2.25rem;
+    width: 100%;
+    border-radius: 1.25rem;
+    border: 0.0625rem solid $cloud;
+
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      background-color: $graphite;
+    }
+
+    @include tablet {
+      height: 2.375rem;
+      width: 12.9063rem;
+      padding: 0 1rem 0 1rem;
+      margin-left: 1rem;
+    }
+
+    &-link {
+      text-decoration: none;
+    }
+  }
+
+  &__table {
+    &-fields {
+      display: none;
+      padding: 0.625rem 0;
+
+      @include tablet {
+        background-color: $light-grey;
+        display: flex;
+        justify-content: space-around;
+        padding: 0.6875rem 2rem;
+      }
+    }
+
+    &-field {
+      @include tablet {
+        width: 20%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+      }
+
+      &--position {
+        @include tablet {
+          justify-content: flex-end;
+        }
+      }
+    }
+
+    &-header {
+      color: $slate;
+    }
+  }
+}

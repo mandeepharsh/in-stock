@@ -16,8 +16,7 @@ export default function WarehouseHeader() {
               placeholder="Search..."
             />
           </div>
-          {/* To link to add page  */}
-          <Link to="/warehouses/add">
+          <Link to="/warehouses/add" className="warehouses__add-link">
             <button className="warehouses__add">+ Add New Warehouse</button>
           </Link>
         </div>

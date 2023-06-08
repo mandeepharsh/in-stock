@@ -4,6 +4,7 @@ import editIcon from "../../assets/icons/edit-24px.svg";
 import rightIcon from "../../assets/icons/chevron_right-24px.svg";
 
 export default function WarehouseList({ warehouses }) {
+  // console.log(warehouses[0].id);
   return (
     <ul className="warehouses__list">
       {warehouses.map((warehouse) => {
@@ -50,11 +51,16 @@ export default function WarehouseList({ warehouses }) {
                 alt="garbage-delete-icon"
                 className="warehouses__icons-del"
               />
-              <img
-                src={editIcon}
-                alt="pencil-edit-icon"
-                className="warehouses__icons-edit"
-              />
+              <Link
+                to={`/warehouses/${warehouse.id}/edit`}
+                className="warehouses__icons-link"
+              >
+                <img
+                  src={editIcon}
+                  alt="pencil-edit-icon"
+                  className="warehouses__icons-edit"
+                />
+              </Link>
             </div>
           </div>
         );
