@@ -57,7 +57,7 @@ const onChangeHandler = (event) =>{
     })
 };
 
-const phnNum = (num) => {
+const phoneNumber = (num) => {
  return  num.replace(/\D/g, '')
 }
 
@@ -178,7 +178,7 @@ const addWarehouseHandler = (event) =>{
                     />
            {(errors.contact_phone ) && <span className="warehouse-add__error-message">
            <img alt="error icon" src={errorIcon}/>This field is required</span>}
-           {(!validator.isMobilePhone(phnNum(values.contact_phone) ) && isFormSubmit)?   <span className="warehouse-add__error-message">
+           {(!validator.isMobilePhone(phoneNumber(values.contact_phone) ) && isFormSubmit)?   <span className="warehouse-add__error-message">
           <img alt="error icon" src={errorIcon}/>This phone number is not valid</span> : ""} 
           </label>
           <label className="warehouse-add__label">
