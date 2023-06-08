@@ -4,7 +4,7 @@ import axios from "axios";
 
 // assets
 import arrowback from "../../assets/icons/arrow_back-24px.svg";
-import { URL } from "../../utils/api";
+import { URLWarehouses } from "../../utils/api";
 
 // styling
 import "./WarehouseAddPage.scss";
@@ -34,7 +34,7 @@ const onChangeHandler = (event) =>{
 
 
 const addWarehouseHandler = () =>{
-    axios.post(URL + "/add",values)
+    axios.post(URLWarehouses + "/add",values)
     .then((response) => console.log(response))
     .catch((error) =>{
       console.log(error)
