@@ -1,12 +1,25 @@
+import { useState } from "react";
 
 const InventoryEditForm = ({itemDetails}) => {
+
+
   const initialValues = {
    itemName : itemDetails.item_name,
    description : itemDetails.description,
    category : itemDetails.category,
-
+   status : itemDetails.status,
+   quantity : itemDetails.quantity
   }
 
+  const[values,setValues] = useState(initialValues)
+
+  const onChangeHandler = (event) =>{
+    const {name,value} = event.target;
+    setValues({
+        ...values,
+        [name]: value
+    });
+};
 
 
   return (
@@ -17,33 +30,41 @@ const InventoryEditForm = ({itemDetails}) => {
     Item Name 
       <input className="inventories-edit__input"
              name="itemName"
-             value={itemDetails.item_name}
+             value={values.itemName}
+             onChange={onChangeHandler}
       />
     </label>    
 
     <label className="inventories-edit__label">
       Description
       <textarea className="inventories-edit__input"
-             name="description"
+                name="description"
+                value={values.description}
+                onChange={onChangeHandler}
       />
     </label>   
     
     <label className="inventories-edit__label">
       Category
-      <select value={itemDetails.category}>
+      <select value={values.category}
+      onChange={onChangeHandler}>
+
       </select>
     </label> 
     </div>
+
     <hr className="inventories-edit-page__divider"/>
+
+
      <div className="inventories-edit__fieldset">
     <h2 className="inventories-edit__fieldset-heading">Item Availability</h2> 
 
     <div className="inventories-edit__label">
      Status
       <input type="radio"  name="stockStatus" id="inStock"  />
-      <label for="inStock">In Stock</label>
+      <label htmlFor="inStock">In Stock</label>
       <input type="radio" name="stockStatus" id="outOfStock"/>
-      <label for="inStock">Out of Stock</label>
+      <label htmlFor="inStock">Out of Stock</label>
     </div>   
         
    <label>
