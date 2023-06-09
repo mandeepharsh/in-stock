@@ -41,16 +41,16 @@ const onChangeHandler = (event) =>{
 
 
 
-const addInventoryItemHandler = () =>{
-    axios.post("http://inventories/", values)
-    .then((response) => console.log(response))
-    .catch((error) =>{
-      console.log(error)
-    })
-}
+// const addInventoryItemHandler = () =>{
+//     axios.post("http://inventories/", values)
+//     .then((response) => console.log(response))
+//     .catch((error) =>{
+//       console.log(error)
+//     })
+// }
 
 axios
-  .get(`${URL}/`)
+  .get({URL})
   .then((response) => {
     setWarehouses(response.data);
     console.log(warehouses);
@@ -81,7 +81,7 @@ if (hasError) {
       </div>
 
       <form className="inventory-add__form"
-            onSubmit={addInventoryItemHandler} >
+            onSubmit="{addInventoryItemHandler}" >
         <div className="inventory-add__fieldset">
 
           <h2 className="inventory-add__fieldset-heading">Item Details</h2>
@@ -108,7 +108,7 @@ if (hasError) {
 
           <label className="inventory-add__label">
             Category
-            <select name="category" id="category" class="inventory-add__categories">
+            <select name="category" id="category" className="inventory-add__categories">
               <option value="Accessories">Accessories</option>
               <option value="Apparel">Apparel</option>
               <option value="Electronics">Electronics</option>
@@ -142,7 +142,7 @@ if (hasError) {
 
           <label className="inventory-add__label">
             Warehouse
-            <select name="warehouse" id="warehouse" class="inventory-add__warehouses">
+            <select name="warehouse" id="warehouse" className="inventory-add__warehouses">
               {warehouses.map((warehouse) => {
                 return (
                   <option value={warehouse}>{warehouse}</option>
