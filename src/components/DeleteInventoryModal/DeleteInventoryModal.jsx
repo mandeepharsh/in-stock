@@ -22,7 +22,7 @@ export default function DeleteInventoryModal({
     <>
       <div className="inventory__modal">
         <div className="inventory__modal-overlay"></div>
-        <div className="inventory_modal-content">
+        <div className="inventory__modal-content">
           <a
             className="inventory__modal-actions--x"
             onClick={toggleInventoryModal}
