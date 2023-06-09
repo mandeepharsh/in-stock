@@ -1,14 +1,18 @@
 import closeIcon from "../../assets/icons/close-24px.svg";
 import "./DeleteModal.scss";
 import React, { useState } from "react";
+import axios from "axios";
 
 export default function DeleteModal({ warehouse, toggleModal }) {
-  const [modalVisible, setModalVisible] = useState(false);
-
-  const closeModal = () => {
-    console.log("close modal");
-    setModalVisible(!modalVisible);
-  };
+  function removeWarehouse(id) {
+    axios
+      .delete(`http://localhost:8080/warehouses/${id}`)
+      .then((res) => {
+        window.location.reload();
+      })
+      .catch((error) => console.log(error));
+    toggleModal();
+  }
 
   return (
     <>
@@ -37,7 +41,12 @@ export default function DeleteModal({ warehouse, toggleModal }) {
             >
               Cancel
             </button>
-            <button className="warehouse__modal-actions--delete">Delete</button>
+            <button
+              className="warehouse__modal-actions--delete"
+              onClick={() => removeWarehouse(warehouse.id)}
+            >
+              Delete
+            </button>
           </div>
         </div>
       </div>
