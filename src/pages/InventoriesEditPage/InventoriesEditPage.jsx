@@ -3,7 +3,7 @@ import axios from "axios"
 import { useState } from "react"
 // assests
 import arrowback from "../../assets/icons/arrow_back-24px.svg"
-import { URLInventories } from "../../utils/api"
+import { URLInventories, URLWarehouses } from "../../utils/api"
 // styling
 import "./InventoriesEditPage.scss"
 import { useEffect } from "react"
@@ -15,14 +15,26 @@ const InventoriesEditPage = () => {
   const {id} = useParams(); 
 
   const [itemDetails,setItemDetails] = useState();
+  const[warehouses,setWarehouses] = useState();
   const [isLoading,setIsLoading] = useState(true)
   
+   
+  useEffect(()=>{
+    axios.get(URLWarehouses)
+    .then((res)=>{
+      const warehousesName = res.data.map(({id,warehouse_name}) =>{ return {id,warehouse_name}})
+      return setWarehouses(warehousesName)
+    })
+    .catch((err)=>{ console.log(err)})
+  },[])
+
 
   useEffect(()=>{
     axios.get(URLInventories + "/" + id )
     .then((res)=> {setItemDetails(res.data)
                    setIsLoading(false)})
     .catch((err)=> console.log(err))
+
   },[id])
 
   if(!!isLoading){
@@ -37,7 +49,9 @@ const InventoriesEditPage = () => {
         <h1 className="inventories-edit-page__heading">Edit Inventory Item</h1>
       </div>
       <hr className="inventories-edit-page__divider"/>
-      <InventoryEditForm itemDetails = {itemDetails}/>
+      <InventoryEditForm itemDetails = {itemDetails}
+                         warehousesNames = {warehouses}
+      />
     </section>
   )
 }
