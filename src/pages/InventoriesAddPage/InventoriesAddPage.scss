@@ -76,6 +76,12 @@
         flex-direction: column;
         font-weight: 600;
     }
+        
+    &__label--status {
+      display: inline;
+        font-size: .9rem;
+        font-weight: 400;
+      }
 
     &__input{
         padding: 0.85rem;
@@ -90,6 +96,31 @@
         }
     }
 
+    &__categories {
+      padding: 0.85rem;
+        border-radius: 1.5rem;
+        border: none;
+        border: .0781rem solid $cloud;
+        margin-top: 0.4rem;
+
+        &::placeholder{
+            font-size: 0.9rem;
+            color: $slate;
+        }
+    }
+
+    &__warehouses {
+      padding: 0.85rem;
+        border-radius: 1.5rem;
+        border: none;
+        border: .0781rem solid $cloud;
+        margin-top: 0.4rem;
+
+        &::placeholder{
+            font-size: 0.9rem;
+            color: $slate;
+        }
+    }
 
     &__divider{
         border: none;

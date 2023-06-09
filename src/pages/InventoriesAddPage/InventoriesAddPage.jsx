@@ -4,12 +4,19 @@ import axios from "axios";
 
 // assets
 import arrowback from "../../assets/icons/arrow_back-24px.svg";
-// import { URL } from "../../utils/api";
+import { URL } from "../../utils/api";
 
 // styling
 import "./InventoriesAddPage.scss";
 
 export default function InventoriesAddPage() {
+
+  //setup state for warehouse
+  const [warehouses, setWarehouses] = useState([]);
+  const [hasError, setHasError] = useState(false);
+
+  // const warehouses = [1,2,34]
+
 
 const initialValues = {
     item_name :"",
@@ -41,6 +48,29 @@ const addInventoryItemHandler = () =>{
       console.log(error)
     })
 }
+
+axios
+  .get(`${URL}/`)
+  .then((response) => {
+    setWarehouses(response.data);
+    console.log(warehouses);
+})
+  .catch(() => {
+  setHasError(true);
+});
+
+//Loading state
+if (!warehouses) {
+  return <span>Loading.....</span>
+}
+
+
+//Error state  
+if (hasError) {
+  return <span>Data connection unavailable, please try again later.. </span>
+}
+
+
 
   return (
     <div className="inventory-add-page">
@@ -89,11 +119,16 @@ const addInventoryItemHandler = () =>{
 
           <h2 className="inventory-add__fieldset-heading">Item Availabilty</h2>
 
-            <h4 className="inventory-add__label">Status </h4>
+          <label className="inventory-add__label">
+            Status 
+          </label>
+
+            {/* <input type="radio" id="in" name="status" value="true"/><label className="inventory-add__label--status" htmlFor="in" >In Stock</label>
+            <input type="radio" id="out" name="status" value="false"/><label className="inventory-add__label--status" htmlFor="out">Out of Stock</label> */}
+          
             <input type="radio" id="in" name="status" value="true"/>
-            <label htmlFor="in">In Stock</label>
-            <input type="radio" id="out" name="status" value="false"/>
-            <label htmlFor="out">Out of Stock</label><br></br>
+            <input type="radio" id="in" name="status" value="true"/>
+
 
           <label className="inventory-add__label">
             Quantity
@@ -108,13 +143,11 @@ const addInventoryItemHandler = () =>{
           <label className="inventory-add__label">
             Warehouse
             <select name="warehouse" id="warehouse" class="inventory-add__warehouses">
-              <option value="Manhattan">Manhattan</option>
-              <option value="Washington">Washington</option>
-              <option value="Jersey">Jersey</option>
-              <option value="Santa Monica">Santa Monica</option>
-              <option value="Seattle">Seattle</option>
-              <option value="Miami">Miami</option>
-              <option value="Boston">Boston</option>
+              {warehouses.map((warehouse) => {
+                return (
+                  <option value={warehouse}>{warehouse}</option>
+                )
+              })}
             </select>
           </label> 
         </div>
@@ -125,6 +158,8 @@ const addInventoryItemHandler = () =>{
         </div>
 
       </form>
+      <input type="radio" id="in" name="status" value="true"/><label htmlFor="in" >In Stock</label><br></br>
+      <input type="radio" id="out" name="status" value="false"/><label htmlFor="out">Out of Stock</label>
 
     </div>
   );
