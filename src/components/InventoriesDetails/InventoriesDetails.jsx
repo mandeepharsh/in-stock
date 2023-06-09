@@ -13,92 +13,72 @@ import pencil from "../../assets/icons/edit-24px.svg";
 
 export default function InventoriesDetails() {
   //State variables for Inventory Item
-  // const [inventory, setInventory] = useState({});
-  // const [hasError, setHasError] = useState(false);
+  const [inventory, setInventory] = useState({});
+  const [hasError, setHasError] = useState(false);
 
   //Grab ID with useParams
-  //let { id } = useParams();
+  let { id } = useParams();
 
   //Get single inventory item from databases
-  // useEffect(() => {
-  //   axios
-  //     .get(`${URLInventories}/${id}`)
-  //     .then((response) => {
-  //       setInventory(response.data);
-  //     })
-  //     .catch(() => {
-  //       setHasError(true);
-  //     });
-  // }, []);
+  useEffect(() => {
+    axios
+      .get(`${URLInventories}/${id}`)
+      .then((response) => {
+        setInventory(response.data);
+      })
+      .catch(() => {
+        setHasError(true);
+      });
+  }, []);
 
   //Loading state
-  // if (!item) {
-  //   return <span>LOADING</span>;
-  // }
+  if (!inventory) {
+    return <span>LOADING</span>;
+  }
 
   //Error state
-  // if (hasError) {
-  //   return <span>Inventory Item with ID: {id} not found </span>;
-  // }
+  if (hasError) {
+    return <span>Inventory Item with ID: {id} not found </span>;
+  }
 
-  //console.table(inventory);
+  console.table(inventory);
 
   //Destructure our state variable
-  // const {
-  //   id,
-  //   warehouse_id,
-  //   item_name,
-  //   description,
-  //   category,
-  //   status,
-  //   quantity,
-  // } = inventory;
+  const { item_name, description, category, status, quantity } = inventory;
 
   return (
     <main className="inventory">
       <section className="inventory__header">
         <div className="inventory__header-container">
-          <Link to="/" className="inventory__header-return">
+          <Link to="/inventories" className="inventory__header-return">
             <img
               src={arrow}
               alt="left-arrow-to-home"
               className="inventory__header-arrow"
             />
           </Link>
-          <h1 className="inventory__header-title">
-            {/* {inventory_name} */}
-            Television
-          </h1>
+          <h1 className="inventory__header-title">{item_name}</h1>
         </div>
-        {/* <Link to={`/inventory/${id}/edit`} className="inventory__header-bgrnd"> */}
-        <a href="" className="inventory__header-link">
+        <Link to={`/inventory/${id}/edit`} className="inventory__header-link">
           <img
             src={pencil}
             className="inventory__header-pencil"
             alt="pencil-to-edit-inventory-item"
           />
           <span className="inventory__header-edit">Edit</span>
-        </a>
-        {/* </Link> */}
+        </Link>
       </section>
 
       <section className="inventory__info">
         <div className="inventory__info-left">
           <div className="inventory__info-container">
             <h4 className="inventory__info-title">ITEM DESCRIPTION:</h4>
-            <span className="inventory__info-description">
-              {/* {description} */}
-              This 50", 4K LED TV provides a crystal-clear picture and vivid
-              colors.
-            </span>
+            <span className="inventory__info-description">{description}</span>
           </div>
 
           <div className="inventory__info-container">
             <h4 className="inventory__info-title">CATEGORY:</h4>
-            <span className="inventory__info-category">
-              {/* {category} */}
-              Electronics
-            </span>
+            <span className="inventory__info-category">{category}</span>
           </div>
         </div>
 
@@ -107,33 +87,25 @@ export default function InventoriesDetails() {
             <div className="inventory__info-box">
               <h4 className="inventory__info-title">STATUS:</h4>
               <span
-                className="inventory__info-status"
-                // {`inventory__status ${
-                //   inventory.status === "In Stock"
-                //     ? "inventories__status--instock"
-                //     : "inventories__status--outstock"
-                // }`}
+                className={`inventory__info-status ${
+                  status === "In Stock"
+                    ? "inventory__info-status--instock"
+                    : "inventory__info-status--outstock"
+                }`}
               >
-                {/* {status} */}
-                IN STOCK
+                {status}
               </span>
             </div>
 
             <div className="inventory__info-box">
               <h4 className="inventory__info-title">QUANTITY:</h4>
-              <span className="inventory__info-quantity">
-                {/* {quantity} */}
-                500
-              </span>
+              <span className="inventory__info-quantity">{quantity}</span>
             </div>
           </div>
 
           <div className="inventory__info-container">
             <h4 className="inventory__info-title">WAREHOUSE:</h4>
-            <span className="inventory__info-warehouse">
-              {/* {category} */}
-              Manhattan
-            </span>
+            <span className="inventory__info-warehouse">{category}</span>
           </div>
         </div>
       </section>
