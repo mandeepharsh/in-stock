@@ -1,5 +1,5 @@
 // tools
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 // assets
@@ -11,14 +11,7 @@ import "./InventoriesAddPage.scss";
 
 export default function InventoriesAddPage() {
 
-  //setup state for warehouse
-  const [warehouses, setWarehouses] = useState([]);
-  const [hasError, setHasError] = useState(false);
-
-  // const warehouses = [1,2,34]
-
-
-const initialValues = {
+  const initialValues = {
     item_name :"",
     description : "",
     category: "",
@@ -29,7 +22,16 @@ const initialValues = {
     contact_email: ""      
 }
 
-const [values, setValues] = useState(initialValues);
+  // //setup state values
+  const [values, setValues] = useState(initialValues);
+  const [warehouses, setWarehouses] = useState([]);
+  const [hasError, setHasError] = useState(false);
+
+  // const warehouses = [1,2,34]
+
+
+
+
 
 const onChangeHandler = (event) =>{
     const {name, value} = event.target;
@@ -39,27 +41,28 @@ const onChangeHandler = (event) =>{
     });
 };
 
+console.log(values);
+
+const addInventoryItemHandler = () =>{
+    // axios.post({URLInventories}, values)
+    // .then((response) => console.log(response))
+    // .catch((error) =>{
+    //   console.log(error)
+    // })
+    console.log(values);
+}
 
 
-// const addInventoryItemHandler = () =>{
-//     axios.post({URLInventories}, values)
-//     .then((response) => console.log(response))
-//     .catch((error) =>{
-//       console.log(error)
-//     })
-// }
-
-
-
-axios
-  .get({URLWarehouses})
-  .then((response) => {
-    setWarehouses(response.data);
-    console.log(warehouses);
-})
-  .catch(() => {
-  setHasError(true);
-});
+useEffect(() => {
+  axios
+    .get(URLWarehouses)
+    .then((response) => {
+      setWarehouses(response.data);
+  })
+    .catch(() => {
+    setHasError(true);
+  });
+}, []);
 
 //Loading state
 if (!warehouses) {
@@ -82,12 +85,8 @@ if (hasError) {
         <h1 className="inventory-add-page__heading">Add New Inventory Item</h1>
       </div>
 
-      {/* <form className="inventory-add__form"
-            onSubmit={addInventoryItemHandler} > */}
-
       <form className="inventory-add__form"
-             >  
-
+            onSubmit={addInventoryItemHandler} >
 
         <div className="inventory-add__fieldset">
 
@@ -115,7 +114,10 @@ if (hasError) {
 
           <label className="inventory-add__label">
             Category
-            <select name="category" id="category" className="inventory-add__categories">
+            <select name="category" 
+             value={values.category}
+             onChange={onChangeHandler}
+            id="category" className="inventory-add__categories">
               <option value="Accessories">Accessories</option>
               <option value="Apparel">Apparel</option>
               <option value="Electronics">Electronics</option>
@@ -130,12 +132,10 @@ if (hasError) {
             Status 
           </label>
 
-            {/* <input type="radio" id="in" name="status" value="true"/><label className="inventory-add__label--status" htmlFor="in" >In Stock</label>
-            <input type="radio" id="out" name="status" value="false"/><label className="inventory-add__label--status" htmlFor="out">Out of Stock</label> */}
-          
-            <input type="radio" id="in" name="status" value="true"/>
-            <input type="radio" id="in" name="status" value="true"/>
-
+          <div  >
+            <input value={values.status} onChange={onChangeHandler} className="inventory-add__label--status" type="radio" id="in" name="status" /><label htmlFor="in" >In Stock</label>
+            <input value={values.status} onChange={onChangeHandler} className="inventory-add__label--status" type="radio" id="out" name="status" /><label htmlFor="out">Out of Stock</label>
+          </div>
 
           <label className="inventory-add__label">
             Quantity
@@ -149,10 +149,12 @@ if (hasError) {
 
           <label className="inventory-add__label">
             Warehouse
-            <select name="warehouse" id="warehouse" className="inventory-add__warehouses">
-              {warehouses.map((warehouse) => {
+            <select name="warehouse" value={values.warehouse}
+             onChange={onChangeHandler} id="warehouse" className="inventory-add__warehouses">
+            
+              {warehouses.map((warehouse, i) => {
                 return (
-                  <option value={warehouse}>{warehouse}</option>
+                  <option value={warehouse.warehouse_name} key={i}>{warehouse.warehouse_name}</option>
                 )
               })}
             </select>
@@ -165,8 +167,6 @@ if (hasError) {
         </div>
 
       </form>
-      <input type="radio" id="in" name="status" value="true"/><label htmlFor="in" >In Stock</label><br></br>
-      <input type="radio" id="out" name="status" value="false"/><label htmlFor="out">Out of Stock</label>
 
     </div>
   );
