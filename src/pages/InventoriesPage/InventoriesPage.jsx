@@ -13,7 +13,6 @@ export default function InventoriesPage() {
       .get(URLInventories)
       .then((response) => {
         setInventories(response.data);
-        console.log(inventories[0]);
       })
       .catch((error) => {
         console.log(error);
@@ -23,6 +22,8 @@ export default function InventoriesPage() {
   if (!inventories) {
     return <h1>LOADING</h1>;
   }
+  console.log(inventories);
+
   return (
     <>
       <section className="inventories">
