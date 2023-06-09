@@ -17,7 +17,19 @@ body.active-modal {
     right: 0;
     bottom: 0;
     position: fixed;
-    background: rgba(49,49,49,0.8);
+    background:$white(49,49,49,0.8);
+
+    @include tablet{
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        position: fixed;
+        background: rgba(49,49,49,0.8);
+    }
+
   }
 
   &-content {
@@ -35,6 +47,8 @@ body.active-modal {
 
   &-icon{
     float: right;
+    cursor: pointer;
+
   }
 
   &-header {
@@ -67,11 +81,12 @@ body.active-modal {
       background-color: $white;
       border-style: none;
       border: 1px solid $cloud;
+      cursor: pointer;
       &:hover {
       color: $instock-indigo;
       border-color: $instock-indigo;
       }
-      @include desktop{
+      @include tablet{
         height: 38px;
         width: auto;
         padding: 0 16px;
@@ -82,11 +97,12 @@ body.active-modal {
       color: $white;
       background-color: $red;
       border: none;
+      cursor: pointer;
 
       &:hover {
         background-color: $instock-black;
       }
-      @include desktop{
+      @include tablet{
         height: 38px;
         width: auto;
         padding: 0 16px;
