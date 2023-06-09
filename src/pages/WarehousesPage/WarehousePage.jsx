@@ -1,8 +1,7 @@
-//Impiort tools
-import { URL } from "../../utils/api";
+//Import tools
+import { URLWarehouses } from "../../utils/api";
 import axios from "axios";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 //Import Components
 import WarehouseList from "../../components/WarehouseList/WarehouseList";
@@ -13,7 +12,7 @@ export default function WarehousePage() {
 
   useEffect(() => {
     axios
-      .get(URL)
+      .get(URLWarehouses)
       .then((response) => {
         setWarehouses(response.data);
       })

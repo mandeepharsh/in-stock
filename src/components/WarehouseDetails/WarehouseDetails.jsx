@@ -8,7 +8,7 @@ import {useParams} from "react-router-dom";
 import axios from "axios";
 
 //utils and assets
-import { URL } from "../../utils/api";
+import { URLWarehouses } from "../../utils/api";
 import arrow from "../../assets/icons/arrow_back-24px.svg";
 import pencil from "../../assets/icons/edit-24px.svg";
 
@@ -30,7 +30,7 @@ export default function WarehouseDetails() {
   useEffect(() => {
     axios
       // .get(`${URL}/4`)
-      .get(`${URL}/${id}`)
+      .get(`${URLWarehouses}/${id}`)
       .then((response) => {
         setWarehouse(response.data);
     })
