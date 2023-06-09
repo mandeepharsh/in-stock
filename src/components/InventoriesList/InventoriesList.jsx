@@ -50,25 +50,28 @@ export default function InventoriesList({ inventories }) {
 
               <div className="inventories__warehouse-container">
                 <h4 className="inventories__details-title">WAREHOUSE</h4>
-                {/* inventories__warehouse to be retrieved from DB */}
-                <p className="inventories__warehouse">MANHATTAN</p>
+                <p className="inventories__warehouse">
+                  {inventory.warehouse_name}
+                </p>
               </div>
             </div>
 
-            <div className="inventories__icons">
-              <img
-                src={deleteIcon}
-                alt="garbage-delete-icon"
-                className="inventories__icons-del"
-              />
+            <div className="inventories__actions">
+              <a href="" className="inventories__actions-link">
+                <img
+                  src={deleteIcon}
+                  alt="garbage-delete-icon"
+                  className="inventories__actions-del"
+                />
+              </a>
               <Link
                 to={`/inventories/${inventory.id}/edit`}
-                className="inventories__icons-link"
+                className="inventories__actions-link"
               >
                 <img
                   src={editIcon}
                   alt="pencil-edit-icon"
-                  className="inventories__icons-edit"
+                  className="inventories__actions-edit"
                 />
               </Link>
             </div>
@@ -76,7 +79,7 @@ export default function InventoriesList({ inventories }) {
         );
       })}
 
-      {/* HARD CODE WHILE BACKENDS NOT WORKING  */}
+      {/* DUMMY DATA IF BACKEND DOES NOT WORK  */}
       {/* <div className="inventories__details">
         <div className="inventories__container-left">
           <div className="inventories__item-container">

@@ -22,7 +22,6 @@ export default function InventoriesPage() {
   if (!inventories) {
     return <h1>LOADING</h1>;
   }
-  console.log(inventories);
 
   return (
     <>
