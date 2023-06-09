@@ -7,6 +7,7 @@ export default function DeleteInventoryModal({
   inventory,
   toggleInventoryModal,
 }) {
+  console.log(inventory);
   function removeInventory(id) {
     axios
       .delete(`http://localhost:8080/inventories/${id}`)
@@ -33,12 +34,11 @@ export default function DeleteInventoryModal({
             />
           </a>
           <h1 className="inventory__modal-header">
-            Delete {inventory.inventory_name} inventory item?
+            Delete {inventory.item_name} inventory item?
           </h1>
           <p className="inventory__modal-message">
-            Please confirm that you’d like to delete
-            {inventory.inventory_name} from the inventory list. You won’t be
-            able to undo this action.
+            Please confirm that you’d like to delete {inventory.item_name} from
+            the inventory list. You won’t be able to undo this action.
           </p>
           <div className="inventory__modal-actions">
             <button
