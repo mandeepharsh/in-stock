@@ -2,51 +2,61 @@
 @use "../../styles/partials/variables" as *;
 
 
-
-
-.warehouse-add-page{
-  margin: -4rem 1rem 1rem;
-  border-radius: .5rem;
-  background-color: $white;
-  border: .0625rem solid $cloud;
-  box-shadow: 0px 2px 5px 0px $instock-black;
-
-  @include tablet {
-   margin: -6.8rem 1rem 16rem ;
-  }
-  @include desktop {
-    width: 63.75rem;
-     margin: -6.8rem auto 16rem; 
-     }
-  &__title{
-    display: flex;
-    justify-content: center;
-    padding: 2rem 1rem;
-    gap: 1rem;
-    @include tablet{
-     justify-content: flex-start;
-     padding: 2rem 2rem;
+.inventories-edit-page{
+    margin: -4rem 1rem 1rem;
+    border-radius: .5rem;
+    background-color: $white;
+    border: .0625rem solid $cloud;
+    box-shadow: 0px 2px 5px 0px $instock-black;
+  
+    @include tablet {
+     margin: -6.8rem 1rem 16rem ;
     }
-  }  
-
-  &__icon{
-    margin-top: 0.5rem;
-    @include tablet{
-        height: 2rem;
-        margin-top: 0.3rem;
+    @include desktop {
+      width: 63.75rem;
+       margin: -6.8rem auto 16rem; 
+       }
+    &__title{
+      display: flex;
+      justify-content: center;
+      padding: 2rem 1rem;
+      gap: 1rem;
+      @include tablet{
+       justify-content: flex-start;
+       padding: 2rem 2rem;
+      }
+    }  
+  
+    &__icon{
+      margin-top: 0.5rem;
+      @include tablet{
+          height: 2rem;
+          margin-top: 0.3rem;
+      }
     }
-  }
-   
-  &__heading{
-    font-size: 1.75rem;
-    @include tablet{
-        font-size:2rem ;
+     
+    &__heading{
+      font-size: 1.75rem;
+      @include tablet{
+          font-size:2rem ;
+      }
     }
-  }
-   
-}
+     
+    &__divider{
+        border: none;
+        border-bottom: .0625rem solid $cloud;
 
-.warehouse-add{
+        &--remove{
+            @include tablet {
+                display: none;
+            }
+        }
+    }
+
+  }
+  
+  .inventories-edit{
+
     &__form{
         display: flex;
         flex-direction: column;
@@ -107,43 +117,25 @@
 
         }
     }
-    
-    &__error-message{
-        color: $red;
-        display: flex;
-        margin-top: .35rem;
-        gap: 5px;
-        font-size: .8125rem;
-        }
-  
-    &__divider{
-        border: none;
-        border-bottom: .0625rem solid $cloud;
-
-        &--remove{
-            @include tablet {
-                display: none;
-            }
-        }
-    }
-
-    &-page__button-group{
+   
+    &__button-group{
         display: flex;
         background-color:$light-grey ;
         height: 5rem;
         justify-content: center;
         gap: 1rem;
         align-items: center;
-      
 
         
         @include tablet{
+            padding-right: 2rem;
             width: 100%;
             justify-content: flex-end;
-            padding-right: 2rem;
         }
     }
-    &-page__button-cancel{
+
+
+    &__button-cancel{
         @include button;
         background-color: $white;
         border: .0625rem solid $cloud;
@@ -156,7 +148,7 @@
             width: 4.5rem;
         }
     }
-    &-page__button-add{
+    &__button-add{
         @include button;
         background-color : $instock-indigo;
         color: $white;
@@ -169,4 +161,4 @@
           width: 8.625rem;
         }
     }  
-}
+  }
