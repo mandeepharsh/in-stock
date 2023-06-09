@@ -1,20 +1,18 @@
 // tools
 import { useState } from "react";
 import axios from "axios";
-import {useNavigate } from "react-router-dom"; 
+import { useNavigate, Link } from "react-router-dom"; 
 import validator from "validator";
 
 // assets
 import arrowback from "../../assets/icons/arrow_back-24px.svg";
 import errorIcon from "../../assets/icons/error-24px.svg";
-import {Link} from "react-router-dom";
+
+// api
+import { URLWarehouses } from "../../utils/api";
 
 // styling
 import "./WarehouseAddPage.scss";
-
-// api
-import { URL } from "../../utils/api";
-
 
 const WarehouseAddpage = () => {
 const navigate = useNavigate();  
@@ -61,7 +59,6 @@ const phoneNumber = (num) => {
  return  num.replace(/\D/g, '')
 }
 
-
 const addWarehouseHandler = (event) =>{
   event.preventDefault();
   
@@ -79,7 +76,7 @@ const addWarehouseHandler = (event) =>{
   if (hasError) {
     setErrors(newErrors);
   } else  {
-    axios.post(URL + "/add",values)
+    axios.post(URLWarehouses + "/add",values)
       .then((res) =>  navigate(`/warehouses/${res.data[0].id}`), setErrors(initialErrorState),setIsFormSubmit(true))
       .catch((error) => console.log(error));
   }
