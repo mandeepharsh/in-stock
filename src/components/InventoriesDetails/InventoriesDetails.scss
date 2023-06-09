@@ -16,11 +16,15 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem;
+    padding: 32px 16px 24px 16px;
     border-bottom: 1px solid $cloud;
 
     @include tablet {
       padding: 2rem;
+    }
+
+    &-return {
+      height: 24px;
     }
 
     &-title {

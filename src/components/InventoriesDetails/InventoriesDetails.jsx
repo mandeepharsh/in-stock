@@ -57,11 +57,11 @@ export default function InventoriesDetails() {
   return (
     <main className="inventory">
       <section className="inventory__header">
-        <Link to="/">
+        <Link to="/" className="inventory__header-return">
           <img
             src={arrow}
             alt="left-arrow-to-home"
-            className="inventory__header-return"
+            className="inventory__header-arrow"
           />
         </Link>
         <h1 className="inventory__header-title">
