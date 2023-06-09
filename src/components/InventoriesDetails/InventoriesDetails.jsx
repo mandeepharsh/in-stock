@@ -57,17 +57,19 @@ export default function InventoriesDetails() {
   return (
     <main className="inventory">
       <section className="inventory__header">
-        <Link to="/" className="inventory__header-return">
-          <img
-            src={arrow}
-            alt="left-arrow-to-home"
-            className="inventory__header-arrow"
-          />
-        </Link>
-        <h1 className="inventory__header-title">
-          {/* {inventory_name} */}
-          Television
-        </h1>
+        <div className="inventory__header-container">
+          <Link to="/" className="inventory__header-return">
+            <img
+              src={arrow}
+              alt="left-arrow-to-home"
+              className="inventory__header-arrow"
+            />
+          </Link>
+          <h1 className="inventory__header-title">
+            {/* {inventory_name} */}
+            Television
+          </h1>
+        </div>
         {/* <Link to={`/inventory/${id}/edit`} className="inventory__header-bgrnd"> */}
         <a href="" className="inventory__header-link">
           <img
@@ -81,54 +83,58 @@ export default function InventoriesDetails() {
       </section>
 
       <section className="inventory__info">
-        <div className="inventory__info-container">
-          <h4 className="inventory__info-title">ITEM DESCRIPTION:</h4>
-          <span className="inventory__info-description">
-            {/* {description} */}
-            This 50", 4K LED TV provides a crystal-clear picture and vivid
-            colors.
-          </span>
-        </div>
-
-        <div className="inventory__info-container">
-          <h4 className="inventory__info-title">CATEGORY:</h4>
-          <span className="inventory__info-category">
-            {/* {category} */}
-            Electronics
-          </span>
-        </div>
-
-        <div className="inventory__info-stats">
-          <div className="inventory__info-box">
-            <h4 className="inventory__info-title">STATUS:</h4>
-            <span
-              className="inventory__info-status"
-              // {`inventory__status ${
-              //   inventory.status === "In Stock"
-              //     ? "inventories__status--instock"
-              //     : "inventories__status--outstock"
-              // }`}
-            >
-              {/* {status} */}
-              IN STOCK
+        <div className="inventory__info-left">
+          <div className="inventory__info-container">
+            <h4 className="inventory__info-title">ITEM DESCRIPTION:</h4>
+            <span className="inventory__info-description">
+              {/* {description} */}
+              This 50", 4K LED TV provides a crystal-clear picture and vivid
+              colors.
             </span>
           </div>
 
-          <div className="inventory__info-box">
-            <h4 className="inventory__info-title">QUANTITY:</h4>
-            <span className="inventory__info-quantity">
-              {/* {quantity} */}
-              500
+          <div className="inventory__info-container">
+            <h4 className="inventory__info-title">CATEGORY:</h4>
+            <span className="inventory__info-category">
+              {/* {category} */}
+              Electronics
             </span>
           </div>
         </div>
 
-        <div className="inventory__info-container">
-          <h4 className="inventory__info-title">WAREHOUSE:</h4>
-          <span className="inventory__info-warehouse">
-            {/* {category} */}
-            Manhattan
-          </span>
+        <div className="inventory__info-right">
+          <div className="inventory__info-stats">
+            <div className="inventory__info-box">
+              <h4 className="inventory__info-title">STATUS:</h4>
+              <span
+                className="inventory__info-status"
+                // {`inventory__status ${
+                //   inventory.status === "In Stock"
+                //     ? "inventories__status--instock"
+                //     : "inventories__status--outstock"
+                // }`}
+              >
+                {/* {status} */}
+                IN STOCK
+              </span>
+            </div>
+
+            <div className="inventory__info-box">
+              <h4 className="inventory__info-title">QUANTITY:</h4>
+              <span className="inventory__info-quantity">
+                {/* {quantity} */}
+                500
+              </span>
+            </div>
+          </div>
+
+          <div className="inventory__info-container">
+            <h4 className="inventory__info-title">WAREHOUSE:</h4>
+            <span className="inventory__info-warehouse">
+              {/* {category} */}
+              Manhattan
+            </span>
+          </div>
         </div>
       </section>
     </main>

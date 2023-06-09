@@ -20,7 +20,12 @@
     border-bottom: 1px solid $cloud;
 
     @include tablet {
-      padding: 2rem;
+      padding: 32px 32px 20px 32px;
+    }
+
+    &-container {
+      display: flex;
+      align-items: center;
     }
 
     &-return {
@@ -37,6 +42,7 @@
       background-color: $instock-indigo;
       height: 2rem;
       width: 2rem;
+      text-decoration: none;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -80,21 +86,54 @@
     justify-content: space-between;
 
     @include tablet {
-      padding: 2rem;
+      width: 100%;
+      padding: 24px 32px 32px 32px;
       font-size: 0.875rem;
       border-bottom: none;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+    }
+
+    &-left {
+      width: 100%;
+      
+      @include tablet {
+        border-right: 1px solid $cloud;
+        width: 50%;
+      }
+    }
+
+    &-right {
+      width: 100%;
+
+      @include tablet {
+        padding-left: 40px;
+        width: 50%;
+      }
     }
 
     &-container {
       display: flex;
       flex-direction: column;
       margin-top: 16px;
+
+      @include tablet {
+        margin: 0 0 32px 0;
+      }
     }
 
     &-title {
       color: $slate;
       margin-bottom: 0;
       text-transform: uppercase;
+    }
+
+    &-description,
+    &-category,
+    &-status,
+    &-quantity {
+      padding-top: 4px;
     }
 
     &-stats {
@@ -109,6 +148,10 @@
       align-items: flex-start;
       width: 50%;
       margin-top: 16px;
+
+      @include tablet {
+        margin: 0 0 32px 0;
+      }
     }
 
     &-status {
