@@ -78,66 +78,6 @@ export default function InventoriesList({ inventories }) {
           </div>
         );
       })}
-
-      {/* DUMMY DATA IF BACKEND DOES NOT WORK  */}
-      {/* <div className="inventories__details">
-        <div className="inventories__container-left">
-          <div className="inventories__item-container">
-            <h4 className="inventories__details-title">INVENTORY ITEM</h4>
-            <Link
-              to={`/inventories/${inventory.id}`}
-              className="inventories__link"
-            >
-            <p className="inventories__item">
-              Television
-              <img src={rightIcon} alt="chevron-pointing-right" />
-            </p>
-            </Link>
-          </div>
-
-          <div className="inventories__category-container">
-            <h4 className="inventories__details-title">CATEGORY</h4>
-            <p className="inventories__category">Electronics</p>
-          </div>
-        </div>
-
-        <div className="inventories__container-right">
-          <div className="inventories__status-container">
-            <h4 className="inventories__details-title">STATUS</h4>
-            <p className="inventories__status">IN STOCK</p>
-          </div>
-
-          <div className="inventories__quantity-container">
-            <h4 className="inventories__details-title">QTY</h4>
-            <p className="inventories__quantity">500</p>
-          </div>
-
-          <div className="inventories__warehouse-container">
-            <h4 className="inventories__details-title">WAREHOUSE</h4>
-
-            inventories__warehouse to be retrieved from DB
-            <p className="inventories__warehouse">MANHATTAN</p>
-          </div>
-        </div>
-
-        <div className="inventories__icons">
-          <img
-            src={deleteIcon}
-            alt="garbage-delete-icon"
-            className="inventories__icons-del"
-          />
-          <Link
-            to={`/inventories/${inventory.id}/edit`}
-            className="inventories__icons-link"
-          >
-          <img
-            src={editIcon}
-            alt="pencil-edit-icon"
-            className="inventories__icons-edit"
-          />
-          </Link>
-        </div>
-      </div> */}
     </ul>
   );
 }
