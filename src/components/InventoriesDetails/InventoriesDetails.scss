@@ -4,7 +4,7 @@
 .inventory {
   background-color: $white;
   margin: -4rem 1rem 0;
-  border-radius: 3px;
+  border-radius: 0.1875rem;
   box-shadow: 0px 2px 5px 0px #13182c1a;
 
   @include desktop {
@@ -16,11 +16,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 32px 16px 24px 16px;
+    padding: 2rem 1rem 1.5rem 1rem;
     border-bottom: 1px solid $cloud;
 
     @include tablet {
-      padding: 32px 32px 20px 32px;
+      padding: 2rem 2rem 1.25rem 2rem;
     }
 
     &-container {
@@ -29,12 +29,11 @@
     }
 
     &-return {
-      height: 24px;
+      height: 1.5rem;
     }
 
     &-title {
       padding-left: 0.5rem;
-      padding-right: 4.5rem;
     }
 
     &-link {
@@ -46,6 +45,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-shrink: 0;
 
       @include tablet {
         height: auto;
@@ -87,7 +87,7 @@
 
     @include tablet {
       width: 100%;
-      padding: 24px 32px 32px 32px;
+      padding: 1.5rem 2rem 2rem 2rem;
       font-size: 0.875rem;
       border-bottom: none;
       display: flex;
@@ -97,7 +97,7 @@
 
     &-left {
       width: 100%;
-      
+
       @include tablet {
         border-right: 1px solid $cloud;
         width: 50%;
@@ -108,7 +108,7 @@
       width: 100%;
 
       @include tablet {
-        padding-left: 40px;
+        padding-left: 2.5rem;
         width: 50%;
       }
     }
@@ -116,10 +116,10 @@
     &-container {
       display: flex;
       flex-direction: column;
-      margin-top: 16px;
+      margin-top: 1rem;
 
       @include tablet {
-        margin: 0 0 32px 0;
+        margin: 0 0 2rem 0;
       }
     }
 
@@ -133,7 +133,7 @@
     &-category,
     &-status,
     &-quantity {
-      padding-top: 4px;
+      padding-top: 0.25rem;
     }
 
     &-stats {
@@ -147,10 +147,10 @@
       flex-direction: column;
       align-items: flex-start;
       width: 50%;
-      margin-top: 16px;
+      margin-top: 1rem;
 
       @include tablet {
-        margin: 0 0 32px 0;
+        margin: 0 0 2rem 0;
       }
     }
 
@@ -159,7 +159,7 @@
       width: max-content;
       font-size: 11px;
       line-height: 1.25rem;
-      padding: 0.25rem 0.5rem 4px 8px;
+      padding: 0.25rem 0.5rem 0.25rem 0.5rem;
       border-radius: 1.25rem;
       font-weight: 600;
 

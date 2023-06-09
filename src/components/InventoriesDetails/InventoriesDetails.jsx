@@ -36,7 +36,9 @@ export default function InventoriesDetails() {
     return <span>Inventory Item with ID: {id} not found </span>;
   }
 
-  const { item_name, description, category, status, quantity } = inventory;
+
+  const { item_name, description, category, status, quantity, warehouse_name } =
+    inventory;
 
   return (
     <main className="inventory">
@@ -97,7 +99,7 @@ export default function InventoriesDetails() {
 
           <div className="inventory__info-container">
             <h4 className="inventory__info-title">WAREHOUSE:</h4>
-            <span className="inventory__info-warehouse">{category}</span>
+            <span className="inventory__info-warehouse">{warehouse_name}</span>
           </div>
         </div>
       </section>
