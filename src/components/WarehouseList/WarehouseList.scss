@@ -156,6 +156,7 @@
     }
 
     &-del {
+      cursor: pointer;
       @include tablet {
         padding-right: 1rem;
       }
