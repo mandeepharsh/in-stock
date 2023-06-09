@@ -64,10 +64,10 @@ export default function InventoriesDetails() {
             className="inventory__header-return"
           />
         </Link>
-        <h2 className="inventory__header-title">
+        <h1 className="inventory__header-title">
           {/* {inventory_name} */}
           Television
-        </h2>
+        </h1>
         {/* <Link to={`/inventory/${id}/edit`} className="inventory__header-bgrnd"> */}
         <a href="" className="inventory__header-link">
           <img
@@ -81,7 +81,6 @@ export default function InventoriesDetails() {
       </section>
 
       <section className="inventory__info">
-
         <div className="inventory__info-container">
           <h4 className="inventory__info-title">ITEM DESCRIPTION:</h4>
           <span className="inventory__info-description">
@@ -100,7 +99,6 @@ export default function InventoriesDetails() {
         </div>
 
         <div className="inventory__info-stats">
-
           <div className="inventory__info-box">
             <h4 className="inventory__info-title">STATUS:</h4>
             <span
@@ -123,7 +121,6 @@ export default function InventoriesDetails() {
               500
             </span>
           </div>
-
         </div>
 
         <div className="inventory__info-container">
