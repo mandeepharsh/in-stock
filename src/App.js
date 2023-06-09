@@ -13,6 +13,7 @@ import InventoriesPage from "./pages/InventoriesPage/InventoriesPage";
 import InventoriesDetailsPage from "./pages/InventoriesDetailsPage/InventoriesDetailsPage";
 import InventoriesEditPage from "./pages/InventoriesEditPage/InventoriesEditPage";
 import InventoriesAddPage from "./pages/InventoriesAddPage/InventoriesAddPage";
+import DeleteModal from "./components/DeleteModal/DeleteModal";
 
 
 function App() {

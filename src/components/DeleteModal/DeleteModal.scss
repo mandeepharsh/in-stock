@@ -1,95 +1,97 @@
-// Styling for Modal //
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
 
 body.active-modal {
-    @include tablet{
-      overflow-y: hidden;
+  @include tablet{
+    overflow-y: hidden;
+  }
+}
+
+.warehouse__modal {
+  &-overlay {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    background: rgba(49,49,49,0.8);
+  }
+
+  &-content {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.4;
+    background: $white;
+    padding: 14px 28px;
+    border-radius: 3px;
+    max-width: 600px;
+    min-width: 300px;
+  }
+
+  &-icon{
+    float: right;
+  }
+
+  &-header {
+    // margin-top: 3.75rem;
+    @include tablet {
+      margin-top: 1rem;
     }
   }
-  
-  .warehouse__modal {
-    &-overlay {
-      width: 100vw;
-      height: 100vh;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      position: fixed;
-      background: rgba(49,49,49,0.8);
+
+  &-message {
+    // margin-top: 1rem;
+    @include tablet {
+      margin-top: 1.5rem;
     }
-  
-    &-content {
-      position: absolute;
-      top: 40%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      line-height: 1.4;
-      background: $white;
-      padding: 14px 28px;
-      border-radius: 3px;
-      max-width: 600px;
-      min-width: 300px;
+  }
+
+  &-actions{
+    // margin-top: 23.8125rem;
+    // margin-bottom: 1.5rem;
+    gap: 16px;
+
+    @include tablet {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
     }
-  
-    &-icon{
-      float: right;
-    }
-  
-    &-header {
-      // margin-top: 3.75rem;
-      @include tablet {
-        margin-top: 1rem;
+    &--close {
+      color: $slate;
+      background-color: $white;
+      border-style: none;
+      border: 1px solid $cloud;
+      &:hover {
+      color: $instock-indigo;
+      border-color: $instock-indigo;
+      }
+      @include desktop{
+        height: 38px;
+        width: auto;
+        padding: 0 16px;
+        border-radius: 20px;
       }
     }
-  
-    &-message {
-      // margin-top: 1rem;
-      @include tablet {
-        margin-top: 1.5rem;
+    &--delete {
+      color: $white;
+      background-color: $red;
+      border: none;
+
+      &:hover {
+        background-color: $instock-black;
       }
-    }
-  
-    &-actions{
-      // margin-top: 23.8125rem;
-      // margin-bottom: 1.5rem;
-      gap: 16px;
-  
-      @include tablet {
-        display: flex;
-        justify-content: flex-end;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-      }
-      &--close {
-        color: $slate;
-        background-color: $white;
-        border-style: none;
-        border: 1px solid $cloud;
-        &:hover {
-        color: $instock-indigo;
-        border-color: $instock-indigo;
-        }
-        @include desktop{
-          height: 38px;
-          width: auto;
-          padding: 0 16px;
-          border-radius: 20px;
-        }
-      }
-      &--delete {
-        color: $white;
-        background-color: $red;
-        border: none;
-  
-        &:hover {
-          background-color: $instock-black;
-        }
-        @include desktop{
-          height: 38px;
-          width: auto;
-          padding: 0 16px;
-          border-radius: 20px;
-        }
+      @include desktop{
+        height: 38px;
+        width: auto;
+        padding: 0 16px;
+        border-radius: 20px;
       }
     }
   }
+}

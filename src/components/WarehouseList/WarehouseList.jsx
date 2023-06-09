@@ -2,9 +2,23 @@ import { Link } from "react-router-dom";
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import rightIcon from "../../assets/icons/chevron_right-24px.svg";
+import { useState } from "react";
+import DeleteModal from "../DeleteModal/DeleteModal";
 
 export default function WarehouseList({ warehouses }) {
+  const [modal, setModal] = useState(false);
+  const [warehouse, setWarehouse] = useState(false);
+
+  const toggleModal = (warehouse) => {
+    setModal(!modal);
+    setWarehouse(warehouse);
+  };
+
   return (
+    <>
+       {modal && (<DeleteModal warehouse={warehouse}/>)}
+
+ 
     <ul className="warehouses__list">
       {warehouses.map((warehouse) => {
         return (
@@ -45,11 +59,12 @@ export default function WarehouseList({ warehouses }) {
             </div>
 
             <div className="warehouses__icons">
-              <img
+              <img onClick={()=>toggleModal(warehouse)}
                 src={deleteIcon}
                 alt="garbage-delete-icon"
                 className="warehouses__icons-del"
               />
+
               <Link
                 to={`/warehouses/${warehouse.id}/edit`}
                 className="warehouses__icons-link"
@@ -65,5 +80,6 @@ export default function WarehouseList({ warehouses }) {
         );
       })}
     </ul>
+    </>
   );
 }
