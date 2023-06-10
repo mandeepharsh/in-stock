@@ -1,26 +1,10 @@
+import "./WarehouseInvHeader.scss"
+
 import sortIcon from "../../assets/icons/sort-24px.svg";
-import { Link } from "react-router-dom";
 
 export default function WarehouseInvHeader() {
   return (
     <>
-      <div className="inventories__header">
-        <h1 className="inventories__title">Inventory</h1>
-        <div className="inventories__cta">
-          <div className="inventories__search">
-            <input
-              type="text"
-              name="search"
-              id="search"
-              className="inventories__search-input"
-              placeholder="Search..."
-            />
-          </div>
-          <Link to="/inventories/add" className="inventories__add-link">
-            <button className="inventories__add">+ Add New Item</button>
-          </Link>
-        </div>
-      </div>
 
       <div className="inventories__table-fields">
         <div className="inventories__table-field">
