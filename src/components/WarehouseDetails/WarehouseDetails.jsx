@@ -22,14 +22,13 @@ export default function WarehouseDetails() {
 
   
   
-  //grab url and set id
+  //set id
   let {id} = useParams();
 
 
   // get warehouse deets from database
   useEffect(() => {
     axios
-      // .get(`${URL}/4`)
       .get(`${URLWarehouses}/${id}`)
       .then((response) => {
         setWarehouse(response.data);
