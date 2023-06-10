@@ -136,8 +136,11 @@ export default function WarehouseEditPage() {
 
       <form className="warehouse-edit__form" onSubmit={editWarehouseHandler}>
         <div className="warehouse-edit__fieldset warehouse-edit__fieldset--divider">
-          <h2 className="warehouse-edit__fieldset-heading">Warehouse Details</h2>
-          <label className="warehouse-edit__label">Warehouse Name
+          <h2 className="warehouse-edit__fieldset-heading">
+            Warehouse Details
+          </h2>
+          <label className="warehouse-edit__label">
+            Warehouse Name
             <input
               className={`warehouse-edit__input ${
                 errors.warehouse_name ? "warehouse-edit__input--invalid" : ""
@@ -147,7 +150,6 @@ export default function WarehouseEditPage() {
               value={warehouse_name}
               onChange={onChangeHandler}
             />
-            
             {errors.warehouse_name && (
               <span className="warehouse-edit__error-message">
                 <img alt="error icon" src={errorIcon} />
@@ -156,7 +158,8 @@ export default function WarehouseEditPage() {
             )}
           </label>
 
-          <label className="warehouse-edit__label">Street address
+          <label className="warehouse-edit__label">
+            Street address
             <input
               className={`warehouse-edit__input ${
                 errors.address ? "warehouse-edit__input--invalid" : ""
@@ -174,7 +177,8 @@ export default function WarehouseEditPage() {
             )}
           </label>
 
-          <label className="warehouse-edit__label">City
+          <label className="warehouse-edit__label">
+            City
             <input
               className={`warehouse-edit__input ${
                 errors.city ? "warehouse-edit__input--invalid" : ""
@@ -192,7 +196,8 @@ export default function WarehouseEditPage() {
             )}
           </label>
 
-          <label className="warehouse-edit__label">Country
+          <label className="warehouse-edit__label">
+            Country
             <input
               className={`warehouse-edit__input ${
                 errors.country ? "warehouse-edit__input--invalid" : ""
@@ -215,7 +220,8 @@ export default function WarehouseEditPage() {
 
         <div className="warehouse-edit__fieldset">
           <h2 className="warehouse-edit__fieldset-heading">Contact Details</h2>
-          <label className="warehouse-edit__label">Contact Name
+          <label className="warehouse-edit__label">
+            Contact Name
             <input
               className={`warehouse-edit__input ${
                 errors.contact_name ? "warehouse-edit__input--invalid" : ""
@@ -233,7 +239,8 @@ export default function WarehouseEditPage() {
             )}
           </label>
 
-          <label className="warehouse-edit__label">Position
+          <label className="warehouse-edit__label">
+            Position
             <input
               className={`warehouse-edit__input ${
                 errors.contact_position ? "warehouse-edit__input--invalid" : ""
@@ -251,7 +258,8 @@ export default function WarehouseEditPage() {
             )}
           </label>
 
-          <label className="warehouse-edit__label">Phone Number
+          <label className="warehouse-edit__label">
+            Phone Number
             <input
               className={`warehouse-edit__input ${
                 errors.contact_phone ? "warehouse-edit__input--invalid" : ""
@@ -278,7 +286,8 @@ export default function WarehouseEditPage() {
             )}
           </label>
 
-          <label className="warehouse-edit__label">Email
+          <label className="warehouse-edit__label">
+            Email
             <input
               className={`warehouse-edit__input  ${
                 errors.contact_email ? "warehouse-edit__input--invalid" : ""
@@ -320,7 +329,6 @@ export default function WarehouseEditPage() {
           </button>
         </div>
       </form>
-
     </div>
   );
 }
