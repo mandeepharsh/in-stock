@@ -29,6 +29,7 @@
   
     &__icon{
       margin-top: 0.5rem;
+      cursor: pointer;
       @include tablet{
           height: 2rem;
           margin-top: 0.3rem;

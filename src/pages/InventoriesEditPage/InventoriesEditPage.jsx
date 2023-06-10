@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import axios from "axios"
 import { useState } from "react"
 // assests
@@ -13,7 +13,7 @@ import InventoryEditForm from "../../components/InventoryEditForm/InventoryEditF
 const InventoriesEditPage = () => {
   
   const {id} = useParams(); 
-
+  const navigate = useNavigate();
   const [itemDetails,setItemDetails] = useState();
   const[warehouses,setWarehouses] = useState();
   const [isLoading,setIsLoading] = useState(true)
@@ -43,8 +43,10 @@ const InventoriesEditPage = () => {
   return (
     <section className="inventories-edit-page"> 
          <div className="inventories-edit-page__title">
-       <Link to="/inventories"> <img className="inventories-edit-page__icon"
-         src={arrowback} alt="arrow back icon" /></Link>
+        <img className="inventories-edit-page__icon"
+             onClick={()=> navigate(-1)}
+             src={arrowback} 
+             alt="arrow back icon" />
         <h1 className="inventories-edit-page__heading">Edit Inventory Item</h1>
       </div>
       <hr className="inventories-edit-page__divider"/>

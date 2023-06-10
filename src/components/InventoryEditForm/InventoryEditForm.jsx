@@ -1,14 +1,19 @@
+// tools
 import {useState} from "react";
+import { useNavigate } from "react-router-dom"; 
 import axios from "axios";
+
+// assets
 import errorIcon from "../../assets/icons/error-24px.svg";
 import "./InventoryEditForm.scss";
+// Api utils
 import { URLInventories } from "../../utils/api";
+
 const InventoryEditForm = ({itemDetails,warehousesNames}) => {
-  
+
   const intialWarehouse =  warehousesNames.find((warehouse)=>{
     return warehouse.warehouse_name === itemDetails.warehouse_name
   })
-
 
   const initialValues = { 
    warehousesId :intialWarehouse.id, 
@@ -26,20 +31,21 @@ const InventoryEditForm = ({itemDetails,warehousesNames}) => {
     quantity : false
   }
 
-  const[values,setValues] = useState(initialValues)
+  const[values,setValues] = useState(initialValues);
   const [errors, setErrors] = useState(initialErrorState);
+  const navigate = useNavigate();  
   const onChangeHandler = (event) =>{
-    const {name,value} = event.target;
-    setValues({
+    const {name, value} = event.target;
+      setValues({
         ...values,
         [name]: value
-    });
-    
+      });
     setErrors({
       ...errors,
       [name]:false   
     })
-};
+  };
+    
 
 const onSumbitHandler = (event) =>{
   event.preventDefault();
@@ -52,6 +58,8 @@ const onSumbitHandler = (event) =>{
     } else {
       newErrors[field] = false;
     }
+
+   
   }
   
   if (isNaN(values.quantity)) {
@@ -68,12 +76,12 @@ const onSumbitHandler = (event) =>{
       description : values.description,
       category : values.category,
       status : values.status,
-      quantity : values.quantity,
+      quantity : values.status === "Out of Stock" ? '0' : values.quantity,
     }
    console.log(changedData)
     axios.put((URLInventories +"/" + itemDetails.id), changedData)
     .then((res)=>{
-       console.log(res)
+       navigate(`/inventories/${res.data.id}`)
     })
     .catch((err) =>{
       console.log(err)
@@ -93,7 +101,7 @@ return (
              value={values.itemName}
              onChange={onChangeHandler}
       />
-       {(errors.itemName) && <span className="warehouse-add__error-message">
+       {(errors.itemName) && <span className="inventories-edit__error-message">
        <img alt="error icon" src={errorIcon}/>This field is required </span>} 
     </label>    
 
@@ -105,7 +113,7 @@ return (
                 value={values.description}
                 onChange={onChangeHandler}
       />
-      {(errors.description) && <span className="warehouse-add__error-message">
+      {(errors.description) && <span className="inventories-edit__error-message">
        <img alt="error icon" src={errorIcon}/>This field is required </span>} 
     </label>   
     
@@ -167,12 +175,12 @@ return (
              onChange={onChangeHandler}
       />
        {(errors.quantity && isNaN(values.quantity)) && (
-        <span className="warehouse-add__error-message">
+        <span className="inventories-edit__error-message">
           <img alt="error icon" src={errorIcon} />
           Quantity must be a number
         </span>
       )}
-      {(errors.quantity)  && !isNaN(values.quantity) && <span className="warehouse-add__error-message">
+      {(errors.quantity)  && !isNaN(values.quantity) && <span className="inventories-edit__error-message">
        <img alt="error icon" src={errorIcon}/>This field is required </span>}
     </label>) :""}
 
@@ -194,6 +202,7 @@ return (
 
     <div className="inventories-edit__button-group">
         <button type="button"
+                onClick={()=> navigate(-1)}
                 className=" inventories-edit__button-cancel"
                 >Cancel</button>
         <button type="sumbit"

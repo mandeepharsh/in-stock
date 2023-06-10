@@ -36,6 +36,10 @@
     }
     }
 
+    &__error-message{
+        @include error-message;
+    }
+
     &__label{
         display: flex;
         flex-direction: column;
