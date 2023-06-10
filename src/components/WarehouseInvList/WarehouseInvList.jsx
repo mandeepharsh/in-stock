@@ -4,6 +4,10 @@ import { URLWarehouses } from "../../utils/api";
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
+//styling
+
+import "./WarehouseInvList.scss"
+
 //Icons
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
@@ -19,15 +23,16 @@ export default function WarehouseInvList() {
   //set id
   let {id} = useParams();
 
-  // useEffect(() => {
-  //   axios
-  //     .get(`${URLWarehouses}/${id}/inventories`)
-  //     .then((response) => {
-  //       setInventories(response.data);
-  //     })
-  //     .catch(() => {
-  //       setHasError(true);
-  // }, []);
+  useEffect(() => {
+    axios
+      .get(`${URLWarehouses}/${id}/inventories`)
+      .then((response) => {
+        setInventories(response.data);
+      })
+      .catch(() => {
+        setHasError(true);
+      })
+  }, []);
 
   if (inventories.length < 0) {
     return <h1>Please wait loaing inventory</h1>;
@@ -39,74 +44,71 @@ export default function WarehouseInvList() {
   }
 
   return (
-    
-    <ul className="inventories__list">
-      {inventories.map((inventory) => {
-        return (
-          <div key={inventory.id} className="inventories__details">
-            <div className="inventories__container-left">
-              <div className="inventories__item-container">
-                <h4 className="inventories__details-title">INVENTORY ITEM</h4>
-                <Link
-                  to={`/inventories/${inventory.id}`}
-                  className="inventories__link"
-                >
-                  <p className="inventories__item">
-                    {inventory.item_name}
-                    <img src={rightIcon} alt="chevron-pointing-right" />
+
+    <section className="inventory">
+      <ul className="inventory__list">
+        {inventories.map((inventory) => {
+          return (
+            <div key={inventory.id} className="inventory__details">
+              <div className="inventory__container-left">
+                <div className="inventory__item-container">
+                  <h4 className="inventory__details-title">INVENTORY ITEM</h4>
+                  <Link
+                    to={`/inventories/${inventory.id}`}
+                    className="inventory__link"
+                  >
+                    <p className="inventory__item">
+                      {inventory.item_name}
+                      <img src={rightIcon} alt="chevron-pointing-right" />
+                    </p>
+                  </Link>
+                </div>
+                <div className="inventory__category-container">
+                  <h4 className="inventories__details-title">CATEGORY</h4>
+                  <p className="inventories__category">{inventory.category}</p>
+                </div>
+              </div>
+              <div className="inventory__container-right">
+                <div className="inventory__status-container">
+                  <h4 className="inventory__details-title">STATUS</h4>
+                  <p
+                    className={`inventory__status ${
+                      inventory.status === "In Stock"
+                        ? "inventory__status--instock"
+                        : "inventory__status--outstock"
+                    }`}
+                  >
+                    {inventory.status}
                   </p>
+                </div>
+                <div className="inventory__quantity-container">
+                  <h4 className="inventory__details-title">QTY</h4>
+                  <p className="inventory__quantity">{inventory.quantity}</p>
+                </div>
+              </div>
+              <div className="inventory__actions">
+                <a href="" className="inventory__actions-link">
+                  <img
+                    src={deleteIcon}
+                    alt="garbage-delete-icon"
+                    className="inventory__actions-del"
+                  />
+                </a>
+                <Link
+                  to={`/inventories/${inventory.id}/edit`}
+                  className="inventory__actions-link"
+                >
+                  <img
+                    src={editIcon}
+                    alt="pencil-edit-icon"
+                    className="inventory__actions-edit"
+                  />
                 </Link>
               </div>
-
-              <div className="inventories__category-container">
-                <h4 className="inventories__details-title">CATEGORY</h4>
-                <p className="inventories__category">{inventory.category}</p>
-              </div>
             </div>
-
-            <div className="inventories__container-right">
-              <div className="inventories__status-container">
-                <h4 className="inventories__details-title">STATUS</h4>
-                <p
-                  className={`inventories__status ${
-                    inventory.status === "In Stock"
-                      ? "inventories__status--instock"
-                      : "inventories__status--outstock"
-                  }`}
-                >
-                  {inventory.status}
-                </p>
-              </div>
-
-              <div className="inventories__quantity-container">
-                <h4 className="inventories__details-title">QTY</h4>
-                <p className="inventories__quantity">{inventory.quantity}</p>
-              </div>
-
-            </div>
-
-            <div className="inventories__actions">
-              <a href="" className="inventories__actions-link">
-                <img
-                  src={deleteIcon}
-                  alt="garbage-delete-icon"
-                  className="inventories__actions-del"
-                />
-              </a>
-              <Link
-                to={`/inventories/${inventory.id}/edit`}
-                className="inventories__actions-link"
-              >
-                <img
-                  src={editIcon}
-                  alt="pencil-edit-icon"
-                  className="inventories__actions-edit"
-                />
-              </Link>
-            </div>
-          </div>
-        );
-      })}
-    </ul>
+          );
+        })}
+      </ul>
+    </section>
   )
 }
