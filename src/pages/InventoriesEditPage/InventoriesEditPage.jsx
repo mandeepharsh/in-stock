@@ -21,9 +21,8 @@ const InventoriesEditPage = () => {
    
   useEffect(()=>{
     axios.get(URLWarehouses)
-    .then((res)=>{
-      const warehousesName = res.data.map(({id,warehouse_name}) =>{ return {id,warehouse_name}})
-      return setWarehouses(warehousesName)
+    .then((res)=>{const warehousesName = res.data.map(({id,warehouse_name}) =>{ return {id,warehouse_name}})
+      return setWarehouses(warehousesName) 
     })
     .catch((err)=>{ console.log(err)})
   },[])
