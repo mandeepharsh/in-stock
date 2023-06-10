@@ -1,38 +1,44 @@
-// @use "../../styles/partials/fonts" as *;
-// @use "../../styles/partials/mixins" as *;
-// @use "../../styles/partials/variables" as *;
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
 
-// .inventories {
-//   &__table {
-//     &-fields {
-//       display: none;
-//       padding: 0.625rem 0;
+.inventory {
+  &__table {
+    &-fields {
+      display: none;
+      padding: 0.625rem 0;
 
-//       @include tablet {
-//         background-color: $light-grey;
-//         display: flex;
-//         justify-content: space-around;
-//         padding: 0.6875rem 2rem;
-//       }
-//     }
+      @include tablet {
+        background-color: $light-grey;
+        display: flex;
+        justify-content: space-around;
+        padding: 0.6875rem 2rem;
+        margin-left:10rem;
+      }
 
-//     &-field {
-//       @include tablet {
-//         width: 20%;
-//         display: flex;
-//         justify-content: flex-start;
-//         align-items: center;
-//       }
+      @include desktop {
+        width: 63.75rem;
+      }
+    }
 
-//       &--position {
-//         @include tablet {
-//           justify-content: flex-end;
-//         }
-//       }
-//     }
+    &-field {
+      @include tablet {
 
-//     &-header {
-//       color: $slate;
-//     }
-//   }
-// }
+        width: 20%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+      }
+
+      &--position {
+        @include tablet {
+          justify-content: flex-end;
+        }
+      }
+    }
+
+    &-header {
+      color: $slate;
+    }
+  }
+}

@@ -30,8 +30,9 @@
     align-items: flex-start;
     padding: 1rem 1.5rem;
     border-top: 0.0625rem solid $cloud;
-
-    
+    &:first-of-type {
+      margin-top:4rem;
+    }
 
     @include tablet {
       flex-wrap: nowrap;
