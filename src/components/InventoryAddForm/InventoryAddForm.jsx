@@ -1,36 +1,47 @@
-// tools
+//Styling
+import "./InventoryAddForm.scss";
+
+// tooling
 import {useState} from "react";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-// assets
+// icons
 import errorIcon from "../../assets/icons/error-24px.svg";
-import "./InventoryAddForm.scss";
-// Api utils
+
+// Api endpoint
 import { URLInventories } from "../../utils/api";
 
+
 const InventoryAddForm = ({warehousesNames}) => {
-
-
-  const initialValues = { 
-   warehousesId :"", 
+  
+  //initial empty form values
+  const initialValues = {
+   warehousesId :"",
    itemName : "",
    description : "",
    category : "",
    status :"",
-   quantity : "",
-   warehouse_name :""
+   quantity : "0"
   }
-  
+
+  //setup error states for fields
   const initialErrorState = {
     itemName : false,
     description : false,
-    quantity : false
+    quantity : false,
+    warehousesId : false,
+    category : false
   }
 
+  //set initial states for rey
   const[values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState(initialErrorState);
-  const navigate = useNavigate();  
+
+  //navigation
+  const navigate = useNavigate();
+
+  //handle inputs
   const onChangeHandler = (event) =>{
     const {name, value} = event.target;
       setValues({
@@ -39,109 +50,115 @@ const InventoryAddForm = ({warehousesNames}) => {
       });
     setErrors({
       ...errors,
-      [name]:false   
+      [name]:false
     })
   };
+
+  //handle submit
+  const onSumbitHandler = (event) => {
     
+    //prevent refresh
+    event.preventDefault();
+    
+    //error checking
+    const newErrors = {};
+    let hasError = false;
+    for (let field in values) {
+      if (values[field] === "") {
+        newErrors[field] = true;
+        hasError = true;
+      } else {
+        newErrors[field] = false;
+      }
+    }
 
-const onSumbitHandler = (event) =>{
-  event.preventDefault();
-  const newErrors = {};
-  let hasError = false;
-  for (let field in values) {
-    if (values[field] === "") {
-      newErrors[field] = true;
+    //make sure quantity is a number
+    if (isNaN(values.quantity)) {
+      newErrors.quantity = true;
       hasError = true;
+    }
+
+    if (hasError) {
+      return  setErrors(newErrors);
     } else {
-      newErrors[field] = false;
-    }
 
-   
-  }
-  
-  if (isNaN(values.quantity)) {
-    newErrors.quantity = true;
-    hasError = true;
-  }
+      //grab inputs
+      const newItemData = {
+        warehouse_id :Number(values.warehousesId),
+        item_name : values.itemName,
+        description : values.description,
+        category : values.category,
+        status : values.status,
+        quantity : values.quantity,
+      }
 
-  if (hasError) {
-    setErrors(newErrors);
-  }else{
-    const newItemData = {
-      warehouse_id :Number(values.warehousesId), 
-      item_name : values.itemName,
-      description : values.description,
-      category : values.category,
-      status : values.status,
-      quantity : values.status === "Out of Stock" ? '0' : values.quantity,
+      console.log(newItemData);
+
+      //add the item
+      axios.post((`${URLInventories}/add`), newItemData)
+      .then((res)=>{
+        navigate(`/inventories/${res.data[0].id}`)
+      })
+      .catch((err) =>{
+        console.log(err)
+      })
     }
-  //  console.log(newItemData)
-    axios.post((URLInventories), newItemData)
-    .then((res)=>{
-       navigate(`/inventories/${res.data.id}`)
-    })
-    .catch((err) =>{
-      console.log(err)
-    })
   }
-}  
 
 return (
-    <form className="inventories-add__form" onSubmit={onSumbitHandler}> 
-    <div className="inventories-add__fieldset inventories-add__fieldset--divider">
-    <h2 className="inventories-add__fieldset-heading">Item Details</h2>  
-    <label className="inventories-add__label">
-    Item Name 
-      <input className="inventories-add__input"
+    <form className="inventory-add__form" onSubmit={onSumbitHandler}>
+    <div className="inventory-add__fieldset inventory-add__fieldset--divider">
+    <h2 className="inventory-add__fieldset-heading">Item Details</h2>
+    <label className="inventory-add__label">
+    Item Name
+      <input className="inventory-add__input"
              placeholder="Item Name"
              name="itemName"
              value={values.itemName}
              onChange={onChangeHandler}
       />
-       {(errors.itemName) && <span className="inventories-add__error-message">
-       <img alt="error icon" src={errorIcon}/>This field is required </span>} 
-    </label>    
-
-    <label className="inventories-add__label">
+       {(errors.itemName) && <span className="inventory-add__error-message">
+       <img alt="error icon" src={errorIcon}/>This field is required </span>}
+    </label>
+    <label className="inventory-add__label">
       Description
-      <textarea className="inventories-add__input inventories-add__input--textarea"
+      <textarea className="inventory-add__input inventory-add__input--textarea"
                 placeholder="Description"
                 name="description"
                 value={values.description}
                 onChange={onChangeHandler}
       />
-      {(errors.description) && <span className="inventories-add__error-message">
-       <img alt="error icon" src={errorIcon}/>This field is required </span>} 
-    </label>   
-    
-            <label className="inventories-add__label">
+      {(errors.description) && <span className="inventory-add__error-message">
+       <img alt="error icon" src={errorIcon}/>This field is required </span>}
+    </label>
+            <label className="inventory-add__label">
             Category
             <select name="category"
                     placeholder="Category"
                     value={values.category}
                     onChange={onChangeHandler}
-                    id="category" 
-                    className="inventories-add__input 
-                               inventories-add__input--select">
+                    id="category"
+                    className="inventory-add__input
+                               inventory-add__input--select">
+              <option value="">Please Select</option>
               <option value="Accessories">Accessories</option>
               <option value="Apparel">Apparel</option>
               <option value="Electronics">Electronics</option>
               <option value="Gear">Gear</option>
               <option value="Health">Health</option>
             </select>
+            {(errors.category) && <span className="inventory-add__error-message">
+       <img alt="error icon" src={errorIcon}/>This field is required </span>}
           </label>
-
     </div>
-
-    <hr className="inventories-add-page__divider"/>
-
-    <div className="inventories-add__fieldset">
-    <h2 className="inventories-add__fieldset-heading">Item Availability</h2> 
-    <label className="inventories-add__label">Status</label>
-    <div className="inventories-add__item-status">
-      <div className="inventories-add__radio-btn-set  inventories-add__radio-btn-set--margin">
+    <hr className="inventory-add__divider"/>
+    <div className="inventory-add__fieldset">
+    <h2 className="inventory-add__fieldset-heading">Item Availability</h2>
+    <label className="inventory-add__label">Status</label>
+    <div className="inventory-add__item-status">
+      <div className="inventory-add__radio-btn-set  inventory-add__radio-btn-set--margin">
       <input
-        className="inventories-add__radio-btn"
+        className="inventory-add__radio-btn"
         type="radio"
         name="status"
         value="In Stock"
@@ -151,8 +168,8 @@ return (
       />
       <label htmlFor="instock">In Stock</label>
       </div>
-      <div className="inventories-add__radio-btn-set ">
-      <input className="inventories-add__radio-btn "
+      <div className="inventory-add__radio-btn-set ">
+      <input className="inventory-add__radio-btn "
              type="radio"
              name="status"
              value="Out of Stock"
@@ -164,52 +181,52 @@ return (
       </div>
     </div>
       {(values.status === "In Stock") ? (
-      <label className="inventories-add__label">
-       Quantity   
+      <label className="inventory-add__label">
+       Quantity
       <input placeholder="Quantity"
-             className="inventories-add__input"
+             className="inventory-add__input"
              name="quantity"
              value={values.quantity}
              onChange={onChangeHandler}
       />
        {(errors.quantity && isNaN(values.quantity)) && (
-        <span className="inventories-add__error-message">
+        <span className="inventory-add__error-message">
           <img alt="error icon" src={errorIcon} />
           Quantity must be a number
         </span>
       )}
-      {(errors.quantity)  && !isNaN(values.quantity) && <span className="inventories-add__error-message">
+      {(errors.quantity)  && !isNaN(values.quantity) && <span className="inventory-add__error-message">
        <img alt="error icon" src={errorIcon}/>This field is required </span>}
     </label>) :""}
-
-    <label className="inventories-add__label">
+    <label className="inventory-add__label">
             Warehouse
             <select name="warehousesId"
              value={values.warehousesId}
              onChange={onChangeHandler}
              id="category"
-             className="inventories-add__input
-                        inventories-add__input--select">
+             className="inventory-add__input
+                        inventory-add__input--select">
+              <option value="">Please Select</option>
               {warehousesNames.map((warehouse)=>
-              {return <option key={warehouse.id} 
+              {return <option key={warehouse.id}
                               value={warehouse.id}     >
                               {warehouse.warehouse_name}
                               </option> })}
             </select>
-          </label>  
-      </div>   
-
-    <div className="inventories-add__button-group">
+            {(errors.warehousesId) && <span className="inventory-add__error-message">
+       <img alt="error icon" src={errorIcon}/>This field is required </span>}
+          </label>
+      </div>
+    <div className="inventory-add__button-group">
         <button type="button"
                 onClick={()=> navigate(-1)}
-                className=" inventories-add__button-cancel"
+                className=" inventory-add__button-cancel"
                 >Cancel</button>
         <button type="sumbit"
-                className=" inventories-add__button-add"
+                className=" inventory-add__button-add"
                 >Save</button>
       </div>
    </form>
   )
 }
-
 export default InventoryAddForm
