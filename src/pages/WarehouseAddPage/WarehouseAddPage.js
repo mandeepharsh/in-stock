@@ -55,8 +55,10 @@ const onChangeHandler = (event) =>{
     })
 };
 
-const phoneNumber = (num) => {
- return  num.replace(/\D/g, '')
+const containsLetter = (str) => {
+  var regex = /[a-zA-Z]/;
+  var containsLetter = regex.test(str);
+  return !containsLetter;
 }
 
 const addWarehouseHandler = (event) =>{
@@ -73,10 +75,13 @@ const addWarehouseHandler = (event) =>{
     }
   }
 
+
   if (hasError) {
     setErrors(newErrors);
+  } else if(containsLetter()){
+   return;
   } else  {
-    axios.post(URLWarehouses + "/add",values)
+    axios.post(URLWarehouses + "/",values)
       .then((res) =>  navigate(`/warehouses/${res.data[0].id}`), setErrors(initialErrorState),setIsFormSubmit(true))
       .catch((error) => console.log(error));
   }
@@ -175,7 +180,7 @@ const addWarehouseHandler = (event) =>{
                     />
            {(errors.contact_phone ) && <span className="warehouse-add__error-message">
            <img alt="error icon" src={errorIcon}/>This field is required</span>}
-           {(!validator.isMobilePhone(phoneNumber(values.contact_phone) ) && isFormSubmit)?   <span className="warehouse-add__error-message">
+           {(!containsLetter() && isFormSubmit)?   <span className="warehouse-add__error-message">
           <img alt="error icon" src={errorIcon}/>This phone number is not valid</span> : ""} 
           </label>
           <label className="warehouse-add__label">
