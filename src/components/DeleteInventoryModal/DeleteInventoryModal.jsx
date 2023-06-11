@@ -1,6 +1,6 @@
 import closeIcon from "../../assets/icons/close-24px.svg";
 import "./DeleteInventoryModal.scss";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function DeleteInventoryModal({
@@ -8,6 +8,10 @@ export default function DeleteInventoryModal({
   toggleInventoryModal,
 }) {
   console.log(inventory);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   function removeInventory(id) {
     axios
       .delete(`http://localhost:8080/inventories/${id}`)

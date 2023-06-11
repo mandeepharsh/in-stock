@@ -1,9 +1,13 @@
 import closeIcon from "../../assets/icons/close-24px.svg";
 import "./DeleteModal.scss";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function DeleteModal({ warehouse, toggleModal }) {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   function removeWarehouse(id) {
     axios
       .delete(`http://localhost:8080/warehouses/${id}`)
