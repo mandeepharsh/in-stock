@@ -17,7 +17,7 @@ export default function WarehouseInvHeader() {
           <img src={sortIcon} alt="sort-icon-up-and-down-arrow" />
         </div>
 
-        <div className="inventory__table-field">
+        <div className="inventory__table-field inventory__table-field--allign">
           <h4 className="inventory__table-header">STATUS</h4>
           <img src={sortIcon} alt="sort-icon-up-and-down-arrow" />
         </div>

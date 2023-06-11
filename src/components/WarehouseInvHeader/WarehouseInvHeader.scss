@@ -6,37 +6,36 @@
   &__table {
     &-fields {
       display: none;
+      margin : 0 1rem;
+      box-shadow: 0px 2px 5px 0px rgba(19, 24, 44, 0.1019607843);
       padding: 0.625rem 0;
-
       @include tablet {
         background-color: $light-grey;
         display: flex;
         justify-content: space-around;
         padding: 0.6875rem 2rem;
-        margin-left:10rem;
       }
-
       @include desktop {
         width: 63.75rem;
+        margin : 0 auto;
       }
     }
-
     &-field {
       @include tablet {
-
         width: 20%;
         display: flex;
         justify-content: flex-start;
         align-items: center;
       }
-
+      &--allign{
+        margin-right: 15%;
+      }
       &--position {
         @include tablet {
           justify-content: flex-end;
         }
       }
     }
-
     &-header {
       color: $slate;
     }
