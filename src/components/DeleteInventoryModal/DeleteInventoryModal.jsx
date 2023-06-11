@@ -7,7 +7,6 @@ export default function DeleteInventoryModal({
   inventory,
   toggleInventoryModal,
 }) {
-  console.log(inventory);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
