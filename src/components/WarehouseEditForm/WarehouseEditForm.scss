@@ -1,21 +1,21 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
-.warehouse-add-page {
-  margin: -4rem 1rem 1rem;
-  border-radius: 0.5rem;
-  background-color: $white;
-  border: 0.0625rem solid $cloud;
-  box-shadow: 0px 2px 5px 0px $instock-black;
+.warehouse-edit-page {
+  // margin: -4rem 1rem 1rem;
+  // border-radius: 0.5rem;
+  // background-color: $white;
+  // border: 0.0625rem solid $cloud;
+  // box-shadow: 0px 2px 5px 0px $instock-black;
 
-  @include tablet {
-    margin: -6.8rem 1rem 16rem;
-  }
+  // @include tablet {
+  //   margin: -6.8rem 1rem 16rem;
+  // }
 
-  @include desktop {
-    width: 63.75rem;
-    margin: -6.8rem auto 16rem;
-  }
+  // @include desktop {
+  //   width: 63.75rem;
+  //   margin: -6.8rem auto 16rem;
+  // }
 
   &__title {
     display: flex;
@@ -44,7 +44,7 @@
   }
 }
 
-.warehouse-add {
+.warehouse-edit {
   &__form {
     display: flex;
     flex-direction: column;
@@ -151,7 +151,7 @@
       width: 4.5rem;
     }
   }
-  &-page__button-add {
+  &-page__button-edit {
     @include button;
     background-color: $instock-indigo;
     color: $white;
@@ -161,7 +161,7 @@
     }
 
     @include tablet {
-      width: 8.625rem;
+      width: 4.5rem;
     }
   }
 }

@@ -20,7 +20,7 @@ const WarehouseEditForm = ({ warehouse }) => {
 
   const initialValues = {
     warehouse_name: warehouse.warehouse_name,
-    address: warehouse.address,
+    editress: warehouse.editress,
     city: warehouse.city,
     country: warehouse.country,
     contact_name: warehouse.contact_name,
@@ -31,7 +31,7 @@ const WarehouseEditForm = ({ warehouse }) => {
 
   const initialErrorState = {
     warehouse_name: false,
-    address: false,
+    editress: false,
     city: false,
     country: false,
     contact_name: false,
@@ -61,7 +61,7 @@ const WarehouseEditForm = ({ warehouse }) => {
     return num.replace(/\D/g, "");
   };
 
-  const addWarehouseHandler = (event) => {
+  const editWarehouseHandler = (event) => {
     event.preventDefault();
 
     const newErrors = {};
@@ -88,18 +88,20 @@ const WarehouseEditForm = ({ warehouse }) => {
         .catch((error) => console.log(error));
     }
   };
-  
+
   return (
-    <div className="warehouse-add-page">
-      <hr className="warehouse-add__divider" />
-      <form className="warehouse-add__form" onSubmit={addWarehouseHandler}>
-        <div className="warehouse-add__fieldset warehouse-add__fieldset--divider">
-          <h2 className="warehouse-add__fieldset-heading">Warehouse Details</h2>
-          <label className="warehouse-add__label">
+    <div className="warehouse-edit-page">
+      <hr className="warehouse-edit__divider" />
+      <form className="warehouse-edit__form" onSubmit={editWarehouseHandler}>
+        <div className="warehouse-edit__fieldset warehouse-edit__fieldset--divider">
+          <h2 className="warehouse-edit__fieldset-heading">
+            Warehouse Details
+          </h2>
+          <label className="warehouse-edit__label">
             Warehouse Name
             <input
-              className={`warehouse-add__input ${
-                errors.warehouse_name ? "warehouse-add__input--invalid" : ""
+              className={`warehouse-edit__input ${
+                errors.warehouse_name ? "warehouse-edit__input--invalid" : ""
               }`}
               name="warehouse_name"
               placeholder="Warehouse Name"
@@ -107,35 +109,35 @@ const WarehouseEditForm = ({ warehouse }) => {
               onChange={onChangeHandler}
             />
             {errors.warehouse_name && (
-              <span className="warehouse-add__error-message">
+              <span className="warehouse-edit__error-message">
                 <img alt="error icon" src={errorIcon} />
                 This field is required{" "}
               </span>
             )}
           </label>
-          <label className="warehouse-add__label">
+          <label className="warehouse-edit__label">
             Street Address
             <input
-              className={`warehouse-add__input ${
-                errors.address ? "warehouse-add__input--invalid" : ""
+              className={`warehouse-edit__input ${
+                errors.editress ? "warehouse-edit__input--invalid" : ""
               }`}
               name="address"
-              placeholder="Street Address"
+              placeholder="Street address"
               value={values.address}
               onChange={onChangeHandler}
             />
             {errors.address && (
-              <span className="warehouse-add__error-message">
+              <span className="warehouse-edit__error-message">
                 <img alt="error icon" src={errorIcon} />
                 This field is required
               </span>
             )}
           </label>
-          <label className="warehouse-add__label">
+          <label className="warehouse-edit__label">
             City
             <input
-              className={`warehouse-add__input ${
-                errors.city ? "warehouse-add__input--invalid" : ""
+              className={`warehouse-edit__input ${
+                errors.city ? "warehouse-edit__input--invalid" : ""
               }`}
               name="city"
               placeholder="City"
@@ -143,17 +145,17 @@ const WarehouseEditForm = ({ warehouse }) => {
               onChange={onChangeHandler}
             />
             {errors.city && (
-              <span className="warehouse-add__error-message">
+              <span className="warehouse-edit__error-message">
                 <img alt="error icon" src={errorIcon} />
                 This field is required
               </span>
             )}
           </label>
-          <label className="warehouse-add__label">
+          <label className="warehouse-edit__label">
             Country
             <input
-              className={`warehouse-add__input ${
-                errors.country ? "warehouse-add__input--invalid" : ""
+              className={`warehouse-edit__input ${
+                errors.country ? "warehouse-edit__input--invalid" : ""
               }`}
               name="country"
               placeholder="Country"
@@ -161,21 +163,21 @@ const WarehouseEditForm = ({ warehouse }) => {
               onChange={onChangeHandler}
             />
             {errors.country && (
-              <span className="warehouse-add__error-message">
+              <span className="warehouse-edit__error-message">
                 <img alt="error icon" src={errorIcon} />
                 This field is required
               </span>
             )}
           </label>
         </div>
-        <hr className="warehouse-add__divider warehouse-add__divider--remove" />
-        <div className="warehouse-add__fieldset">
-          <h2 className="warehouse-add__fieldset-heading">Contact Details</h2>
-          <label className="warehouse-add__label">
+        <hr className="warehouse-edit__divider warehouse-edit__divider--remove" />
+        <div className="warehouse-edit__fieldset">
+          <h2 className="warehouse-edit__fieldset-heading">Contact Details</h2>
+          <label className="warehouse-edit__label">
             Contact Name
             <input
-              className={`warehouse-add__input ${
-                errors.contact_name ? "warehouse-add__input--invalid" : ""
+              className={`warehouse-edit__input ${
+                errors.contact_name ? "warehouse-edit__input--invalid" : ""
               }`}
               name="contact_name"
               placeholder="Contact Name"
@@ -183,17 +185,17 @@ const WarehouseEditForm = ({ warehouse }) => {
               onChange={onChangeHandler}
             />
             {errors.contact_name && (
-              <span className="warehouse-add__error-message">
+              <span className="warehouse-edit__error-message">
                 <img alt="error icon" src={errorIcon} />
                 This field is required
               </span>
             )}
           </label>
-          <label className="warehouse-add__label">
+          <label className="warehouse-edit__label">
             Position
             <input
-              className={`warehouse-add__input ${
-                errors.contact_position ? "warehouse-add__input--invalid" : ""
+              className={`warehouse-edit__input ${
+                errors.contact_position ? "warehouse-edit__input--invalid" : ""
               }`}
               name="contact_position"
               placeholder="Position"
@@ -201,17 +203,17 @@ const WarehouseEditForm = ({ warehouse }) => {
               onChange={onChangeHandler}
             />
             {errors.contact_position && (
-              <span className="warehouse-add__error-message">
+              <span className="warehouse-edit__error-message">
                 <img alt="error icon" src={errorIcon} />
                 This field is required
               </span>
             )}
           </label>
-          <label className="warehouse-add__label">
+          <label className="warehouse-edit__label">
             Phone Number
             <input
-              className={`warehouse-add__input ${
-                errors.contact_phone ? "warehouse-add__input--invalid" : ""
+              className={`warehouse-edit__input ${
+                errors.contact_phone ? "warehouse-edit__input--invalid" : ""
               }`}
               name="contact_phone"
               placeholder="Phone Number"
@@ -219,14 +221,14 @@ const WarehouseEditForm = ({ warehouse }) => {
               onChange={onChangeHandler}
             />
             {errors.contact_phone && (
-              <span className="warehouse-add__error-message">
+              <span className="warehouse-edit__error-message">
                 <img alt="error icon" src={errorIcon} />
                 This field is required
               </span>
             )}
             {!validator.isMobilePhone(phoneNumber(values.contact_phone)) &&
             formSumbit ? (
-              <span className="warehouse-add__error-message">
+              <span className="warehouse-edit__error-message">
                 <img alt="error icon" src={errorIcon} />
                 This phone number is not valid
               </span>
@@ -234,11 +236,11 @@ const WarehouseEditForm = ({ warehouse }) => {
               ""
             )}
           </label>
-          <label className="warehouse-add__label">
+          <label className="warehouse-edit__label">
             Email
             <input
-              className={`warehouse-add__input  ${
-                errors.contact_email ? "warehouse-add__input--invalid" : ""
+              className={`warehouse-edit__input  ${
+                errors.contact_email ? "warehouse-edit__input--invalid" : ""
               }`}
               name="contact_email"
               placeholder="Email"
@@ -246,13 +248,13 @@ const WarehouseEditForm = ({ warehouse }) => {
               onChange={onChangeHandler}
             />
             {errors.contact_email && (
-              <span className="warehouse-add__error-message">
+              <span className="warehouse-edit__error-message">
                 <img alt="error icon" src={errorIcon} />
                 This field is required
               </span>
             )}
             {!validator.isEmail(values.contact_email) && formSumbit ? (
-              <span className="warehouse-add__error-message">
+              <span className="warehouse-edit__error-message">
                 <img alt="error icon" src={errorIcon} />
                 This email format is not valid
               </span>
@@ -262,16 +264,16 @@ const WarehouseEditForm = ({ warehouse }) => {
           </label>
         </div>
 
-        <div className="warehouse-add-page__button-group">
+        <div className="warehouse-edit-page__button-group">
           <button
             type="button"
-            className=" warehouse-add-page__button-cancel"
+            className=" warehouse-edit-page__button-cancel"
             onClick={() => navigate("-1")}
           >
             Cancel
           </button>
-          <button type="sumbit" className=" warehouse-add-page__button-add">
-            + Add Warehouse
+          <button type="sumbit" className="warehouse-edit-page__button-edit">
+            Save
           </button>
         </div>
       </form>

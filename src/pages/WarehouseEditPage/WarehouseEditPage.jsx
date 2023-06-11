@@ -37,7 +37,7 @@ export default function WarehouseEditPage() {
   return (
     <div className="warehouse-edit">
       <WarehouseEditHeader />
-      {/* <WarehouseEditForm warehouse={warehouse} /> */}
+      <WarehouseEditForm warehouse={warehouse} />
     </div>
   );
 }
