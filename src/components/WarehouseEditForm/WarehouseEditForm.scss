@@ -1,36 +1,7 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
-.warehouse-edit-page {
-
-  &__title {
-    display: flex;
-    justify-content: center;
-    padding: 2rem 1rem;
-    gap: 1rem;
-    @include tablet {
-      justify-content: flex-start;
-      padding: 2rem 2rem;
-    }
-  }
-
-  &__icon {
-    margin-top: 0.5rem;
-    @include tablet {
-      height: 2rem;
-      margin-top: 0.3rem;
-    }
-  }
-
-  &__heading {
-    font-size: 1.75rem;
-    @include tablet {
-      font-size: 2rem;
-    }
-  }
-}
-
-.warehouse-edit {
+.warehouse-edit .warehouse-edit {
   &__form {
     display: flex;
     flex-direction: column;
@@ -124,6 +95,7 @@
       padding-right: 2rem;
     }
   }
+  
   &-page__button-cancel {
     @include button;
     background-color: $white;
@@ -137,7 +109,9 @@
       width: 4.5rem;
     }
   }
+
   &-page__button-edit {
+
     @include button;
     background-color: $instock-indigo;
     color: $white;
@@ -148,6 +122,34 @@
 
     @include tablet {
       width: 4.5rem;
+    }
+  }
+
+  &-page {
+    &__title {
+      display: flex;
+      justify-content: center;
+      padding: 2rem 1rem;
+      gap: 1rem;
+      @include tablet {
+        justify-content: flex-start;
+        padding: 2rem 2rem;
+      }
+    }
+
+    &__icon {
+      margin-top: 0.5rem;
+      @include tablet {
+        height: 2rem;
+        margin-top: 0.3rem;
+      }
+    }
+
+    &__heading {
+      font-size: 1.75rem;
+      @include tablet {
+        font-size: 2rem;
+      }
     }
   }
 }

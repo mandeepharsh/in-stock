@@ -264,13 +264,15 @@ const WarehouseEditForm = ({ warehouse }) => {
           <button
             type="button"
             className=" warehouse-edit-page__button-cancel"
-            onClick={() => navigate("-1")}
+            onClick={() => navigate(-1)}
           >
             Cancel
           </button>
+          {/* <Link className="warehouse-edit-page__button-link"> */}
           <button type="sumbit" className="warehouse-edit-page__button-edit">
             Save
           </button>
+          {/* </Link> */}
         </div>
       </form>
     </div>

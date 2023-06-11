@@ -15,7 +15,7 @@ export default function WarehouseEditHeader() {
             className="warehouse-edit__icon"
             src={arrowback}
             alt="arrow back icon"
-            onClick={() => navigate("-1")}
+            onClick={() => navigate(-1)}
           />
         </Link>
         <h1 className="warehouse-edit__title">Edit Warehouse</h1>

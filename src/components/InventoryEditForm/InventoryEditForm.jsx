@@ -78,7 +78,6 @@ const onSumbitHandler = (event) =>{
       status : values.status,
       quantity : values.status === "Out of Stock" ? '0' : values.quantity,
     }
-   console.log(changedData)
     axios.put((URLInventories +"/" + itemDetails.id), changedData)
     .then((res)=>{
        navigate(`/inventories/${res.data.id}`)
