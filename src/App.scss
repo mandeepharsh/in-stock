@@ -1,6 +1,8 @@
 //Link components' SASS Styling
 @use "./components/WarehouseList/WarehouseList.scss" as *;
 @use "./components/WarehousesHeader/WarehouseHeader.scss" as *;
+@use "./components/InventoriesList/InventoriesList.scss" as *;
+@use "./components/InventoriesHeader/InventoriesHeader.scss" as *;
 
 //Link partials SASS styling
 @use "./styles/partials/fonts";
@@ -79,4 +81,3 @@ span {
 }
 
 //Body Small properties to be manually added because no specific html element
-

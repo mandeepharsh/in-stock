@@ -2,7 +2,7 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
-.warehouses {
+.inventories {
   &__header {
     display: flex;
     flex-direction: column;
