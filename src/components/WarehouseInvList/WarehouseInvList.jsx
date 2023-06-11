@@ -35,7 +35,7 @@ export default function WarehouseInvList() {
   }, []);
 
   if (inventories.length < 0) {
-    return <h1>Please wait loaing inventory</h1>;
+    return <h1>Please wait loading inventory</h1>;
   }
 
   //Error state  

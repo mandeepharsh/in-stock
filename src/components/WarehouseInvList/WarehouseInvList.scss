@@ -4,15 +4,8 @@
 
 .inventory {
   background-color: $white;
-  // margin: -4rem 1rem 1rem;
   border-radius: 0.25rem;
-  // border: 0.0625rem solid $cloud;
-  // border: 0.0625rem solid black;
   box-shadow: 0px 2px 5px 0px $instock-black;
-
-  @include tablet {
-    // margin: -6.8rem 1rem 16rem;
-  }
 
   @include desktop {
     width: 63.75rem;
@@ -20,7 +13,7 @@
   }
 
   &__link {
-    text-decoration: none;
+    text-decoration: dashed;
   }
 
   &__details {
@@ -87,6 +80,7 @@
     font-size: 0.8125rem;
     display: flex;
     align-items: center;
+    color:$instock-indigo;
 
     &:hover {
       text-decoration: underline;
