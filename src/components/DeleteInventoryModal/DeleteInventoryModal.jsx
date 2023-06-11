@@ -16,6 +16,7 @@ export default function DeleteInventoryModal({
       })
       .catch((error) => console.log(error));
     toggleInventoryModal();
+    window.scroll(0, 0);
   }
 
   return (

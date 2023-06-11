@@ -12,6 +12,7 @@ export default function DeleteModal({ warehouse, toggleModal }) {
       })
       .catch((error) => console.log(error));
     toggleModal();
+    window.scroll(0, 0);
   }
 
   return (
