@@ -22,14 +22,13 @@ export default function WarehouseDetails() {
 
   
   
-  //grab url and set id
+  //set id
   let {id} = useParams();
 
 
   // get warehouse deets from database
   useEffect(() => {
     axios
-      // .get(`${URL}/4`)
       .get(`${URLWarehouses}/${id}`)
       .then((response) => {
         setWarehouse(response.data);
@@ -72,10 +71,13 @@ export default function WarehouseDetails() {
     <section className="warehouse__info">
       <div className='warehouse__info-address'>
         <h4 className="warehouse__info-headers">WAREHOUSE ADDRESS:</h4>
-        <p className="warehouse__info-text">{address}, {city}, {country}</p>
+        <div className="warehouse__info-address-text">
+          <p className="warehouse__info-text">{address},</p>
+          <p className="warehouse__info-text"> {city}, {country}</p>
+        </div>
       </div>
       <div className="warehouse__info-contact">
-        <div className='warehouse__info-column warehouse__info-column--left'>
+        <div className='left warehouse__info-column warehouse__info-column--left'>
           <h4 className="warehouse__info-headers">CONTACT NAME:</h4>
           <p className="warehouse__info-text">{contact_name}</p>
           <p className="warehouse__info-text">{contact_position}</p>

@@ -6,9 +6,14 @@
     background-color:$white;
     margin:-4rem 1rem 0;
     border-radius: .5rem;
+
+    @include tablet {
+      margin: -6rem 1rem 0;
+    }
+    
     @include desktop {
       width:63.75rem;
-      margin: -4rem auto 0;
+      margin: -6rem auto 0;
     }
   }
   
@@ -99,6 +104,13 @@
       &-address{
           flex: 1;
       }
+
+      &-address-text {
+        display: flex;
+        @include tablet {
+          flex-direction: column;
+        }
+      }
   }
 
   &__header-edit-text {
@@ -132,4 +144,14 @@
   }
 
 }
+}
+
+.left {
+  @include tablet {
+    padding-left: 2rem;
+    border-left: 1px solid $cloud;
+    }
+    @include desktop {
+      padding-left: 4rem;
+    }
 }
