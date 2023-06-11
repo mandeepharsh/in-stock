@@ -15,16 +15,16 @@ import { URLInventories, URLWarehouses } from "../../utils/api"
 
 //Import form - we should re-name since we are using in diff components
 // import InventoryEditForm from "../../components/InventoryEditForm/InventoryEditForm"
-import InventoryAddForm from "../../components/InventoryEditForm/InventoryEditForm"
+import InventoryAddForm from "../../components/InventoryAddForm/InventoryAddForm"
 
 
 const InventoriesAddPage = () => {
   
   const {id} = useParams(); 
   const navigate = useNavigate();
-  const [itemDetails,setItemDetails] = useState();
-  const[warehouses,setWarehouses] = useState();
-  const [isLoading,setIsLoading] = useState(true)
+  // const [itemDetails,setItemDetails] = useState();
+  const[warehouses, setWarehouses] = useState();
+  const [isLoading, setIsLoading] = useState(true)
   
    
   useEffect(()=>{
@@ -32,19 +32,20 @@ const InventoriesAddPage = () => {
     .then((res)=>{const warehousesName = res.data.map(({id,warehouse_name}) =>{ return {id,warehouse_name}})
       return setWarehouses(warehousesName) 
     })
+    .then(setIsLoading(false))
     .catch((err)=>{ console.log(err)})
   },[])
 
 
-  useEffect(()=>{
-    axios.get(`${URLInventories}/{id}`)
-    .then((res)=> {setItemDetails(res.data)
-                   setIsLoading(false)})
-    .catch((err)=> console.log(err))
+  // useEffect(()=>{
+  //   axios.get(`${URLInventories}/{id}`)
+  //   .then((res)=> {setItemDetails(res.data)
+  //                  setIsLoading(false)})
+  //   .catch((err)=> console.log(err))
 
-  },[id])
+  // },[id])
 
-  if(!!isLoading){
+  if(isLoading){
     return <span>...Loading</span>
   }
 
@@ -58,8 +59,7 @@ const InventoriesAddPage = () => {
         <h1 className="inventory__heading">Edit Inventory Item</h1>
       </div>
       <hr className="inventory__divider"/>
-      <InventoryAddForm itemDetails = {itemDetails}
-                         warehousesNames = {warehouses}
+      <InventoryAddForm warehousesNames = {warehouses}
       />
     </section>
   )
