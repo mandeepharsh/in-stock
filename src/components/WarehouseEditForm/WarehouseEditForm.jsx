@@ -267,7 +267,7 @@ const WarehouseEditForm = ({ warehouse }) => {
           <button
             type="button"
             className=" warehouse-add-page__button-cancel"
-            onClick={() => navigate("/")}
+            onClick={() => navigate("-1")}
           >
             Cancel
           </button>
