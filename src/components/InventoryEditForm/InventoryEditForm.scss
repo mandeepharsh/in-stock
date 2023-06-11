@@ -52,7 +52,7 @@
         border: none;
         border: .0781rem solid $cloud;
         margin-top: 0.4rem;
-
+        font-size: .875rem;
         &::placeholder{
             font-size: 0.9rem;
             color: $slate;
@@ -66,8 +66,39 @@
             border: .0781rem solid $instock-indigo;
 
         }
+
+        &--textarea{
+            height: 7.5rem;
+             resize: none;
+        }
+
+        &--select{
+            appearance: none;
+            background-image: url(../../assets/icons/arrow_drop_down-24px.svg);
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            background-size: 1.8rem;
+        }
     }
-   
+//    RADIO Button STYLING
+    &__item-status{
+     display: flex;
+     flex-wrap: wrap;
+    }
+
+    &__radio-btn-set{
+        display: flex;
+        gap: .5rem;
+        width: 50%;
+    }
+    
+    &__radio-btn {
+        width: 20px;
+        height: 20px;
+      }
+      
+
+
     &__button-group{
         display: flex;
         background-color:$light-grey ;

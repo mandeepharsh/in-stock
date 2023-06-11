@@ -91,7 +91,7 @@ const onSumbitHandler = (event) =>{
 
 return (
     <form className="inventories-edit__form" onSubmit={onSumbitHandler}> 
-    <div className="inventories-edit__fieldset">
+    <div className="inventories-edit__fieldset inventories-edit__fieldset--divider">
     <h2 className="inventories-edit__fieldset-heading">Item Details</h2>  
     <label className="inventories-edit__label">
     Item Name 
@@ -107,7 +107,7 @@ return (
 
     <label className="inventories-edit__label">
       Description
-      <textarea className="inventories-edit__input"
+      <textarea className="inventories-edit__input inventories-edit__input--textarea"
                 placeholder="Description"
                 name="description"
                 value={values.description}
@@ -124,7 +124,8 @@ return (
                     value={values.category}
                     onChange={onChangeHandler}
                     id="category" 
-                    className="inventories-edit__input">
+                    className="inventories-edit__input 
+                               inventories-edit__input--select">
               <option value="Accessories">Accessories</option>
               <option value="Apparel">Apparel</option>
               <option value="Electronics">Electronics</option>
@@ -139,9 +140,9 @@ return (
 
     <div className="inventories-edit__fieldset">
     <h2 className="inventories-edit__fieldset-heading">Item Availability</h2> 
-    <div className="inventories-edit__item-status">
     <label className="inventories-edit__label">Status</label>
-      <div>
+    <div className="inventories-edit__item-status">
+      <div className="inventories-edit__radio-btn-set  inventories-edit__radio-btn-set--margin">
       <input
         className="inventories-edit__radio-btn"
         type="radio"
@@ -153,7 +154,7 @@ return (
       />
       <label htmlFor="instock">In Stock</label>
       </div>
-      <div>
+      <div className="inventories-edit__radio-btn-set ">
       <input className="inventories-edit__radio-btn "
              type="radio"
              name="status"
@@ -190,7 +191,8 @@ return (
              value={values.warehousesId}
              onChange={onChangeHandler}
              id="category"
-             className="inventories-edit__input">
+             className="inventories-edit__input
+                        inventories-edit__input--select">
               {warehousesNames.map((warehouse)=>
               {return <option key={warehouse.id} 
                               value={warehouse.id}     >
