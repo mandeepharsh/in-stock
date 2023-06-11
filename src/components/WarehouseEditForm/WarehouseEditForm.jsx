@@ -1,18 +1,16 @@
 // tools
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import validator from "validator";
 
 // assets
-import arrowback from "../../assets/icons/arrow_back-24px.svg";
 import errorIcon from "../../assets/icons/error-24px.svg";
 
 // api
 import { URLWarehouses } from "../../utils/api";
 
 // styling
-// import "./WarehouseAddPage.scss";
 import "./WarehouseEditForm.scss";
 
 const WarehouseEditForm = ({ warehouse }) => {
@@ -90,6 +88,7 @@ const WarehouseEditForm = ({ warehouse }) => {
         .catch((error) => console.log(error));
     }
   };
+  
   return (
     <div className="warehouse-add-page">
       <hr className="warehouse-add__divider" />
