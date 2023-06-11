@@ -80,11 +80,7 @@ const WarehouseEditForm = ({ warehouse }) => {
     } else {
       axios
         .put(URLWarehouses + "/" + id, values)
-        .then(
-          (res) => console.log(res.data),
-          setErrors(initialErrorState),
-          setformSumbit(true)
-        )
+        .then((_res) => setErrors(initialErrorState), setformSumbit(true))
         .catch((error) => console.log(error));
     }
   };
