@@ -62,7 +62,7 @@ export default function WarehouseDetails() {
         </Link>
         <h2 className="warehouse__header-text">{warehouse_name}</h2>
       </div>
-      <Link to={`/warehouse/${id}/edit`} className="warehouse__header-bgrnd">
+      <Link to={`/warehouses/${id}/edit`} className="warehouse__header-bgrnd">
         <img src={pencil} className="warehouse__header-edit-image" alt="edit this warehouse's details" />
         <span className='warehouse__header-edit-text'>Edit</span>
       </Link>

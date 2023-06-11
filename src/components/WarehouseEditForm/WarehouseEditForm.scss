@@ -1,0 +1,174 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.inventories-edit{
+
+    &__form{
+        display: flex;
+        flex-direction: column;
+
+        @include tablet{
+          flex-direction: row;
+          flex-wrap: wrap;
+        }
+    }
+
+    &__fieldset{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem 1.5rem 1.5rem;
+        @include tablet{
+            width: 50%;
+            margin: 1rem 0;
+            padding: 1rem 2rem 2rem;
+        }
+
+      &--divider{
+        border-right: .0625rem solid $cloud;
+      }       
+    }
+   
+    &__fieldset-heading{
+    margin-bottom: .5rem;
+    @include tablet{
+        margin-bottom: 1rem;
+    }
+    }
+
+    &__error-message{
+        @include error-message;
+    }
+
+    &__label{
+        display: flex;
+        flex-direction: column;
+        font-weight: 600;
+    }
+
+    &__input{
+        padding: 0.85rem;
+        border-radius: 1.5rem;
+        border: none;
+        border: .0781rem solid $cloud;
+        margin-top: 0.4rem;
+        font-size: .875rem;
+        &::placeholder{
+            font-size: 0.9rem;
+            color: $slate;
+        }
+
+        &--invalid{
+            border: .0781rem solid $red;
+        }
+
+        &:focus{
+            border: .0781rem solid $instock-indigo;
+
+        }
+
+        &--textarea{
+            height: 7.5rem;
+             resize: none;
+        }
+
+        &--select{
+            appearance: none;
+            background-image: url(../../assets/icons/arrow_drop_down-24px.svg);
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            background-size: 1.8rem;
+        }
+    }
+//    RADIO Button STYLING
+    &__item-status{
+     display: flex;
+     flex-wrap: wrap;
+    }
+
+    &__radio-btn-set{
+        display: flex;
+        gap: .5rem;
+        width: 50%;
+    }
+    
+    &__radio-btn {
+        // from W3 Schools
+     appearance: none;
+     outline: none;
+     height: 1.25rem;
+     width: 1.25rem;
+     border-radius: 50%;
+     border: .125rem solid $cloud;
+     margin-right: 10px;
+     cursor: pointer;
+     position: relative;
+   
+     &:checked {
+       border-color: $instock-indigo;
+       background-color: $white;
+   
+       &::before {
+         content: "";
+         position: absolute;
+         top: .1875rem;
+         left: .1875rem;
+         right: .1875rem;
+         bottom: .1875rem;
+         border-radius: 50%;
+         background-color: $instock-indigo;
+       }
+     }
+   
+     &:not(:checked) {
+       border-color: $cloud;
+       background-color: $white;
+     }
+            }
+      
+
+
+    &__button-group{
+        display: flex;
+        background-color:$light-grey ;
+        height: 5rem;
+        justify-content: center;
+        gap: 1rem;
+        align-items: center;
+
+        
+        @include tablet{
+            padding-right: 2rem;
+            width: 100%;
+            justify-content: flex-end;
+        }
+    }
+
+
+    &__button-cancel{
+        @include button;
+        background-color: $white;
+        border: .0625rem solid $cloud;
+        color: $slate;
+        &:hover{
+            border : .0625rem solid $instock-indigo;
+            color: $instock-indigo;
+        }
+        @include tablet{
+            width: 4.5rem;
+        }
+    }
+    &__button-add{
+        @include button;
+        background-color : $instock-indigo;
+        color: $white;
+        
+        &:hover{
+            background-color: $graphite;
+        }
+        
+        @include tablet{
+          width: 8.625rem;
+        }
+    }  
+  }
