@@ -92,15 +92,6 @@ const InventoryAddForm = ({warehousesNames}) => {
       "quantity": Number(values.quantity)
     }
 
-    // const newItemData = {
-    //   "warehouse_id": "2",
-    //   "item_name": "New Lids",
-    //   "description": "Nice Hat",
-    //   "category": "Gear",
-    //   "status": "In Stock",
-    //   "quantity": 4
-    // }
-
       console.log(newItemData);
 
       //add the item
