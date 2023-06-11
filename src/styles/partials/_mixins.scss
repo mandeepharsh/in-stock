@@ -26,3 +26,11 @@
   border: none;
   cursor: pointer;
 }
+
+@mixin error-message{
+  color: $red;
+  display: flex;
+  margin-top: .35rem;
+  gap: 5px;
+  font-size: .8125rem;
+}
