@@ -10,7 +10,7 @@ export default function InventoriesList({ inventories }) {
   const [inventory, setInventory] = useState(false);
 
   const toggleInventoryModal = (inventory) => {
-    setInvModal(true);
+    setInvModal(!invmodal);
     setInventory(inventory);
   };
 
