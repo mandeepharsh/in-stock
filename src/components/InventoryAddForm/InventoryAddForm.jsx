@@ -82,20 +82,29 @@ const InventoryAddForm = ({warehousesNames}) => {
       return  setErrors(newErrors);
     } else {
 
-      //grab inputs
-      const newItemData = {
-        warehouse_id :Number(values.warehousesId),
-        item_name : values.itemName,
-        description : values.description,
-        category : values.category,
-        status : values.status,
-        quantity : values.quantity,
-      }
+    //grab inputs
+    const newItemData = {
+      "warehouse_id": values.warehousesId,
+      "item_name": values.itemName,
+      "description": values.description,
+      "category": values.category,
+      "status": values.status,
+      "quantity": Number(values.quantity)
+    }
+
+    // const newItemData = {
+    //   "warehouse_id": "2",
+    //   "item_name": "New Lids",
+    //   "description": "Nice Hat",
+    //   "category": "Gear",
+    //   "status": "In Stock",
+    //   "quantity": 4
+    // }
 
       console.log(newItemData);
 
       //add the item
-      axios.post((`${URLInventories}/add`), newItemData)
+      axios.post((URLInventories), newItemData)
       .then((res)=>{
         navigate(`/inventories/${res.data[0].id}`)
       })
