@@ -23,7 +23,6 @@ export default function WarehouseDetails() {
   // get warehouse deets from database
   useEffect(() => {
     axios
-      // .get(`${URL}/4`)
       .get(`${URLWarehouses}/${id}`)
       .then((response) => {
         setWarehouse(response.data);
@@ -56,46 +55,37 @@ export default function WarehouseDetails() {
 
   return (
     <main className="warehouse__wrapper">
-      <section className="warehouse__header">
-        <div className="warehouse__header-container">
-          <Link to="/">
-            <img
-              src={arrow}
-              alt="previous warehouse"
-              className="warehouse__header-icons"
-            />
-          </Link>
-          <h2 className="warehouse__header-text">{warehouse_name}</h2>
-        </div>
-        <Link to={`/warehouse/${id}/edit`} className="warehouse__header-bgrnd">
-          <img
-            src={pencil}
-            className="warehouse__header-edit-image"
-            alt="edit this warehouse's details"
-          />
-          <span className="warehouse__header-edit-text">Edit</span>
+    <section className="warehouse__header">
+      <div className='warehouse__header-container'>
+        <Link to="/">
+          <img src={arrow} alt="previous warehouse" className="warehouse__header-icons" />
         </Link>
-      </section>
-      <section className="warehouse__info">
-        <div className="warehouse__info-address">
-          <h4 className="warehouse__info-headers">WAREHOUSE ADDRESS:</h4>
-          <p className="warehouse__info-text">
-            {address}, {city}, {country}
-          </p>
+        <h2 className="warehouse__header-text">{warehouse_name}</h2>
+      </div>
+      <Link to={`/warehouse/${id}/edit`} className="warehouse__header-bgrnd">
+        <img src={pencil} className="warehouse__header-edit-image" alt="edit this warehouse's details" />
+        <span className='warehouse__header-edit-text'>Edit</span>
+      </Link>
+    </section>
+    <section className="warehouse__info">
+      <div className='warehouse__info-address'>
+        <h4 className="warehouse__info-headers">WAREHOUSE ADDRESS:</h4>
+        <p className="warehouse__info-text">{address}, {city}, {country}</p>
+      </div>
+      <div className="warehouse__info-contact">
+        <div className='warehouse__info-column warehouse__info-column--left'>
+          <h4 className="warehouse__info-headers">CONTACT NAME:</h4>
+          <p className="warehouse__info-text">{contact_name}</p>
+          <p className="warehouse__info-text">{contact_position}</p>
         </div>
-        <div className="warehouse__info-contact">
-          <div className="warehouse__info-column warehouse__info-column--left">
-            <h4 className="warehouse__info-headers">CONTACT NAME:</h4>
-            <p className="warehouse__info-text">{contact_name}</p>
-            <p className="warehouse__info-text">{contact_position}</p>
-          </div>
-          <div className="warehouse__info-column warehouse__info-column--right">
-            <h4 className="warehouse__info-headers">CONTACT INFORMATION:</h4>
-            <p className="warehouse__info-text">{contact_phone}</p>
-            <p className="warehouse__info-text">{contact_email}</p>
-          </div>
+        <div className='warehouse__info-column warehouse__info-column--right'>
+          <h4 className="warehouse__info-headers">CONTACT INFORMATION:</h4>
+          <p className="warehouse__info-text">{contact_phone}</p>
+          <p className="warehouse__info-text">{contact_email}</p>
         </div>
-      </section>
-    </main>
-  );
+      </div>
+    </section>
+    
+  </main>
+  )
 }
