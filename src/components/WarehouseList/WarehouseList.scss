@@ -26,14 +26,14 @@
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: center;
-    padding: 1rem 1.5rem;
-    border-top: 0.0625rem solid $cloud;
+    padding: 16px 24px;
+    border-top: 1px solid $cloud;
 
     @include tablet {
       flex-wrap: nowrap;
       justify-content: space-around;
-      border-top: 0.0625rem solid $cloud;
-      padding: 1rem 2rem;
+      border-top: 1px solid $cloud;
+      padding: 16px 32px;
     }
 
     &:hover {
@@ -51,7 +51,7 @@
   &__warehouse {
     color: $instock-indigo;
     font-weight: 600;
-    font-size: 0.8125rem;
+    font-size: 13px;
     display: flex;
     align-items: center;
 
@@ -61,7 +61,7 @@
 
     &-container {
       width: 50%;
-      padding-bottom: 1rem;
+      padding-bottom: 16px;
 
       @include tablet {
         width: 20%;
@@ -72,7 +72,7 @@
   }
 
   &__name {
-    font-size: 0.8125rem;
+    font-size: 13px;
 
     @include tablet {
       display: flex;
@@ -81,7 +81,7 @@
 
     &-container {
       width: 50%;
-      padding-bottom: 1rem;
+      padding-bottom: 16px;
 
       @include tablet {
         width: 20%;
@@ -92,17 +92,17 @@
   }
 
   &__address {
-    font-size: 0.8125rem;
-    line-height: 1.25rem;
+    font-size: 13px;
+    line-height: 20px;
 
     @include tablet {
       width: 80%;
-      line-height: 1.375rem;
+      line-height: 22px;
     }
 
     &-container {
       width: 50%;
-      padding-bottom: 1rem;
+      padding-bottom: 16px;
 
       @include tablet {
         width: 20%;
@@ -115,7 +115,7 @@
   &__information {
     &-container {
       width: 50%;
-      padding-bottom: 1rem;
+      padding-bottom: 16px;
 
       @include tablet {
         width: 20%;
@@ -125,20 +125,20 @@
     }
 
     &-number {
-      font-size: 0.8125rem;
-      line-height: 1.25rem;
+      font-size: 13px;
+      line-height: 20px;
 
       @include tablet {
-        line-height: 1.375rem;
+        line-height: 22px;
       }
     }
 
     &-email {
-      font-size: 0.8125rem;
-      line-height: 1.25rem;
+      font-size: 13px;
+      line-height: 20px;
 
       @include tablet {
-        line-height: 1.375rem;
+        line-height: 22px;
       }
     }
   }
@@ -157,12 +157,13 @@
     &-del {
       cursor: pointer;
       @include tablet {
-        padding-right: 1rem;
+        padding-right: 16px;
       }
     }
 
     &-link {
       text-decoration: none;
+      height: 1.5rem;
     }
   }
 }
