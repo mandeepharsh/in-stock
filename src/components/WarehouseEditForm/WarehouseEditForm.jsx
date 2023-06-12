@@ -20,7 +20,7 @@ const WarehouseEditForm = ({ warehouse }) => {
 
   const initialValues = {
     warehouse_name: warehouse.warehouse_name,
-    editress: warehouse.editress,
+    address: warehouse.address,
     city: warehouse.city,
     country: warehouse.country,
     contact_name: warehouse.contact_name,
@@ -31,7 +31,7 @@ const WarehouseEditForm = ({ warehouse }) => {
 
   const initialErrorState = {
     warehouse_name: false,
-    editress: false,
+    address: false,
     city: false,
     country: false,
     contact_name: false,
@@ -67,7 +67,7 @@ const WarehouseEditForm = ({ warehouse }) => {
     const newErrors = {};
     let hasError = false;
     for (let field in values) {
-      if (values[field].trim() === "") {
+      if (values[field].trim()=== "") {
         newErrors[field] = true;
         hasError = true;
       } else {
@@ -80,7 +80,7 @@ const WarehouseEditForm = ({ warehouse }) => {
     } else {
       axios
         .put(URLWarehouses + "/" + id, values)
-        .then((_res) => setErrors(initialErrorState), setformSumbit(true))
+        .then((_res) => setErrors(initialErrorState), setformSumbit(true) ,navigate( "/warehouses/" + id ))
         .catch((error) => console.log(error));
     }
   };

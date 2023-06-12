@@ -1,6 +1,6 @@
 import closeIcon from "../../assets/icons/close-24px.svg";
 import "./DeleteModal.scss";
-import React, { useState, useEffect } from "react";
+import React, {  useEffect } from "react";
 import axios from "axios";
 
 export default function DeleteModal({ warehouse, toggleModal }) {

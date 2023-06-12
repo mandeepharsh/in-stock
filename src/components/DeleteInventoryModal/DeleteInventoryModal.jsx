@@ -1,6 +1,6 @@
 import closeIcon from "../../assets/icons/close-24px.svg";
 import "./DeleteInventoryModal.scss";
-import React, { useState, useEffect } from "react";
+import React, {  useEffect } from "react";
 import axios from "axios";
 
 export default function DeleteInventoryModal({
