@@ -2,10 +2,9 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
-.inventory {
+.inventory-warehouse {
   background-color: $white;
   border-radius: 0.25rem;
-  box-shadow: 0px 2px 5px 0px $instock-black;
 
   @include desktop {
     width: 63.75rem;
@@ -14,6 +13,13 @@
 
   &__link {
     text-decoration: dashed;
+  }
+
+  &__list{
+    margin: -3.9375rem 1rem .3125rem;
+    @include desktop{
+      margin: 6.5rem 0 0;
+    }
   }
 
   &__details {

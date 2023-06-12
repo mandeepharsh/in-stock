@@ -45,63 +45,63 @@ export default function WarehouseInvList() {
 
   return (
 
-    <section className="inventory">
-      <ul className="inventory__list">
+    <section className="inventory-warehouse">
+      <ul className="inventory-warehouse__list">
         {inventories.map((inventory) => {
           return (
-            <div key={inventory.id} className="inventory__details">
-              <div className="inventory__container-left">
-                <div className="inventory__item-container">
-                  <h4 className="inventory__details-title">INVENTORY ITEM</h4>
+            <div key={inventory.id} className="inventory-warehouse__details">
+              <div className="inventory-warehouse__container-left">
+                <div className="inventory-warehouse__item-container">
+                  <h4 className="inventory-warehouse__details-title">INVENTORY ITEM</h4>
                   <Link
                     to={`/inventories/${inventory.id}`}
-                    className="inventory__link"
+                    className="inventory-warehouse__link"
                   >
-                    <p className="inventory__item">
+                    <p className="inventory-warehouse__item">
                       {inventory.item_name}
                       <img src={rightIcon} alt="chevron-pointing-right" />
                     </p>
                   </Link>
                 </div>
-                <div className="inventory__category-container">
-                  <h4 className="inventories__details-title">CATEGORY</h4>
-                  <p className="inventories__category">{inventory.category}</p>
+                <div className="inventory-warehouse__category-container">
+                  <h4 className="inventories-warehouse__details-title">CATEGORY</h4>
+                  <p className="inventories-warehouse__category">{inventory.category}</p>
                 </div>
               </div>
-              <div className="inventory__container-right">
-                <div className="inventory__status-container">
-                  <h4 className="inventory__details-title">STATUS</h4>
+              <div className="inventory-warehouse__container-right">
+                <div className="inventory-warehouse__status-container">
+                  <h4 className="inventory-warehouse__details-title">STATUS</h4>
                   <p
-                    className={`inventory__status ${
+                    className={`inventory-warehouse__status ${
                       inventory.status === "In Stock"
-                        ? "inventory__status--instock"
-                        : "inventory__status--outstock"
+                        ? "inventory-warehouse__status--instock"
+                        : "inventory-warehouse__status--outstock"
                     }`}
                   >
                     {inventory.status}
                   </p>
                 </div>
-                <div className="inventory__quantity-container">
-                  <h4 className="inventory__details-title">QTY</h4>
-                  <p className="inventory__quantity">{inventory.quantity}</p>
+                <div className="inventory-warehouse__quantity-container">
+                  <h4 className="inventory-warehouse__details-title">QTY</h4>
+                  <p className="inventory-warehouse__quantity">{inventory.quantity}</p>
                 </div>
               </div>
-              <div className="inventory__actions">
-                <a href="" className="inventory__actions-link">
+              <div className="inventory-warehouse__actions">
+                <a href="" className="inventory-warehouse__actions-link">
                   <img
                     src={deleteIcon}
                     alt="garbage-delete-icon"
-                    className="inventory__actions-del"
+                    className="inventory-warehouse__actions-del"
                   />
                 </a>
                 <Link
                   to={`/inventories/${inventory.id}/edit`}
-                  className="inventory__actions-link"
+                  className="inventory-warehouse__actions-link"
                 >
                   <img
                     src={editIcon}
                     alt="pencil-edit-icon"
-                    className="inventory__actions-edit"
+                    className="inventory-warehouse__actions-edit"
                   />
                 </Link>
               </div>
