@@ -4,37 +4,31 @@
 
 
 
-.warehouse-add-page{
-  margin: -4rem 1rem 1rem;
+.inventory-add-page{
+  margin: -4rem 1rem 0;
   border-radius: .5rem;
   background-color: $white;
-  box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+  border: .0625rem solid $cloud;
+  box-shadow: 0px 2px 5px 0px #13182C1A;
 
   @include tablet {
-   margin: -6.8rem 1rem 8rem ;
+   margin: -6.6rem 1rem 0 ;
   }
+
   @include desktop {
     width: 63.75rem;
-     margin: -6.8rem auto 8rem; 
+     margin: -6.6rem auto 0; 
      }
   &__title{
     display: flex;
     justify-content: center;
-    padding: 2rem 1rem;
+    padding: 2rem 0;
     gap: 1rem;
     @include tablet{
      justify-content: flex-start;
      padding: 2rem 2rem;
     }
   }  
-
-  &__icon{
-    margin-top: 0.5rem;
-    @include tablet{
-        height: 2rem;
-        margin-top: 0.3rem;
-    }
-  }
    
   &__heading{
     font-size: 1.75rem;
@@ -45,7 +39,7 @@
    
 }
 
-.warehouse-add{
+.inventory-add {
     &__form{
         display: flex;
         flex-direction: column;
@@ -63,20 +57,18 @@
         padding: 1rem 1.5rem 1.5rem;
         @include tablet{
             width: 50%;
+            border-right: .0625rem solid $cloud;
             margin: 1rem 0;
             padding: 1rem 2rem 2rem;
         }
-
-      &--divider{
-        border-right: .0625rem solid $cloud;
-      }       
     }
    
-    &__fieldset-heading{
+    &__fieldset-heading {
     margin-bottom: .5rem;
     @include tablet{
         margin-bottom: 1rem;
     }
+    
     }
 
     &__label{
@@ -84,6 +76,12 @@
         flex-direction: column;
         font-weight: 600;
     }
+        
+    &__label--status {
+      display: inline;
+        font-size: .9rem;
+        font-weight: 400;
+      }
 
     &__input{
         padding: 0.85rem;
@@ -96,34 +94,37 @@
             font-size: 0.9rem;
             color: $slate;
         }
+    }
 
-        &--invalid{
-            border: .0781rem solid $red;
-        }
+    &__categories {
+      padding: 0.85rem;
+        border-radius: 1.5rem;
+        border: none;
+        border: .0781rem solid $cloud;
+        margin-top: 0.4rem;
 
-        &:focus{
-            border: .0781rem solid $instock-indigo;
-
+        &::placeholder{
+            font-size: 0.9rem;
+            color: $slate;
         }
     }
-    
-    &__error-message{
-        color: $red;
-        display: flex;
-        margin-top: .35rem;
-        gap: 5px;
-        font-size: .8125rem;
+
+    &__warehouses {
+      padding: 0.85rem;
+        border-radius: 1.5rem;
+        border: none;
+        border: .0781rem solid $cloud;
+        margin-top: 0.4rem;
+
+        &::placeholder{
+            font-size: 0.9rem;
+            color: $slate;
         }
-  
+    }
+
     &__divider{
         border: none;
         border-bottom: .0625rem solid $cloud;
-
-        &--remove{
-            @include tablet {
-                display: none;
-            }
-        }
     }
 
     &-page__button-group{
@@ -133,13 +134,11 @@
         justify-content: center;
         gap: 1rem;
         align-items: center;
-      
-
+        justify-content: flex-end;
+        padding-right: 2rem;
         
         @include tablet{
             width: 100%;
-            justify-content: flex-end;
-            padding-right: 2rem;
         }
     }
     &-page__button-cancel{
@@ -147,10 +146,6 @@
         background-color: $white;
         border: .0625rem solid $cloud;
         color: $slate;
-        &:hover{
-            border : .0625rem solid $instock-indigo;
-            color: $instock-indigo;
-        }
         @include tablet{
             width: 4.5rem;
         }
@@ -160,12 +155,9 @@
         background-color : $instock-indigo;
         color: $white;
         
-        &:hover{
-            background-color: $graphite;
-        }
         
         @include tablet{
           width: 8.625rem;
         }
-    }  
+    }
 }
