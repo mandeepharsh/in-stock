@@ -1,0 +1,83 @@
+//Link components' SASS Styling
+@use "./components/WarehouseList/WarehouseList.scss" as *;
+@use "./components/WarehousesHeader/WarehouseHeader.scss" as *;
+@use "./components/InventoriesList/InventoriesList.scss" as *;
+@use "./components/InventoriesHeader/InventoriesHeader.scss" as *;
+
+//Link partials SASS styling
+@use "./styles/partials/fonts";
+@use "./styles/partials/mixins" as *;
+@use "./styles/partials/variables" as *;
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Titillium Web";
+  background-color: $light-grey;
+}
+
+h1 {
+  font-size: 28px;
+  line-height: 36px;
+
+  @include tablet {
+    font-size: 32px;
+    line-height: 40px;
+  }
+}
+
+h2 {
+  font-size: 20px;
+  line-height: 28px;
+
+  @include tablet {
+    font-size: 24px;
+    line-height: 32px;
+  }
+}
+
+h3 {
+  font-size: 13px;
+  line-height: 20px;
+
+  @include tablet {
+    font-size: 14px;
+    line-height: 22px;
+  }
+}
+
+h4 {
+  font-size: 11px;
+  line-height: 16px;
+
+  @include tablet {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+p {
+  font-size: 15px;
+  line-height: 26px;
+
+  @include tablet {
+    font-size: 16px;
+    line-height: 28px;
+  }
+}
+
+span {
+  font-size: 13px;
+  line-height: 20px;
+
+  @include tablet {
+    font-size: 14px;
+    line-height: 22px;
+  }
+}
+
+//Body Small properties to be manually added because no specific html element

@@ -1,0 +1,36 @@
+@use "./variables" as *;
+
+// BREAKPOINTS
+@mixin mobile {
+  @media screen and (min-width: $mobile-breakpoint) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (min-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: $desktop-breakpoint) {
+    @content;
+  }
+}
+
+@mixin button {
+  height: 2.35rem;
+  width :  40%;
+  border-radius: 2rem;
+  border: none;
+  cursor: pointer;
+}
+
+@mixin error-message{
+  color: $red;
+  display: flex;
+  margin-top: .35rem;
+  gap: 5px;
+  font-size: .8125rem;
+}

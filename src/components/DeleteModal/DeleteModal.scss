@@ -1,0 +1,143 @@
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+body.active-modal {
+  @include tablet{
+    overflow-y: hidden;
+  }
+}
+
+.warehouse__modal {
+  &-overlay {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    background-color:$white;
+
+    @include tablet{
+        background: rgba(49,49,49,0.8);
+    }
+
+  }
+
+  &-content {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.4;
+    background: $white;
+    padding: 14px 28px;
+    border-radius: 3px;
+
+    @include mobile {
+      width: 100%;
+    }
+
+    @include tablet {
+      width: 90%;
+    }
+
+    @include desktop {
+      width: 675px;
+    margin: 0 auto;
+    }
+    
+  }
+
+  &-icon{
+    float: right;
+    cursor: pointer;
+  }
+
+  &-header {
+    @include mobile {
+      margin-top: 3rem;
+    }
+    @include tablet {
+      margin-top: 1rem;
+    }
+  }
+
+  &-message {
+
+    @include mobile {
+      margin-top: 1.5rem;
+    }
+
+    @include tablet {
+      margin-top: 1.5rem;
+    }
+  }
+
+  &-actions{
+    gap: 16px;
+
+    @include mobile {
+      margin-top: 14rem;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    @include tablet {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+    &--close {
+      color: $slate;
+      background-color: $white;
+      border-style: none;
+      border: 1px solid $cloud;
+      cursor: pointer;
+      height: 38px;
+      width: auto;
+      padding: 0 16px;
+      border-radius: 20px;
+      &:hover {
+      color: $instock-indigo;
+      border-color: $instock-indigo;
+      }
+
+      @include mobile {
+        width: 50%;
+      }
+      @include tablet{
+        height: 38px;
+        width: auto;
+        padding: 0 16px;
+        border-radius: 20px;
+      }
+    }
+    &--delete {
+      color: $white;
+      background-color: $red;
+      border: none;
+      cursor: pointer;
+      height: 38px;
+      width: auto;
+      padding: 0 16px;
+      border-radius: 20px;
+
+      &:hover {
+        background-color: $instock-black;
+      }
+      @include mobile {
+        width: 50%;
+      }
+
+      @include tablet{
+        height: 38px;
+        width: auto;
+        padding: 0 16px;
+        border-radius: 20px;
+      }
+    }
+  }
+}

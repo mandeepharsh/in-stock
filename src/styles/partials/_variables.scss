@@ -1,0 +1,26 @@
+/*
+COLOR VARIABLES
+*/
+//Primary
+$instock-black: #13182c; //global text
+$instock-indigo: #2e66e5; //interactive elements
+$white: #ffffff; //gloabl white
+
+//Secondary
+$slate: #5c667e; //table column headers & placeholder text
+$cloud: #bdc5d5; //outlines, dividers, borders, table sorting icon
+
+//Background
+$graphite: #232940; //top nav header bg, CTA button hover state bg
+$light-grey: #f7f8f9; //page bg, table col header bg, CTA bg
+
+//Supporting
+$green: #158463; //InStock label
+$red: #c94515; //"Out of stock" label, error states & delete icon
+
+/*
+BREAKPOINT VARIABLES
+*/
+$mobile-breakpoint: 320px; //320px - 767px
+$tablet-breakpoint: 768px; //768px - 1279px
+$desktop-breakpoint: 1280px; //1280px+
